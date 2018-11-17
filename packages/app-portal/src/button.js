@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class PortalButton extends Component {
   render() {
     return (
-      <button>PortalButton</button>
+      <button>Lazy load component</button>
     );
   }
 }

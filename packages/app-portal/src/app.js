@@ -1,10 +1,27 @@
 import React, { Component, lazy, Suspense } from 'react';
 
 const AppButton = lazy(() => import("./app-button.lazy"));
-const PortalButton = lazy(() => import("./button"));
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            component: () => <div>Loading...</div>
+        };
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({
+                component: lazy(() => import("./button"))
+            });
+        }, 2000)
+    }
+
     render() {
+        const PortalButton = this.state.component;
+
         return (
             <div className="App">
                 <header className="App-header">

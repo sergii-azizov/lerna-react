@@ -34,7 +34,7 @@ class App extends Component {
 
         return (
             <div>
-                {!this.state.loaded && <button onClick={this.handleLoad}>Load AppButton Component</button>}
+                {!this.state.loaded && <button onClick={this.handleLoad}>Lazy load component by http</button>}
                 {this.state.component && <Co>{this.props.children}</Co>}
             </div>
         );
