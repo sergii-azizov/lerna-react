@@ -1,22 +1,44 @@
-import React, { Component, Suspense } from 'react';
-import $script from 'scriptjs';
+import React, { Component, Suspense, lazy } from 'react';
+import $script from "scriptjs";
 
 class App extends Component {
-  render() {
-      const PortalButton = $script('app-button', (p1,p2) => {
-          console.log("==> ", p1,p2);
-      });
-    return (
-      <div className="App">
-        <header className="App-header">
-          Portal
-            <Suspense fallback={<div>Loading...</div>}>
-                <PortalButton />
-            </Suspense>
-        </header>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            loaded: false,
+            loading: false,
+            component: null
+        };
+
+        this.handleLoad = this.handleLoad.bind(this);
+    }
+
+    handleLoad() {
+        this.setState({
+            loading: true,
+            component: () => <div>Loading</div>
+        });
+        $script('http://raw.githack.com/sergii-azizov/lerna-react/master/packages/app-button/build/app-button.js', () => {
+            const AppButton = window['app-button'];
+            this.setState({
+                loaded: true,
+                loading: false,
+                component: AppButton.Button
+            })
+        });
+    }
+
+    render() {
+        const Co = this.state.component;
+
+        return (
+            <div>
+                {!this.state.loaded && <button onClick={this.handleLoad}>Load AppButton Component</button>}
+                {this.state.component && <Co>{this.props.children}</Co>}
+            </div>
+        );
+    }
 }
 
 export default App;
