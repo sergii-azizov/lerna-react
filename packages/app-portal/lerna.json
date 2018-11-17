@@ -1,0 +1,11 @@
+{
+  "packages": [
+    "node_modules/app-vendors"
+  ],
+  "command": {
+    "bootstrap": {
+      "hoist": true
+    }
+  },
+  "version": "independent"
+}
