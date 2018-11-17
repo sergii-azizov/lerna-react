@@ -1,7 +1,7 @@
-import React, { Component, Suspense, lazy } from 'react';
+import React, { Component} from 'react';
 import $script from "scriptjs";
 
-class App extends Component {
+class ButtonLazy extends Component {
     constructor(props) {
         super(props);
 
@@ -10,35 +10,33 @@ class App extends Component {
             loading: false,
             component: null
         };
-
-        this.handleLoad = this.handleLoad.bind(this);
     }
 
-    handleLoad() {
+    handleLoad = () =>{
         this.setState({
             loading: true,
             component: () => <div>Loading</div>
         });
-        $script('http://raw.githack.com/sergii-azizov/lerna-react/master/packages/app-button/build/app-button.js', () => {
-            const AppButton = window['app-button'];
+        $script('http://raw.githack.com/sergii-azizov/lerna-react/master/packages/shared/dist/shared.js', () => {
+            const shared = window['shared'];
             this.setState({
                 loaded: true,
                 loading: false,
-                component: AppButton.Button
+                component: shared.Button
             })
         });
-    }
+    };
 
     render() {
-        const Co = this.state.component;
+        const ButtonLazyLoad = this.state.component;
 
         return (
             <div>
                 {!this.state.loaded && <button onClick={this.handleLoad}>Lazy load component by http</button>}
-                {this.state.component && <Co>{this.props.children}</Co>}
+                {this.state.component && <ButtonLazyLoad>{this.props.children}</ButtonLazyLoad>}
             </div>
         );
     }
 }
 
-export default App;
+export default ButtonLazy;

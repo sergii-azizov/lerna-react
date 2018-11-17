@@ -1,6 +1,6 @@
 import React, { Component, lazy, Suspense } from 'react';
 
-const AppButton = lazy(() => import("./app-button.lazy"));
+const ButtonLazy = lazy(() => import("./components/button/component.lazy"));
 
 class App extends Component {
     constructor(props) {
@@ -14,23 +14,21 @@ class App extends Component {
     componentDidMount() {
         setTimeout(() => {
             this.setState({
-                component: lazy(() => import("./button"))
+                component: lazy(() => import("./components/button/component"))
             });
         }, 2000)
     }
 
     render() {
-        const PortalButton = this.state.component;
+        const Button = this.state.component;
 
         return (
-            <div className="App">
-                <header className="App-header">
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <PortalButton/>
-                    </Suspense>
-                </header>
+            <div>
                 <Suspense fallback={<div>Loading...</div>}>
-                    <AppButton>AppButton</AppButton>
+                    <Button>Lazy load from Portal</Button>
+                </Suspense>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <ButtonLazy>Lazy load by http</ButtonLazy>
                 </Suspense>
             </div>
         );

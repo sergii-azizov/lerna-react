@@ -1,17 +1,9 @@
 const path = require('path');
 
 module.exports = {
-    entry: path.resolve(__dirname, '../src/index.js'),
-    mode: 'development',
     output: {
-        filename: 'app-button.js',
-        library: {
-            root: 'app-button',
-            amd: "appButton",
-            commonjs: "appButton"
-        },
         libraryTarget: 'umd',
-        path: path.resolve(__dirname, '../build'),
+        path: path.resolve('./dist')
     },
     externals: {
         "react": "React",

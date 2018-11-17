@@ -1,3 +1,4 @@
+import './vendor.js';
 import ReactDOM from 'react-dom';
 
 import App from './app';
