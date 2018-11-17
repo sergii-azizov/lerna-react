@@ -17,7 +17,7 @@ class ButtonLazy extends Component {
             loading: true,
             component: () => <div>Loading</div>
         });
-        $script('http://raw.githack.com/sergii-azizov/lerna-react/master/packages/shared/dist/shared.js', () => {
+        $script('https://rawcdn.githack.com/sergii-azizov/lerna-react/8a29d802bd2e6072901b9f2762689e07f5a824b9/packages/shared/dist/shared.js', () => {
             const shared = window['shared'];
             this.setState({
                 loaded: true,

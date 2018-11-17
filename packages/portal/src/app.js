@@ -25,10 +25,10 @@ class App extends Component {
         return (
             <div>
                 <Suspense fallback={<div>Loading...</div>}>
-                    <Button>Lazy load from Portal</Button>
+                    <Button>Lazy loaded from Portal</Button>
                 </Suspense>
                 <Suspense fallback={<div>Loading...</div>}>
-                    <ButtonLazy>Lazy load by http</ButtonLazy>
+                    <ButtonLazy>Lazy loaded by http</ButtonLazy>
                 </Suspense>
             </div>
         );
