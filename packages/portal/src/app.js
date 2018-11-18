@@ -1,4 +1,5 @@
 import React, { Component, lazy, Suspense } from 'react';
+import styles from './app.scss';
 
 const ButtonLazy = lazy(() => import("./components/button/component.lazy"));
 
