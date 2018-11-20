@@ -1,6 +1,6 @@
 ## Lerna + React + Redux
 
-- [ ] Add prop-types
+- [X] Add prop-types
 - [X] Remove dependency from core
 - [ ] Try not have component in windows
 - [ ] Add redux

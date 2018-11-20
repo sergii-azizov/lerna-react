@@ -1,5 +1,5 @@
 import { Component, Fragment } from "react";
-import { string } from 'prop-types';
+import { string, node } from 'prop-types';
 import $script from "scriptjs";
 
 import { withRender } from '../with-render'

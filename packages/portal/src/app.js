@@ -5,11 +5,11 @@ import { lazy } from 'core';
 import styles from './app.scss';
 
 const Button = lazy({
-    server: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/68ae151923410fd543dee6e22acea19ec5489dea/dist/js'
+    server: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/0f1915a96afb89dcfd45438d2595ec2b1f8d3ca5/dist/js'
 })('button');
 
 const lazyIcon = lazy({
-    server: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/06921ec13ff87f72dcd741cf7d2baaabfa0c4b1c/dist/js'
+    server: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/0f1915a96afb89dcfd45438d2595ec2b1f8d3ca5/dist/js'
 });
 
 class Index extends Component {
