@@ -1,16 +1,17 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpackMerge = require('webpack-merge');
-const baseWebpackConfig = require('../../../config/webpack.config.dev.js');
+const version = require('../package.json').version;
+const baseWebpackConfig = require('../../../configs/webpack.config.dev.js');
 
 module.exports = webpackMerge(baseWebpackConfig, {
     entry: {
-        vendor: ['react', 'react-dom'],
+        vendor: Object.keys(baseWebpackConfig.externals),
         app: path.resolve(__dirname, '../src/index.js')
     },
     externals: [],
     output: {
-        filename: '[name].js'
+        filename: `js/v${version}.portal.[name].js`,
     },
     optimization: {
         splitChunks: {

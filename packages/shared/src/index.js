@@ -1,2 +1,2 @@
-export { Button } from './components';
-
+export { Button } from './button';
+export { Icon } from './icon';

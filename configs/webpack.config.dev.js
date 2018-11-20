@@ -2,19 +2,26 @@ const path = require('path');
 
 module.exports = {
     output: {
-        libraryTarget: 'umd',
-        path: path.resolve('./dist')
+        libraryTarget: 'window',
+        path: path.resolve('../../dist')
     },
     externals: {
         "react": "React",
-        "react-dom": "ReactDom"
+        "scriptjs": "$script",
+        "react-dom": "ReactDom",
+        "lodash": 'lodash',
+        "prop-types": "PropTypes",
+        "react-router-dom": "reactRouterDom"
     },
     module: {
         rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: 'babel-loader',
+                options: {
+                    configFile: path.resolve('../../configs/babel.config.js')
+                }
             },
             {
                 test: /\.scss$/,

@@ -1,15 +1,15 @@
 const path = require('path');
 const webpackMerge = require('webpack-merge');
-const baseWebpackConfig = require('../../../config/webpack.config.dev.js');
+const version = require('../package.json').version;
+const baseWebpackConfig = require('../../../configs/webpack.config.dev.js');
 
 module.exports = webpackMerge(baseWebpackConfig, {
-    entry: path.resolve(__dirname, '../src/index.js'),
+    entry: {
+        button: path.resolve(__dirname, '../src/button/component.js'),
+        icon: path.resolve(__dirname, '../src/icon/component.js')
+    },
     output: {
-        filename: 'shared.js',
-        library: {
-            root: 'shared',
-            amd: "shared",
-            commonjs: "shared"
-        }
+        filename: `js/v${version}.shared.[name].js`,
+        library: 'shared.[name]'
     }
 });

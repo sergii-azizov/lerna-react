@@ -2,20 +2,23 @@
   "name": "lerna-react",
   "private": true,
   "scripts": {
-    "build:shared": "lerna run --scope shared build"
+    "clear": "rm -rf dist"
   },
   "dependencies": {
+    "prop-types": "^15.6.2",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "@babel/core": "7.1.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-transform-react-display-name": "^7.0.0",
     "@babel/preset-env": "^7.1.6",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.4",
-    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-react-app": "^6.1.0",
     "cross-env": "^5.2.0",
     "css-loader": "1.0.0",
