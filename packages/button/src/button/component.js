@@ -1,4 +1,5 @@
 import React from 'react';
+import { bool } from 'prop-types';
 import { lazy, withRender } from 'core';
 
 import styles from './component.scss';
@@ -14,6 +15,10 @@ const Button = props => {
             {props.children}
         </button>
     )
+};
+
+Button.propTypes = {
+    withIcon: bool
 };
 
 export default withRender()(Button);

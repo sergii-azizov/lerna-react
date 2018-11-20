@@ -1,4 +1,5 @@
 import { Component, Fragment } from "react";
+import { string } from 'prop-types';
 import $script from "scriptjs";
 
 import { withRender } from '../with-render'
@@ -49,4 +50,13 @@ export const lazy = config => name => {
     }
 
     return withRender()(Lazy);
+};
+
+lazy.propTypes = {
+    server: string.isRequired,
+    loadingComponent: node
+};
+
+lazy.defaultProps = {
+    loadingComponent: null
 };
