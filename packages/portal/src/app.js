@@ -1,10 +1,16 @@
 import React, { Component,  Fragment } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { lazy } from 'core';
 
 import styles from './app.scss';
-import lazy from './shared';
 
-const Button = lazy('button');
+const Button = lazy({
+    server: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/68ae151923410fd543dee6e22acea19ec5489dea/dist/js'
+})('button');
+
+const lazyIcon = lazy({
+    server: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/06921ec13ff87f72dcd741cf7d2baaabfa0c4b1c/dist/js'
+});
 
 class Index extends Component {
     state = {
@@ -12,7 +18,7 @@ class Index extends Component {
     };
 
     componentDidMount() {
-        const Icon = lazy('icon');
+        const Icon = lazyIcon('icon');
         setTimeout(() => {
             this.setState({
                 component: Icon
@@ -21,19 +27,21 @@ class Index extends Component {
     }
 
     render() {
-        const Icon = lazy('icon');
+        const Icon = lazyIcon('icon');
         const Icon2 = this.state.component;
 
         return (
             <Fragment>
                 <h2>Home</h2>
-                <Icon2 />
                 <Icon />
+                <Icon2 />
                 <Button>lazy loaded from static server</Button>
+                <Button withIcon>lazy loaded from static server</Button>
             </Fragment>
         )
     }
 };
+
 const About = () => <h2>About</h2>;
 const Users = () => <h2>Users</h2>;
 

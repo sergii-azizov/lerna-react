@@ -2,15 +2,22 @@ const path = require('path');
 
 module.exports = {
     output: {
-        libraryTarget: 'window',
+        filename: `js/[name].js`,
+        libraryTarget: 'umd',
         path: path.resolve('../../dist')
     },
+    resolve: {
+        alias: {
+            core: path.resolve('../../dist/js/core.js')
+        }
+    },
     externals: {
+        "core": "core",
         "react": "React",
         "scriptjs": "$script",
-        "react-dom": "ReactDom",
+        "react-dom": "ReactDOM",
         "lodash": 'lodash',
-        "prop-types": "PropTypes",
+        "prop-types": "propTypes",
         "react-router-dom": "reactRouterDom"
     },
     module: {
@@ -32,7 +39,7 @@ module.exports = {
                         options: {
                             modules: true,
                             sourceMap: process.env.NODE_ENV === 'development',
-                            localIdentName: process.env.NODE_ENV === 'development' ? '[path]-[local]' : '[hash:base64]'
+                            localIdentName: process.env.NODE_ENV === 'development' ? '[path]-[folder]-[local]' : '[folder]-[hash:base64:5]'
                         }
                     },
                     { loader: 'sass-loader' }
