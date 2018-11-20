@@ -4,7 +4,7 @@ import $script from "scriptjs";
 
 import { withRender } from '../with-render'
 
-export const lazy = config => name => {
+export const lazy = config => (name, params = {}) => {
     class Lazy extends Component {
         state = {};
 
@@ -14,12 +14,12 @@ export const lazy = config => name => {
 
         changeState = url => {
             this.setState({ component: window[name] && window[name].default }, () => {
-                this.notify(url);
+                this.notify('Loaded', url);
             });
         };
 
-        notify(url = '') {
-            console.info(`[Module][${name}][${url ? 'Loaded' : 'FromCache'}]`, url);
+        notify(state, url = '') {
+            console.info(`[Module][${name}][${state}]`, url);
         }
 
         loadScript() {
@@ -31,11 +31,14 @@ export const lazy = config => name => {
                 return $script(url, () => this.changeState(url));
             }
 
-            this.changeState();
+            this.changeState('FromCache');
         }
 
         componentWillUnmount() {
-            //window[this.componentName] = null;
+            if (params.clearOnUnMount) {
+                window[name] = null;
+                this.notify('Cleared');
+            }
         }
 
         render() {

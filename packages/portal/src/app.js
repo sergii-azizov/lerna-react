@@ -18,23 +18,23 @@ class Index extends Component {
     };
 
     componentDidMount() {
-        const Icon = lazyIcon('icon');
+       /* const Icon = lazyIcon('icon');
         setTimeout(() => {
             this.setState({
                 component: Icon
             })
-        }, 3000);
+        }, 3000);*/
     }
 
     render() {
-        const Icon = lazyIcon('icon');
-        const Icon2 = this.state.component;
+        const Icon = lazyIcon('icon', { clearOnUnMount: true});
+        //const Icon2 = this.state.component;
 
         return (
             <Fragment>
                 <h2>Home</h2>
                 <Icon />
-                <Icon2 />
+                {/*<Icon2 />*/}
                 <Button>lazy loaded from static server</Button>
                 <Button withIcon>lazy loaded from static server</Button>
             </Fragment>
@@ -62,7 +62,7 @@ const App = props => (
                 </ul>
             </nav>
 
-            <Route path="/" component={Index}/>
+            <Route path="/" exact component={Index}/>
             <Route path="/about/" component={About}/>
             <Route path="/users/" component={Users}/>
         </div>
