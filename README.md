@@ -1,3 +1,5 @@
+## Lerna + React + Redux
+
 - [ ] Add prop-types
 - [ ] Try not have component in windows
 - [ ] Add redux
