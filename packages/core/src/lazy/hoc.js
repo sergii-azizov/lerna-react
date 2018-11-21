@@ -1,23 +1,37 @@
 import { Component, Fragment } from "react";
 import { string, node } from 'prop-types';
-import $script from "scriptjs";
 
 import { withRender } from '../with-render'
+
+const head = document.getElementsByTagName('head')[0];
 
 export const lazy = config => (name, params = {}) => {
     class Lazy extends Component {
         state = {};
 
-        url = `${config.server}/${name}`;
+        src = `${config.server}/js/${name}.js`;
+
+        href = `${config.server}/css/${name}.css`;
 
         componentDidMount() {
             this.notify('Mounted');
             this.loadScript();
         };
 
-        changeState = () => {
+        loadChunk({ path, type = 'script', fn }) {
+            const chunk = document.createElement(type);
+            console.log("==> ", chunk);
+
+
+            chunk.onload = fn;
+            chunk.async = type !== 'link' && 1;
+            chunk[type === 'link' ? 'href' : 'src'] = path;
+            head.insertBefore(chunk, head.lastChild)
+        }
+
+        changeState = url => {
             this.setState({ component: window[name] && window[name].default }, () => {
-                this.notify('Loaded', this.url);
+                this.notify('Loaded', url);
             });
         };
 
@@ -29,8 +43,8 @@ export const lazy = config => (name, params = {}) => {
             if (!window[name]) {
                 this.setState({ component: config.loadingComponent });
 
-                $script.get(`${this.url}.js`, () => this.changeState(this.url));
-                $script.get(`${this.url}.css`, () => this.changeState(this.url));
+                this.loadChunk({ path: this.href, type: 'link', fn: () => this.notify('Loaded', this.href) });
+                this.loadChunk({ path: this.src, fn: () => this.changeState(this.src) });
 
                 return;
             }
@@ -40,8 +54,8 @@ export const lazy = config => (name, params = {}) => {
 
         componentWillUnmount() {
             if (params.clearOnUnMount) {
-                document.querySelector(`script[src="${this.url}"]`).remove();
-                document.querySelector(`style[href="${this.url}"]`).remove();
+                document.querySelector(`script[src="${this.src}"]`).remove();
+                document.querySelector(`link[href="${this.href}"]`).remove();
 
                 delete window[name];
 

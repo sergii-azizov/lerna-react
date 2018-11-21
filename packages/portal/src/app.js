@@ -2,10 +2,10 @@ import React, { Component,  Fragment } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { lazy } from 'core';
 
+import { STATIC_SERVER } from '../../../configs/static.serve.config.js'
 import styles from './app.scss';
 
-const LB = lazy({ server: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/0f1915a96afb89dcfd45438d2595ec2b1f8d3ca5/dist/js'});
-const LI = lazy({ server: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/0f1915a96afb89dcfd45438d2595ec2b1f8d3ca5/dist/js'});
+const LL = lazy({ server: STATIC_SERVER});
 class Index extends Component {
     state = {
         Icon: () => <div>ICON</div>,

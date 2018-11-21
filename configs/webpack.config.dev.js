@@ -53,8 +53,10 @@ module.exports = {
     plugins: [
         new ExtractCssChunks({
             filename: "css/[name].css",
-            hot: true,
-            cssModules: true
+            hot: true, // if you want HMR - we try to automatically inject hot reloading but if it's not working, add it to the config
+            orderWarning: true, // Disable to remove warnings about conflicting order between imports
+            reloadAll: true, // when desperation kicks in - this is a brute force HMR flag
+            cssModules: true // if you use cssModules, this can help.
         })
     ]
 };

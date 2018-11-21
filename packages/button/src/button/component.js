@@ -1,12 +1,11 @@
 import React from 'react';
 import { bool } from 'prop-types';
 import { lazy, withRender } from 'core';
+import { STATIC_SERVER } from '../../../../configs/static.serve.config.js';
 
 import styles from './component.scss';
 
-const Icon = lazy({
-    server: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/06921ec13ff87f72dcd741cf7d2baaabfa0c4b1c/dist/js'
-})('icon');
+const Icon = lazy({ server: STATIC_SERVER })('icon');
 
 const Button = props => {
     return (
