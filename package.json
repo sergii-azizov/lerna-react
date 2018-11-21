@@ -2,7 +2,8 @@
   "name": "lerna-react",
   "private": true,
   "scripts": {
-    "clear": "rm -rf dist"
+    "clear": "rm -rf dist",
+    "build": "lerna run build --parallel --stream"
   },
   "dependencies": {
     "lodash": "^4.17.11",
@@ -30,6 +31,7 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.11.1",
+    "extract-css-chunks-webpack-plugin": "^3.2.1",
     "file-loader": "2.0.0",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",

@@ -1,4 +1,5 @@
 const path = require('path');
+const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 
 module.exports = {
     output: {
@@ -34,10 +35,12 @@ module.exports = {
                 test: /\.scss$/,
                 use: [
                     { loader: 'style-loader' },
+                    ExtractCssChunks.loader,
                     {
                         loader: 'css-loader',
                         options: {
                             modules: true,
+                            importLoaders: 1,
                             sourceMap: process.env.NODE_ENV === 'development',
                             localIdentName: process.env.NODE_ENV === 'development' ? '[path]-[folder]-[local]' : '[folder]-[hash:base64:5]'
                         }
@@ -46,5 +49,12 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new ExtractCssChunks({
+            filename: "css/[name].css",
+            hot: true,
+            cssModules: true
+        })
+    ]
 };

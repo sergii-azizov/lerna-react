@@ -8,13 +8,16 @@ export const lazy = config => (name, params = {}) => {
     class Lazy extends Component {
         state = {};
 
+        url = `${config.server}/${name}`;
+
         componentDidMount() {
+            this.notify('Mounted');
             this.loadScript();
         };
 
-        changeState = url => {
+        changeState = () => {
             this.setState({ component: window[name] && window[name].default }, () => {
-                this.notify('Loaded', url);
+                this.notify('Loaded', this.url);
             });
         };
 
@@ -24,11 +27,12 @@ export const lazy = config => (name, params = {}) => {
 
         loadScript() {
             if (!window[name]) {
-                const url = `${config.server}/${name}.js`;
-
                 this.setState({ component: config.loadingComponent });
 
-                return $script(url, () => this.changeState(url));
+                $script.get(`${this.url}.js`, () => this.changeState(this.url));
+                $script.get(`${this.url}.css`, () => this.changeState(this.url));
+
+                return;
             }
 
             this.changeState('FromCache');
@@ -36,7 +40,11 @@ export const lazy = config => (name, params = {}) => {
 
         componentWillUnmount() {
             if (params.clearOnUnMount) {
-                window[name] = null;
+                document.querySelector(`script[src="${this.url}"]`).remove();
+                document.querySelector(`style[href="${this.url}"]`).remove();
+
+                delete window[name];
+
                 this.notify('Cleared');
             }
         }
