@@ -14,18 +14,25 @@ export const lazy = config => (name, params = {}) => {
         href = `${config.server}/css/${name}.css`;
 
         componentDidMount() {
-            this.notify('Mounted');
             this.loadScript();
         };
 
         loadChunk({ path, type = 'script', fn }) {
             const chunk = document.createElement(type);
-            console.log("==> ", chunk);
-
 
             chunk.onload = fn;
             chunk.async = type !== 'link' && 1;
             chunk[type === 'link' ? 'href' : 'src'] = path;
+
+            chunk[type === 'link' ? 'href' : 'src'] = path;
+
+            if(type === 'link') {
+                const link = chunk;
+                link.id   = name;
+                link.rel  = 'stylesheet';
+                link.type = 'text/css';
+            }
+
             head.insertBefore(chunk, head.lastChild)
         }
 
@@ -54,8 +61,8 @@ export const lazy = config => (name, params = {}) => {
 
         componentWillUnmount() {
             if (params.clearOnUnMount) {
-                document.querySelector(`script[src="${this.src}"]`).remove();
-                document.querySelector(`link[href="${this.href}"]`).remove();
+                document.querySelector(`head>script[src="${this.src}"]`).remove();
+                document.querySelector(`head>link[href="${this.href}"]`).remove();
 
                 delete window[name];
 

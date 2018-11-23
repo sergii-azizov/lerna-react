@@ -14,15 +14,15 @@ class Index extends Component {
     };
 
     componentDidMount() {
-        setTimeout(() => { this.setState({ Icon: LI('icon', { clearOnUnMount: true }) }); }, 1000);
-        setTimeout(() => { this.setState({ Icon: () => <div>ICON</div> }); }, 2000);
-        setTimeout(() => { this.setState({ Icon: LI('icon', { clearOnUnMount: true }) }); }, 3000);
-        setTimeout(() => { this.setState({ Icon: () => <div>ICON</div> }); }, 4000);
-        setTimeout(() => { this.setState({ Icon: LI('icon', { clearOnUnMount: true }) }); }, 5000);
+        setTimeout(() => { this.setState({ Icon: LL('icon', { clearOnUnMount: true }) }); }, 3000);
+        setTimeout(() => { this.setState({ Icon: () => <div>ICON</div> }); }, 6000);
+        setTimeout(() => { this.setState({ Icon: LL('icon', { clearOnUnMount: true }) }); }, 9000);
+        /*setTimeout(() => { this.setState({ Icon: () => <div>ICON</div> }); }, 12000);
+        setTimeout(() => { this.setState({ Icon: LL('icon', { clearOnUnMount: true }) }); }, 15000);*/
 
-        setTimeout(() => { this.setState({ Button: LB('button', { clearOnUnMount: true }) }); }, 1000);
+/*        setTimeout(() => { this.setState({ Button: LL('button', { clearOnUnMount: true }) }); }, 1000);
         setTimeout(() => { this.setState({ Button: () => <div>Button</div> }); }, 2000);
-        setTimeout(() => { this.setState({ Button: LB('button', { clearOnUnMount: true }) }); }, 3000);
+        setTimeout(() => { this.setState({ Button: LL('button', { clearOnUnMount: true }) }); }, 3000);*/
     }
 
     render() {
@@ -32,8 +32,8 @@ class Index extends Component {
             <Fragment>
                 <h2>Home</h2>
                 <Icon />
-                <Icon2 />
-                <Button withIcon>lazy loaded from static server</Button>
+                {/*<Icon2 />
+                <Button withIcon>lazy loaded from static server</Button>*/}
             </Fragment>
         )
     }

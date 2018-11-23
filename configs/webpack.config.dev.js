@@ -1,5 +1,5 @@
 const path = require('path');
-const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     output: {
@@ -34,13 +34,11 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    { loader: 'style-loader' },
-                    ExtractCssChunks.loader,
+                    MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
                             modules: true,
-                            importLoaders: 1,
                             sourceMap: process.env.NODE_ENV === 'development',
                             localIdentName: process.env.NODE_ENV === 'development' ? '[path]-[folder]-[local]' : '[folder]-[hash:base64:5]'
                         }
@@ -51,12 +49,8 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractCssChunks({
+        new MiniCssExtractPlugin({
             filename: "css/[name].css",
-            hot: true, // if you want HMR - we try to automatically inject hot reloading but if it's not working, add it to the config
-            orderWarning: true, // Disable to remove warnings about conflicting order between imports
-            reloadAll: true, // when desperation kicks in - this is a brute force HMR flag
-            cssModules: true // if you use cssModules, this can help.
         })
-    ]
+    ],
 };
