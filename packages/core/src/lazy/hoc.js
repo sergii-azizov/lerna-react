@@ -1,13 +1,19 @@
-import { Component, Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import { string, node } from 'prop-types';
+import { get, set, isNumber } from 'lodash';
 
 import { withRender } from '../with-render'
 
 const head = document.getElementsByTagName('head')[0];
 
-export const lazy = config => (name, params = {}) => {
+export const lazy = config => (name, params = { clearOnUnMount: true }) => {
     class Lazy extends Component {
-        state = {};
+        state = {
+            styleLoaded: false,
+            scriptLoaded: false
+        };
+
+        id =  String(Math.random()).slice(2);
 
         src = `${config.server}/js/${name}.js`;
 
@@ -26,9 +32,11 @@ export const lazy = config => (name, params = {}) => {
 
             chunk[type === 'link' ? 'href' : 'src'] = path;
 
+            chunk.id   = `@${name}-${type}-${this.id}`;
+
             if(type === 'link') {
                 const link = chunk;
-                link.id   = name;
+
                 link.rel  = 'stylesheet';
                 link.type = 'text/css';
             }
@@ -36,37 +44,77 @@ export const lazy = config => (name, params = {}) => {
             head.insertBefore(chunk, head.lastChild)
         }
 
-        changeState = url => {
-            this.setState({ component: window[name] && window[name].default }, () => {
-                this.notify('Loaded', url);
-            });
+        increaseComponentsCount() {
+            const componentsCount = get(window, ['$COMPONENTS_COUNT', name]);
+
+            set(window, ['$COMPONENTS_COUNT', name], componentsCount ? componentsCount + 1 : 1);
+        }
+
+        decreaseComponentsCount() {
+            const componentsCount = get(window, ['$COMPONENTS_COUNT', name]);
+
+            set(window, ['$COMPONENTS_COUNT', name], componentsCount ? componentsCount - 1 : 0);
+        }
+
+        mountLoadedComponent = (state) => {
+            if (window[name].default) {
+                this.increaseComponentsCount();
+                this.notify(state || 'Loaded');
+                this.setState({ component: window[name].default });
+            } else {
+                setTimeout(() => this.mountLoadedComponent(state))
+            }
         };
 
-        notify(state, url = '') {
-            console.info(`[Module][${name}][${state}]`, url);
+        notify(state) {
+            console.info(`[Module][${name}][${state}][COUNT: ${window.$COMPONENTS_COUNT[name]}]`);
+        }
+
+        shouldComponentUpdate(nextProps, nextState) {
+            if (nextState.component) {
+                return true;
+            }
+
+            const isModuleLoaded = nextState.styleLoaded && nextState.scriptLoaded;
+            const isLoadedStatusChanged = this.state.styleLoaded !== nextState.styleLoaded
+                || this.state.scriptLoaded !== nextState.scriptLoaded;
+
+            if (isLoadedStatusChanged && isModuleLoaded) {
+                this.mountLoadedComponent();
+                return true;
+            }
+
+            return false;
         }
 
         loadScript() {
             if (!window[name]) {
-                this.setState({ component: config.loadingComponent });
+                if (config.loadingComponent) {
+                    this.setState({ component: config.loadingComponent });
+                }
 
-                this.loadChunk({ path: this.href, type: 'link', fn: () => this.notify('Loaded', this.href) });
-                this.loadChunk({ path: this.src, fn: () => this.changeState(this.src) });
+                this.loadChunk({ path: this.href, type: 'link', fn: () => this.setState({ styleLoaded: true  }) });
+                this.loadChunk({ path: this.src, fn: () => this.setState({ scriptLoaded: true  }) });
 
                 return;
             }
-
-            this.changeState('FromCache');
+            this.mountLoadedComponent('FromCache');
         }
 
         componentWillUnmount() {
-            if (params.clearOnUnMount) {
-                document.querySelector(`head>script[src="${this.src}"]`).remove();
-                document.querySelector(`head>link[href="${this.href}"]`).remove();
+            if (params.clearOnUnMount ) {
 
-                delete window[name];
+                this.decreaseComponentsCount();
 
-                this.notify('Cleared');
+                if (window.$COMPONENTS_COUNT[name] === 0) {
+                    document.getElementById(`@${name}-script-${this.id}`).remove();
+                    document.getElementById(`@${name}-link-${this.id}`).remove();
+
+                    delete window[name];
+
+                    this.notify('Cleared');
+                }
+
             }
         }
 
