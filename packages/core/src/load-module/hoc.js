@@ -23,7 +23,7 @@ export const loadModule = config => (name, params = {}) => {
         };
 
         shouldComponentUpdate(nextProps, nextState) {
-            if (nextState.component) {
+            if (nextState.LoadedComponent) {
                 return true;
             }
 
