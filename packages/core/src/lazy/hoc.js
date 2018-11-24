@@ -13,8 +13,6 @@ export const lazy = config => (name, params = { clearOnUnMount: true }) => {
             scriptLoaded: false
         };
 
-        id =  String(Math.random()).slice(2);
-
         src = `${config.server}/js/${name}.js`;
 
         href = `${config.server}/css/${name}.css`;
@@ -32,7 +30,7 @@ export const lazy = config => (name, params = { clearOnUnMount: true }) => {
 
             chunk[type === 'link' ? 'href' : 'src'] = path;
 
-            chunk.id   = `@${name}-${type}-${this.id}`;
+            chunk.id   = `@${name}-${type}`;
 
             if(type === 'link') {
                 const link = chunk;
@@ -53,7 +51,7 @@ export const lazy = config => (name, params = { clearOnUnMount: true }) => {
         decreaseComponentsCount() {
             const componentsCount = get(window, ['$COMPONENTS_COUNT', name]);
 
-            set(window, ['$COMPONENTS_COUNT', name], componentsCount ? componentsCount - 1 : 0);
+            set(window, ['$COMPONENTS_COUNT', name], componentsCount - 1);
         }
 
         mountLoadedComponent = (state) => {
@@ -62,7 +60,7 @@ export const lazy = config => (name, params = { clearOnUnMount: true }) => {
                 this.notify(state || 'Loaded');
                 this.setState({ component: window[name].default });
             } else {
-                setTimeout(() => this.mountLoadedComponent(state))
+                setTimeout(() => this.mountLoadedComponent('Loading'))
             }
         };
 
@@ -93,6 +91,8 @@ export const lazy = config => (name, params = { clearOnUnMount: true }) => {
                     this.setState({ component: config.loadingComponent });
                 }
 
+                window[name] = 'Loading';
+
                 this.loadChunk({ path: this.href, type: 'link', fn: () => this.setState({ styleLoaded: true  }) });
                 this.loadChunk({ path: this.src, fn: () => this.setState({ scriptLoaded: true  }) });
 
@@ -107,8 +107,8 @@ export const lazy = config => (name, params = { clearOnUnMount: true }) => {
                 this.decreaseComponentsCount();
 
                 if (window.$COMPONENTS_COUNT[name] === 0) {
-                    document.getElementById(`@${name}-script-${this.id}`).remove();
-                    document.getElementById(`@${name}-link-${this.id}`).remove();
+                    document.getElementById(`@${name}-script`).remove();
+                    document.getElementById(`@${name}-link`).remove();
 
                     delete window[name];
 
