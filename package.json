@@ -2,7 +2,7 @@
   "name": "lerna-react",
   "private": true,
   "scripts": {
-    "clear": "rm -rf dist",
+    "clear": "rm -rf dist"
   },
   "dependencies": {
     "lodash": "^4.17.11",
