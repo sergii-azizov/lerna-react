@@ -14,6 +14,7 @@ export default class ToggleComponentsMounting extends Component {
             Icon2: lazyLoad('icon'),
             Icon3: lazyLoad('icon')
         });
+
         setTimeout(this.removedIcons, 2000);
     };
 
