@@ -1,11 +1,10 @@
 import React from 'react';
 import { bool } from 'prop-types';
-import { lazy, withRender } from 'core';
-import { STATIC_SERVER } from '../../../../configs/static.serve.config.js';
 
+import loadModule, { withRender } from '../helpers.js'
 import styles from './component.scss';
 
-const Icon = lazy({ server: STATIC_SERVER })('icon');
+const Icon = loadModule('icon');
 
 const Button = props => {
     return (

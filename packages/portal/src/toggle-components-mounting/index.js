@@ -1,5 +1,5 @@
 import { Fragment, Component } from "react";
-import { lazyLoad } from '../helpers.js';
+import loadModule from '../helpers.js';
 
 export default class ToggleComponentsMounting extends Component {
     state = {
@@ -10,9 +10,9 @@ export default class ToggleComponentsMounting extends Component {
 
     addIcons = () => {
         this.setState({
-            Icon1: lazyLoad('icon'),
-            Icon2: lazyLoad('icon'),
-            Icon3: lazyLoad('icon')
+            Icon1: loadModule('icon'),
+            Icon2: loadModule('icon'),
+            Icon3: loadModule('icon')
         });
 
         setTimeout(this.removedIcons, 2000);
