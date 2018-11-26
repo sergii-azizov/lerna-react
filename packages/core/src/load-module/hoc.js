@@ -2,14 +2,19 @@ import React, { Component, Fragment } from "react";
 import { bool, string, node } from 'prop-types';
 import { get, set, isNumber } from 'lodash';
 
+import { STATIC_SERVER } from "./constants.js";
 import { withRender } from '../with-render'
 
 const head = document.getElementsByTagName('head')[0];
 
-export const loadModule = config => (name, params = {}) => {
-    const destroyOnUnmount = config.destroyOnUnMount || params.destroyOnUnMount || false;
-    const scriptURL = `${config.server}/js/${name}.js`;
-    const styleURL = `${config.server}/css/${name}.css`;
+export const loadModule = (config = {}) => (name, params = {}) => {
+    const server = config.server || STATIC_SERVER;
+    const destroyOnUnMount = config.destroyOnUnMount || false;
+    const loadingComponent = config.loadingComponent || null;
+
+    const destroyOnUnmount = destroyOnUnMount || params.destroyOnUnMount || false;
+    const scriptURL = `${server}/js/${name}.js`;
+    const styleURL = `${server}/css/${name}.css`;
     const META_INF = "$LOADED_COMPONENTS";
 
     class LoadModule extends Component {
@@ -97,8 +102,8 @@ export const loadModule = config => (name, params = {}) => {
             const isComponentLoaded = window[name];
 
             if (!isComponentLoaded) {
-                if (config.loadingComponent) {
-                    this.setState({ LoadedComponent: config.loadingComponent });
+                if (loadingComponent) {
+                    this.setState({ LoadedComponent: loadingComponent });
                 }
 
                 window[name] = 'Loading';
@@ -139,15 +144,4 @@ export const loadModule = config => (name, params = {}) => {
     }
 
     return withRender()(LoadModule);
-};
-
-loadModule.propTypes = {
-    server: string.isRequired,
-    destroyOnUnMount: bool,
-    loadingComponent: node
-};
-
-loadModule.defaultProps = {
-    destroyOnUnMount: false,
-    loadingComponent: null
 };

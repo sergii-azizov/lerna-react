@@ -1,5 +1,5 @@
 import { Fragment, Component } from "react";
-import loadModule from '../helpers.js';
+import { loadModule } from 'core';
 
 export default class ToggleComponentsMounting2 extends Component {
     state = {
@@ -9,15 +9,15 @@ export default class ToggleComponentsMounting2 extends Component {
     };
 
     componentDidMount() {
-        setTimeout(() => { this.setState({ Icon1: loadModule('icon') }); }, 1000);
+        setTimeout(() => { this.setState({ Icon1: loadModule()('icon') }); }, 1000);
         setTimeout(() => { this.setState({ Icon1: () => <div>ICON</div> }); }, 2000);
-        setTimeout(() => { this.setState({ Icon1: loadModule('icon') }); }, 3000);
+        setTimeout(() => { this.setState({ Icon1: loadModule()('icon') }); }, 3000);
         setTimeout(() => { this.setState({ Icon1: () => <div>ICON</div> }); }, 4000);
-        setTimeout(() => { this.setState({ Icon1: loadModule('icon') }); }, 5000);
+        setTimeout(() => { this.setState({ Icon1: loadModule()('icon') }); }, 5000);
 
-        setTimeout(() => { this.setState({ Button: loadModule('button') }); }, 1000);
+        setTimeout(() => { this.setState({ Button: loadModule()('button') }); }, 1000);
         setTimeout(() => { this.setState({ Button: () => <div>Button</div> }); }, 2000);
-        setTimeout(() => { this.setState({ Button: loadModule('button') }); }, 3000);
+        setTimeout(() => { this.setState({ Button: loadModule()('button') }); }, 3000);
     }
 
     render() {

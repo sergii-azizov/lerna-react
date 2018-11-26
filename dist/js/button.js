@@ -96,18 +96,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
-/***/ "../../configs/static.serve.config.js":
-/*!*********************************************************************************!*\
-  !*** /Users/saziz/projects/training/lerna-react/configs/static.serve.config.js ***!
-  \*********************************************************************************/
-/*! exports provided: STATIC_SERVER */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"STATIC_SERVER\", function() { return STATIC_SERVER; });\nvar STATIC_SERVERS = {\n  DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/46b89d12ef13061446b5dbbbf64c09d6eb9fb9a7/dist'\n};\nvar STATIC_SERVER = STATIC_SERVERS.DT;\n\n//# sourceURL=webpack://button//Users/saziz/projects/training/lerna-react/configs/static.serve.config.js?");
-
-/***/ }),
-
 /***/ "./src/button/component.js":
 /*!*********************************!*\
   !*** ./src/button/component.js ***!
@@ -116,7 +104,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ \"prop-types\");\n/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../helpers.js */ \"./src/helpers.js\");\n/* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./component.scss */ \"./src/button/component.scss\");\n/* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_component_scss__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\nvar Icon = Object(_helpers_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])('icon');\n\nvar Button = function Button(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", {\n    className: _component_scss__WEBPACK_IMPORTED_MODULE_3___default.a.root\n  }, props.withIcon && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Icon, null), props.children);\n};\n\nButton.propTypes = {\n  withIcon: prop_types__WEBPACK_IMPORTED_MODULE_1__[\"bool\"]\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(_helpers_js__WEBPACK_IMPORTED_MODULE_2__[\"withRender\"])()(Button));\n\n//# sourceURL=webpack://button/./src/button/component.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ \"prop-types\");\n/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core */ \"core\");\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./component.scss */ \"./src/button/component.scss\");\n/* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_component_scss__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\nvar Icon = Object(core__WEBPACK_IMPORTED_MODULE_2__[\"loadModule\"])()('icon');\n\nvar Button = function Button(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", {\n    className: _component_scss__WEBPACK_IMPORTED_MODULE_3___default.a.root\n  }, props.withIcon && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Icon, null), props.children);\n};\n\nButton.propTypes = {\n  withIcon: prop_types__WEBPACK_IMPORTED_MODULE_1__[\"bool\"]\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(core__WEBPACK_IMPORTED_MODULE_2__[\"withRender\"])()(Button));\n\n//# sourceURL=webpack://button/./src/button/component.js?");
 
 /***/ }),
 
@@ -140,18 +128,6 @@ eval("// extracted by mini-css-extract-plugin\nmodule.exports = {\"root\":\"butt
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component */ \"./src/button/component.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _component__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n\n\n//# sourceURL=webpack://button/./src/button/index.js?");
-
-/***/ }),
-
-/***/ "./src/helpers.js":
-/*!************************!*\
-  !*** ./src/helpers.js ***!
-  \************************/
-/*! exports provided: withRender, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core */ \"core\");\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _configs_static_serve_config_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../configs/static.serve.config.js */ \"../../configs/static.serve.config.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"withRender\", function() { return core__WEBPACK_IMPORTED_MODULE_0__[\"withRender\"]; });\n\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(core__WEBPACK_IMPORTED_MODULE_0__[\"loadModule\"])({\n  server: _configs_static_serve_config_js__WEBPACK_IMPORTED_MODULE_1__[\"STATIC_SERVER\"]\n}));\n\n//# sourceURL=webpack://button/./src/helpers.js?");
 
 /***/ }),
 

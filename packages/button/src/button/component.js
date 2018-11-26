@@ -1,10 +1,10 @@
 import React from 'react';
 import { bool } from 'prop-types';
+import { loadModule, withRender } from 'core';
 
-import loadModule, { withRender } from '../helpers.js'
 import styles from './component.scss';
 
-const Icon = loadModule('icon');
+const Icon = loadModule()('icon');
 
 const Button = props => {
     return (

@@ -1,9 +1,9 @@
 import { Fragment, Component } from "react";
-import loadModule from '../helpers.js';
+import { loadModule } from 'core';
 
 export default class ToggleComponentsMounting3 extends Component {
     state = {
-        Icon: loadModule('Icon', { super: this })
+        Icon: loadModule()('Icon', { super: this })
     };
 
     render() {
