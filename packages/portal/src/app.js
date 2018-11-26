@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { lazyModule } from 'core;'
+import { loadModule } from 'core';
 
-import ToggleComponentsMounting from './toggle-components-mounting/index.js';
-import ToggleComponentsMounting2 from './toggle-components-mounting/index2.js';
-import ToggleComponentsMounting3 from './toggle-components-mounting/index3.js';
+import toggleComponentsMounting from './toggle-components-mounting/index.js';
+import toggleComponentsMounting2 from './toggle-components-mounting/index2.js';
+import toggleComponentsMounting3 from './toggle-components-mounting/index3.js';
+import AboutUs from './about-us';
 import styles from './app.scss';
 
 
@@ -20,10 +21,10 @@ const App = props => (
                 </ul>
             </nav>
 
-            <Route path="/lerna-react/index.html/decrease-mount-count" exact component={ToggleComponentsMounting}/>
-            <Route path="/lerna-react/index.html/decrease-mount-count2" component={ToggleComponentsMounting2}/>
-            <Route path="/lerna-react/index.html/decrease-mount-count3" component={ToggleComponentsMounting3}/>
-            <Route path="/lerna-react/index.html/screen" component={lazyModule()('screen')}/>
+            <Route path="/lerna-react/index.html/decrease-mount-count" exact component={toggleComponentsMounting}/>
+            <Route path="/lerna-react/index.html/decrease-mount-count2" component={toggleComponentsMounting2}/>
+            <Route path="/lerna-react/index.html/decrease-mount-count3" component={toggleComponentsMounting3}/>
+            <Route path="/lerna-react/index.html/screen" component={AboutUs}/>
         </div>
     </Router>
 );

@@ -7,7 +7,7 @@ const Icon = lazyModule()('icon');
 
 const Screen = props => (
     <div className={styles.root}>
-        <h2>Screen</h2>
+        <h2>About us</h2>
         <Icon />
     </div>
 );
