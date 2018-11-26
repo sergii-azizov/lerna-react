@@ -116,7 +116,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _loa
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"STATIC_SERVER\", function() { return STATIC_SERVER; });\nvar STATIC_SERVERS = {\n  DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/ece05120eb3c5a9c6d1c5c55317f6a12b97714b4/dist'\n};\nvar STATIC_SERVER = STATIC_SERVERS.DT;\n\n//# sourceURL=webpack://core/./src/load-module/constants.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"STATIC_SERVER\", function() { return STATIC_SERVER; });\nvar STATIC_SERVERS = {\n  DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/c19c35cde2332f217f05ff432ae11e4ced2d66b4/dist'\n};\nvar STATIC_SERVER = STATIC_SERVERS.DT;\n\n//# sourceURL=webpack://core/./src/load-module/constants.js?");
 
 /***/ }),
 
