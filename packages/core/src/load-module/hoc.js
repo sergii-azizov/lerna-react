@@ -77,7 +77,13 @@ export const loadModule = config => (name, params = {}) => {
             if (isComponentLoaded) {
                 this.increasedLoadedComponents();
                 this.notify(state || 'Loaded');
-                this.setState({ LoadedComponent: window[name].default });
+                this.setState({ LoadedComponent: window[name].default }, () => {
+                    console.log("==> ", 12312312312);
+
+                    params.updateParent({
+                        Icon1: window[name].default
+                    })
+                });
             } else {
                 setTimeout(() => this.mountedLoadedComponent('Loading'))
             }
