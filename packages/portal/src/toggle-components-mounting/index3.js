@@ -3,7 +3,7 @@ import { loadModule } from 'core';
 
 export default class ToggleComponentsMounting3 extends Component {
     state = {
-        Icon: loadModule()('Icon', { super: this })
+        Icon: loadModule()('icon')
     };
 
     render() {
