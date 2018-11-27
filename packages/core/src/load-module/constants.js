@@ -3,3 +3,9 @@ const STATIC_SERVERS = {
 };
 
 export const STATIC_SERVER = STATIC_SERVERS.DT;
+
+export const COMPONENTS_NAME = {
+    ICON: 'icon',
+    BUTTON: 'button',
+    ABOUT_US: 'about-us',
+};

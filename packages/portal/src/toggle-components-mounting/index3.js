@@ -1,9 +1,10 @@
 import { Fragment, Component } from "react";
-import { loadModule } from 'core';
+import { loadModule, COMPONENTS_NAME } from 'core';
 
+const Icon2 = loadModule()(COMPONENTS_NAME.ICON);
 export default class ToggleComponentsMounting3 extends Component {
     state = {
-        Icon: loadModule()('icon')
+        Icon: loadModule()(COMPONENTS_NAME.ICON)
     };
 
     render() {
@@ -13,6 +14,7 @@ export default class ToggleComponentsMounting3 extends Component {
             <Fragment>
                 <h2>Toggle Components Mounting 3</h2>
                 <Icon />
+                <Icon2 />
             </Fragment>
         )
     }

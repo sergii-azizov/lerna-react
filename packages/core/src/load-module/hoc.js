@@ -7,14 +7,14 @@ import { withRender } from '../with-render'
 
 const head = document.getElementsByTagName('head')[0];
 
-export const loadModule = (config = {}) => (name, params = {}) => {
+export const loadModule = (config = {}) => (componentName, params = {}) => {
     const server = config.server || STATIC_SERVER;
     const destroyOnUnMount = config.destroyOnUnMount || false;
     const loadingComponent = config.loadingComponent || null;
 
-    const destroyOnUnmount = destroyOnUnMount || params.destroyOnUnMount || false;
-    const scriptURL = `${server}/js/${name}.js`;
-    const styleURL = `${server}/css/${name}.css`;
+    const destroyOnUnmount = destroyOnUnMount || params.destroyOnUnMount || true;
+    const scriptURL = `${server}/js/${componentName}.js`;
+    const styleURL = `${server}/css/${componentName}.css`;
     const META_INF = "$LOADED_COMPONENTS";
 
     class LoadModule extends Component {
@@ -53,7 +53,7 @@ export const loadModule = (config = {}) => (name, params = {}) => {
             }
 
             el.onload = onLoad;
-            el.id = `@${name}-${type}`;
+            el.id = `@${componentName}-${type}`;
 
             if (type === 'link') {
                 el.rel = 'stylesheet';
@@ -65,42 +65,42 @@ export const loadModule = (config = {}) => (name, params = {}) => {
         }
 
         increasedLoadedComponents() {
-            const loadedComponents = get(window, [META_INF, name], 0);
+            const loadedComponents = get(window, [META_INF, componentName], 0);
 
-            set(window, [META_INF, name], loadedComponents + 1);
+            set(window, [META_INF, componentName], loadedComponents + 1);
         }
 
         decreasedLoadedComponents() {
-            const loadedComponents = get(window, [META_INF, name]);
+            const loadedComponents = get(window, [META_INF, componentName]);
 
-            set(window, [META_INF, name], loadedComponents - 1);
+            set(window, [META_INF, componentName], loadedComponents - 1);
         }
 
         mountedLoadedComponent = (state) => {
-            const isComponentLoaded = window[name].default;
+            const isComponentLoaded = window[componentName].default;
 
             if (isComponentLoaded) {
                 this.increasedLoadedComponents();
                 this.notify(state || 'Loaded');
-                this.setState({ LoadedComponent: window[name].default });
+                this.setState({ LoadedComponent: window[componentName].default });
             } else {
                 setTimeout(() => this.mountedLoadedComponent('Loading'))
             }
         };
 
         notify(state) {
-            console.info(`[Module][${name}][${state}][Total count: ${window[META_INF][name]}]`);
+            console.info(`[Module][${componentName}][${state}][Total count: ${window[META_INF][componentName]}]`);
         }
 
         loadModule() {
-            const isComponentLoaded = window[name];
+            const isComponentLoaded = window[componentName];
 
             if (!isComponentLoaded) {
                 if (loadingComponent) {
                     this.setState({ LoadedComponent: loadingComponent });
                 }
 
-                window[name] = 'Loading';
+                window[componentName] = 'Loading';
 
                 this.loadFile({ url: styleURL, type: 'link', onLoad: () => this.setState({ styleLoaded: true }) });
                 this.loadFile({ url: scriptURL, type: 'script', onLoad: () => this.setState({ scriptLoaded: true }) });
@@ -113,14 +113,14 @@ export const loadModule = (config = {}) => (name, params = {}) => {
 
         componentWillUnmount() {
             this.decreasedLoadedComponents();
-            const hasLoadedComponents = window[META_INF][name] === 0;
+            const hasLoadedComponents = window[META_INF][componentName] === 0;
             const canBeDestroyed = destroyOnUnmount && hasLoadedComponents;
 
             if (canBeDestroyed) {
-                document.getElementById(`@${name}-script`).remove();
-                document.getElementById(`@${name}-link`).remove();
+                document.getElementById(`@${componentName}-script`).remove();
+                document.getElementById(`@${componentName}-link`).remove();
 
-                delete window[name];
+                delete window[componentName];
 
                 this.notify('Cleared');
             }

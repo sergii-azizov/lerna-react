@@ -1,5 +1,5 @@
 import { Fragment, Component } from "react";
-import { loadModule } from 'core';
+import { loadModule, COMPONENTS_NAME } from 'core';
 
 export default class ToggleComponentsMounting extends Component {
     state = {
@@ -10,9 +10,9 @@ export default class ToggleComponentsMounting extends Component {
 
     addIcons = () => {
         this.setState({
-            Icon1: loadModule()('icon'),
-            Icon2: loadModule()('icon'),
-            Icon3: loadModule()('icon')
+            Icon1: loadModule()(COMPONENTS_NAME.ICON),
+            Icon2: loadModule()(COMPONENTS_NAME.ICON),
+            Icon3: loadModule()(COMPONENTS_NAME.ICON)
         });
 
         setTimeout(this.removedIcons, 2000);
