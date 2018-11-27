@@ -116,7 +116,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _loa
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"STATIC_SERVER\", function() { return STATIC_SERVER; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"COMPONENTS_NAME\", function() { return COMPONENTS_NAME; });\nvar STATIC_SERVERS = {\n  DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/c19c35cde2332f217f05ff432ae11e4ced2d66b4/dist'\n};\nvar STATIC_SERVER = STATIC_SERVERS.DT;\nvar COMPONENTS_NAME = {\n  ICON: 'icon',\n  BUTTON: 'button',\n  ABOUT_US: 'about-us'\n};\n\n//# sourceURL=webpack://core/./src/load-module/constants.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"STATIC_SERVER\", function() { return STATIC_SERVER; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"COMPONENTS_NAME\", function() { return COMPONENTS_NAME; });\nvar STATIC_SERVERS = {\n  DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/cb667197e2aa88595c915dff6f96801c0efe908e/dist'\n};\nvar STATIC_SERVER = STATIC_SERVERS.DT;\nvar COMPONENTS_NAME = {\n  ICON: 'icon',\n  BUTTON: 'button',\n  ABOUT_US: 'about-us'\n};\n\n//# sourceURL=webpack://core/./src/load-module/constants.js?");
 
 /***/ }),
 
