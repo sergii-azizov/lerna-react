@@ -84,7 +84,7 @@ export const loadModule = (config = {}) => (componentName, params = {}) => {
                 this.notify(state || 'Loaded');
                 this.setState({ LoadedComponent: window[componentName].default });
             } else {
-                setTimeout(() => this.mountedLoadedComponent('Loading'))
+                setTimeout(() => this.mountedLoadedComponent('FromCache'))
             }
         };
 
