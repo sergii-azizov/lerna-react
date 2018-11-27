@@ -13,14 +13,21 @@ module.exports = {
         }
     },
     externals: {
-        "core": "core",
         "react": "React",
-        "scriptjs": "$script",
         "react-dom": "ReactDOM",
-        "lodash": 'lodash',
         "prop-types": "propTypes",
-        "react-router-dom": "reactRouterDom"
+        "react-router-dom": "reactRouterDom",
+        "redux": "redux",
+        "react-redux": "reactRedux",
+        "connected-react-router": "connectedReactRouter",
+        "history": "History",
+        "lodash": 'lodash',
+        "core": "core"
     },
+    devServer: {
+        historyApiFallback: true
+    },
+    devtool: process.env.NODE_ENV === 'development' ? 'source-map' : undefined,
     module: {
         rules: [
             {
