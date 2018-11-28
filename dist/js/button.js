@@ -2,12 +2,12 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("core"), require("propTypes"), require("React"));
 	else if(typeof define === 'function' && define.amd)
-		define(["core", "propTypes", "React"], factory);
+		define("button", ["core", "propTypes", "React"], factory);
 	else if(typeof exports === 'object')
 		exports["button"] = factory(require("core"), require("propTypes"), require("React"));
 	else
 		root["button"] = factory(root["core"], root["propTypes"], root["React"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE_core__, __WEBPACK_EXTERNAL_MODULE_prop_types__, __WEBPACK_EXTERNAL_MODULE_react__) {
+})(window.__APP__, function(__WEBPACK_EXTERNAL_MODULE_core__, __WEBPACK_EXTERNAL_MODULE_prop_types__, __WEBPACK_EXTERNAL_MODULE_react__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};

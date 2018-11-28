@@ -12,8 +12,8 @@ const middleware = composeEnhancers(
 );
 
 // TODO: temporary solution for debugging
-window.store = createStore(createRootReducer(), middleware);
+window.__APP__.store = createStore(createRootReducer(), middleware);
 
-const store = window.store;
+const store = window.__APP__.store;
 
 export { store, history };

@@ -2,12 +2,12 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("core"), require("React"));
 	else if(typeof define === 'function' && define.amd)
-		define(["core", "React"], factory);
+		define("about-us", ["core", "React"], factory);
 	else if(typeof exports === 'object')
 		exports["about-us"] = factory(require("core"), require("React"));
 	else
 		root["about-us"] = factory(root["core"], root["React"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE_core__, __WEBPACK_EXTERNAL_MODULE_react__) {
+})(window.__APP__, function(__WEBPACK_EXTERNAL_MODULE_core__, __WEBPACK_EXTERNAL_MODULE_react__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};

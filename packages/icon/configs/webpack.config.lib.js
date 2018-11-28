@@ -5,5 +5,9 @@ const baseWebpackConfig = require('../../../configs/webpack.config.dev.js');
 
 module.exports = webpackMerge(baseWebpackConfig, {
     entry: { [name]: path.resolve(__dirname, '../src/index.js') },
-    output: { library: name }
+    output: {
+        library: name,
+        umdNamedDefine: true,
+        globalObject: 'window.__APP__'
+    }
 });

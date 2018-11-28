@@ -2,12 +2,12 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("core"), require("lodash"), require("React"), require("reactRedux"), require("redux"));
 	else if(typeof define === 'function' && define.amd)
-		define(["core", "lodash", "React", "reactRedux", "redux"], factory);
+		define("nav", ["core", "lodash", "React", "reactRedux", "redux"], factory);
 	else if(typeof exports === 'object')
 		exports["nav"] = factory(require("core"), require("lodash"), require("React"), require("reactRedux"), require("redux"));
 	else
 		root["nav"] = factory(root["core"], root["lodash"], root["React"], root["reactRedux"], root["redux"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE_core__, __WEBPACK_EXTERNAL_MODULE_lodash__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_react_redux__, __WEBPACK_EXTERNAL_MODULE_redux__) {
+})(window.__APP__, function(__WEBPACK_EXTERNAL_MODULE_core__, __WEBPACK_EXTERNAL_MODULE_lodash__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_react_redux__, __WEBPACK_EXTERNAL_MODULE_redux__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
