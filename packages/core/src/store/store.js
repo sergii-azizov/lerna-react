@@ -10,6 +10,8 @@ const middleware = composeEnhancers(
         routerMiddleware(history)
     )
 );
+
+// TODO: temporary solution for debugging
 window.store = createStore(createRootReducer(), middleware);
 
 const store = window.store;
