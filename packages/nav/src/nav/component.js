@@ -17,4 +17,4 @@ class Nav extends Component {
 }
 const withConnect = connect(mapStateToProps);
 
-export default flow(withConnect, withRender)(Nav);
+export default flow(withRender, withConnect)(Nav);
