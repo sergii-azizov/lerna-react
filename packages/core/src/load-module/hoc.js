@@ -7,7 +7,7 @@ import { withRender } from '../with-render'
 
 const head = document.getElementsByTagName('head')[0];
 
-export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnMount = false, loadingComponent = null, componentName = 'default' } = {}) => {
+export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount = false, loadingComponent = null, componentName = 'default' } = {}) => {
     const scriptURL = `${server}/js/${chunkName}.js`;
     const styleURL = `${server}/css/${chunkName}.css`;
     const META_INF = "$LOADED_COMPONENTS";

@@ -131,15 +131,50 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _com
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/***/ "./src/icon2/component.js":
+/*!********************************!*\
+  !*** ./src/icon2/component.js ***!
+  \********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./icon */ \"./src/icon/index.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _icon__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n\n\n//# sourceURL=webpack://icon/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ \"core\");\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./component.scss */ \"./src/icon2/component.scss\");\n/* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_component_scss__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nvar Icon2 = function Icon2(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"i\", {\n    className: _component_scss__WEBPACK_IMPORTED_MODULE_2___default.a.root\n  }, \"\\u22112\");\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(core__WEBPACK_IMPORTED_MODULE_1__[\"withRender\"])()(Icon2));\n\n//# sourceURL=webpack://icon/./src/icon2/component.js?");
+
+/***/ }),
+
+/***/ "./src/icon2/component.scss":
+/*!**********************************!*\
+  !*** ./src/icon2/component.scss ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\nmodule.exports = {\"root\":\"icon2-13nGY\"};\n\n//# sourceURL=webpack://icon/./src/icon2/component.scss?");
+
+/***/ }),
+
+/***/ "./src/icon2/index.js":
+/*!****************************!*\
+  !*** ./src/icon2/index.js ***!
+  \****************************/
+/*! exports provided: Icon2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component */ \"./src/icon2/component.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Icon2\", function() { return _component__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n\n\n//# sourceURL=webpack://icon/./src/icon2/index.js?");
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! exports provided: default, Icon2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./icon */ \"./src/icon/index.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _icon__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _icon2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./icon2 */ \"./src/icon2/index.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Icon2\", function() { return _icon2__WEBPACK_IMPORTED_MODULE_1__[\"Icon2\"]; });\n\n\n\n\n//# sourceURL=webpack://icon/./src/index.js?");
 
 /***/ }),
 
