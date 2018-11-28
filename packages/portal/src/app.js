@@ -12,6 +12,7 @@ const Nav = loadModule(MS_NAMES.NAV);
 
 const App = props => (
     <div className={styles.root}>
+        <Nav />
         <nav>
             <ul>
                 <li><Link to="/lerna-react/index.html/decrease-mount-count">Toggle Components Mounting</Link></li>

@@ -25,8 +25,10 @@ class Counter extends React.Component {
 }
 
 function mapStateToProps(state) {
+    console.log("==> ", state);
+
     return {
-        count: state.nav.count
+        count: state.nav.count.count
     };
 }
 
