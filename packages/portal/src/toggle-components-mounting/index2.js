@@ -9,15 +9,15 @@ export default class ToggleComponentsMounting2 extends Component {
     };
 
     componentDidMount() {
-        setTimeout(() => { this.setState({ Icon1: loadModule()(COMPONENTS_NAME.ICON) }); }, 1000);
+        setTimeout(() => { this.setState({ Icon1: loadModule(COMPONENTS_NAME.ICON) }); }, 1000);
         setTimeout(() => { this.setState({ Icon1: () => <div>ICON</div> }); }, 2000);
-        setTimeout(() => { this.setState({ Icon1: loadModule()(COMPONENTS_NAME.ICON) }); }, 3000);
+        setTimeout(() => { this.setState({ Icon1: loadModule(COMPONENTS_NAME.ICON) }); }, 3000);
         setTimeout(() => { this.setState({ Icon1: () => <div>ICON</div> }); }, 4000);
-        setTimeout(() => { this.setState({ Icon1: loadModule()(COMPONENTS_NAME.ICON) }); }, 5000);
+        setTimeout(() => { this.setState({ Icon1: loadModule(COMPONENTS_NAME.ICON) }); }, 5000);
 
-        setTimeout(() => { this.setState({ Button: loadModule()(COMPONENTS_NAME.BUTTON) }); }, 1000);
+        setTimeout(() => { this.setState({ Button: loadModule(COMPONENTS_NAME.BUTTON) }); }, 1000);
         setTimeout(() => { this.setState({ Button: () => <div>Button</div> }); }, 2000);
-        setTimeout(() => { this.setState({ Button: loadModule()(COMPONENTS_NAME.BUTTON) }); }, 3000);
+        setTimeout(() => { this.setState({ Button: loadModule(COMPONENTS_NAME.BUTTON) }); }, 3000);
     }
 
     render() {

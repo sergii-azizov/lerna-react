@@ -4,7 +4,7 @@ import { loadModule, withRender, COMPONENTS_NAME } from 'core';
 
 import styles from './component.scss';
 
-const Icon = loadModule()(COMPONENTS_NAME.ICON);
+const Icon = loadModule(COMPONENTS_NAME.ICON);
 
 const Button = props => {
     return (

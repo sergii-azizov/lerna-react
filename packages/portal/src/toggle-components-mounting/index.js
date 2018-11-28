@@ -10,9 +10,9 @@ export default class ToggleComponentsMounting extends Component {
 
     addIcons = () => {
         this.setState({
-            Icon1: loadModule()(COMPONENTS_NAME.ICON),
-            Icon2: loadModule()(COMPONENTS_NAME.ICON),
-            Icon3: loadModule()(COMPONENTS_NAME.ICON)
+            Icon1: loadModule(COMPONENTS_NAME.ICON),
+            Icon2: loadModule(COMPONENTS_NAME.ICON),
+            Icon3: loadModule(COMPONENTS_NAME.ICON)
         });
 
         setTimeout(this.removedIcons, 2000);

@@ -7,14 +7,9 @@ import { withRender } from '../with-render'
 
 const head = document.getElementsByTagName('head')[0];
 
-export const loadModule = (config = {}) => (componentName, params = {}) => {
-    const server = config.server || STATIC_SERVER;
-    const destroyOnUnMount = config.destroyOnUnMount || false;
-    const loadingComponent = config.loadingComponent || null;
-
-    const destroyOnUnmount = destroyOnUnMount || params.destroyOnUnMount || true;
-    const scriptURL = `${server}/js/${componentName}.js`;
-    const styleURL = `${server}/css/${componentName}.css`;
+export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnMount = false, loadingComponent = null, componentName = 'default' } = {}) => {
+    const scriptURL = `${server}/js/${chunkName}.js`;
+    const styleURL = `${server}/css/${chunkName}.css`;
     const META_INF = "$LOADED_COMPONENTS";
 
     class LoadModule extends Component {
@@ -53,7 +48,7 @@ export const loadModule = (config = {}) => (componentName, params = {}) => {
             }
 
             el.onload = onLoad;
-            el.id = `@${componentName}-${type}`;
+            el.id = `@${chunkName}-${type}`;
 
             if (type === 'link') {
                 el.rel = 'stylesheet';
@@ -65,42 +60,42 @@ export const loadModule = (config = {}) => (componentName, params = {}) => {
         }
 
         increasedLoadedComponents() {
-            const loadedComponents = get(window, [META_INF, componentName], 0);
+            const loadedComponents = get(window, [META_INF, chunkName], 0);
 
-            set(window, [META_INF, componentName], loadedComponents + 1);
+            set(window, [META_INF, chunkName], loadedComponents + 1);
         }
 
         decreasedLoadedComponents() {
-            const loadedComponents = get(window, [META_INF, componentName]);
+            const loadedComponents = get(window, [META_INF, chunkName]);
 
-            set(window, [META_INF, componentName], loadedComponents - 1);
+            set(window, [META_INF, chunkName], loadedComponents - 1);
         }
 
         mountedLoadedComponent = (state) => {
-            const isComponentLoaded = window[componentName].default;
+            const LoadedComponent = window[chunkName][componentName];
 
-            if (isComponentLoaded) {
+            if (LoadedComponent) {
                 this.increasedLoadedComponents();
                 this.notify(state || 'Loaded');
-                this.setState({ LoadedComponent: window[componentName].default });
+                this.setState({ LoadedComponent });
             } else {
                 setTimeout(() => this.mountedLoadedComponent('FromCache'))
             }
         };
 
         notify(state) {
-            console.info(`[Module][${componentName}][${state}][Total count: ${window[META_INF][componentName]}]`);
+            console.info(`[Module][${chunkName}][${state}][Total count: ${window[META_INF][chunkName]}]`);
         }
 
         loadModule() {
-            const isComponentLoaded = window[componentName];
+            const isComponentLoaded = window[chunkName];
 
             if (!isComponentLoaded) {
                 if (loadingComponent) {
                     this.setState({ LoadedComponent: loadingComponent });
                 }
 
-                window[componentName] = 'Loading';
+                window[chunkName] = 'Loading';
 
                 this.loadFile({ url: styleURL, type: 'link', onLoad: () => this.setState({ styleLoaded: true }) });
                 this.loadFile({ url: scriptURL, type: 'script', onLoad: () => this.setState({ scriptLoaded: true }) });
@@ -113,14 +108,14 @@ export const loadModule = (config = {}) => (componentName, params = {}) => {
 
         componentWillUnmount() {
             this.decreasedLoadedComponents();
-            const hasLoadedComponents = window[META_INF][componentName] === 0;
+            const hasLoadedComponents = window[META_INF][chunkName] === 0;
             const canBeDestroyed = destroyOnUnmount && hasLoadedComponents;
 
             if (canBeDestroyed) {
-                document.getElementById(`@${componentName}-script`).remove();
-                document.getElementById(`@${componentName}-link`).remove();
+                document.getElementById(`@${chunkName}-script`).remove();
+                document.getElementById(`@${chunkName}-link`).remove();
 
-                delete window[componentName];
+                delete window[chunkName];
 
                 this.notify('Cleared');
             }
