@@ -8,11 +8,13 @@ import styles from './component.scss';
 
 class Nav extends Component {
     render() {
-        <nav className={styles.root}>
-            <ul>
-                <li>{this.props.path}</li>
-            </ul>
-        </nav>
+        return (
+            <nav className={styles.root}>
+                <ul>
+                    <li>{this.props.path}</li>
+                </ul>
+            </nav>
+        );
     }
 }
 const withConnect = connect(mapStateToProps);
