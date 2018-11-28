@@ -12,6 +12,4 @@ const middleware = composeEnhancers(
 );
 const store = createStore(createRootReducer(history), middleware);
 
-export { history };
-
-export default store;
+export { store, history };
