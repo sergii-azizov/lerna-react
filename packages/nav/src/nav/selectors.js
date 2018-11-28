@@ -1,7 +1,7 @@
-export default ({ router }) => {
-    console.log("==> ", router);
+export default (state) => {
+    console.log("==> ", state);
 
     return {
-        path: router.path
+        path: state.router.location.pathname
     }
 }

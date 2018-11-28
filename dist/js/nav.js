@@ -151,7 +151,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _com
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (_ref) {\n  var router = _ref.router;\n  console.log(\"==> \", router);\n  return {\n    path: router.path\n  };\n});\n\n//# sourceURL=webpack://nav/./src/nav/selectors.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (state) {\n  console.log(\"==> \", state);\n  return {\n    path: state.router.location.pathname\n  };\n});\n\n//# sourceURL=webpack://nav/./src/nav/selectors.js?");
 
 /***/ }),
 

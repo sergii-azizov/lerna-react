@@ -12,8 +12,17 @@ const Nav = loadModule(COMPONENTS_NAME.NAV);
 
 const App = props => (
     <div className={styles.root}>
-
         <Nav />
+        <nav>
+            <ul>
+                <li><Link to="/lerna-react/index.html/decrease-mount-count">Toggle Components Mounting</Link></li>
+                <li><Link to="/lerna-react/index.html/decrease-mount-count2">Toggle Components Mounting 2</Link>
+                </li>
+                <li><Link to="/lerna-react/index.html/decrease-mount-count3">Toggle Components Mounting 3</Link>
+                </li>
+                <li><Link to="/lerna-react/index.html/screen">Screen</Link></li>
+            </ul>
+        </nav>
         <Switch>
             <Route path="/lerna-react/index.html/decrease-mount-count" exact component={toggleComponentsMounting}/>
             <Route path="/lerna-react/index.html/decrease-mount-count2" component={toggleComponentsMounting2}/>
