@@ -1,11 +1,11 @@
 import { Fragment, Component } from "react";
-import { loadModule, COMPONENTS_NAME } from 'core';
+import { loadModule, MS_NAMES } from 'core';
 
-const Icon3 = loadModule(COMPONENTS_NAME.ICON);
-const Icon2 = loadModule(COMPONENTS_NAME.ICON, { componentName: 'Icon2'});
+const Icon3 = loadModule(MS_NAMES.ICON);
+const Icon2 = loadModule(MS_NAMES.ICON, { componentName: 'Icon2'});
 export default class ToggleComponentsMounting3 extends Component {
     state = {
-        Icon: loadModule(COMPONENTS_NAME.ICON)
+        Icon: loadModule(MS_NAMES.ICON)
     };
 
     render() {

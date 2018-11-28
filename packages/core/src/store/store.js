@@ -10,6 +10,8 @@ const middleware = composeEnhancers(
         routerMiddleware(history)
     )
 );
-const store = createStore(createRootReducer(history), middleware);
+window.store = createStore(createRootReducer(), middleware);
+
+const store = window.store;
 
 export { store, history };

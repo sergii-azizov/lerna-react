@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
-import { loadModule, COMPONENTS_NAME } from 'core';
+import { loadModule, MS_NAMES } from 'core';
 
 import toggleComponentsMounting from './toggle-components-mounting/index.js';
 import toggleComponentsMounting2 from './toggle-components-mounting/index2.js';
@@ -8,11 +8,10 @@ import toggleComponentsMounting3 from './toggle-components-mounting/index3.js';
 import AboutUs from './about-us';
 import styles from './app.scss';
 
-const Nav = loadModule(COMPONENTS_NAME.NAV);
+const Nav = loadModule(MS_NAMES.NAV);
 
 const App = props => (
     <div className={styles.root}>
-        <Nav />
         <nav>
             <ul>
                 <li><Link to="/lerna-react/index.html/decrease-mount-count">Toggle Components Mounting</Link></li>

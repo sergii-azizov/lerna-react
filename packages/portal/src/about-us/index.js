@@ -1,7 +1,14 @@
 import React from "react";
-import { loadModule, COMPONENTS_NAME } from 'core';
+import { loadModule, MS_NAMES } from 'core';
 
+const Screen = loadModule(MS_NAMES.ABOUT_US);
+const Nav = loadModule(MS_NAMES.NAV);
+const Counter = loadModule(MS_NAMES.NAV, { componentName: 'Counter' });
 
-const Screen = loadModule(COMPONENTS_NAME.ABOUT_US);
-
-export default () => (<Screen />);
+export default () => (
+    <div>
+        <Nav />
+        <Counter />
+        <Screen />
+    </div>
+);

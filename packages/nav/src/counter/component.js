@@ -26,7 +26,7 @@ class Counter extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        count: state.count
+        count: state.nav.count
     };
 }
 

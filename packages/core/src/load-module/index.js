@@ -1,2 +1,2 @@
 export { loadModule } from './hoc';
-export { COMPONENTS_NAME } from './constants';
+export { MS_NAMES } from './constants';

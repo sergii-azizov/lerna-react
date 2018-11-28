@@ -1,13 +1,15 @@
 import React, { Component, Fragment } from "react";
 import { bool, string, node } from 'prop-types';
 import { get, set, isNumber } from 'lodash';
+import { store } from '../store';
+import createReducer from '../store/reducers'
 
 import { STATIC_SERVER } from "./constants.js";
 import { withRender } from '../with-render'
 
 const head = document.getElementsByTagName('head')[0];
 
-export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount = false, loadingComponent = null, componentName = 'default' } = {}) => {
+export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount = false, loadingComponent = null, componentName = 'default', reducersName: reducerName = 'reducers' } = {}) => {
     const scriptURL = `${server}/js/${chunkName}.js`;
     const styleURL = `${server}/css/${chunkName}.css`;
     const META_INF = "$LOADED_COMPONENTS";
@@ -72,11 +74,16 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
         }
 
         mountedLoadedComponent = (state) => {
-            const LoadedComponent = window[chunkName][componentName];
+            const LoadedComponent = get(window, [chunkName, componentName]);
+            const asyncReducers = get(window, [chunkName, reducerName]);
 
             if (LoadedComponent) {
                 this.increasedLoadedComponents();
                 this.notify(state || 'Loaded');
+                if (asyncReducers && !get(store, ['asyncReducers', chunkName])) {
+                    set(store, ['asyncReducers', chunkName], asyncReducers);
+                    store.replaceReducer(createReducer(store.asyncReducers));
+                }
                 this.setState({ LoadedComponent });
             } else {
                 setTimeout(() => this.mountedLoadedComponent('FromCache'))
@@ -115,6 +122,7 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
                 document.getElementById(`@${chunkName}-script`).remove();
                 document.getElementById(`@${chunkName}-link`).remove();
 
+                delete store.asyncReducers[chunkName];
                 delete window[chunkName];
 
                 this.notify('Cleared');
