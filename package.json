@@ -2,7 +2,8 @@
   "name": "lerna-react",
   "private": true,
   "scripts": {
-    "clear": "rm -rf dist"
+    "clear": "rm -rf dist",
+    "build": "lerna exec npm run build"
   },
   "dependencies": {
     "connected-react-router": "^5.0.1",
@@ -45,6 +46,7 @@
     "style-loader": "0.23.0",
     "url-loader": "1.1.1",
     "webpack": "4.19.1",
+    "webpack-cli": "^3.1.2",
     "webpack-dev-server": "3.1.9",
     "webpack-merge": "^4.1.4"
   }

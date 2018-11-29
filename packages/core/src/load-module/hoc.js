@@ -1,20 +1,14 @@
 import React, { Component, Fragment } from "react";
 import { bool, string, node } from 'prop-types';
 import { get, set, isNumber } from 'lodash';
-import { store } from '../store';
-import createReducer from '../store/reducers'
 
+import { APP, COMPONENTS_COUNT } from '../../../../configs/namespace.config';
+import { store, withRender, createReducer } from '../index';
 import { STATIC_SERVER } from "./constants.js";
-import { withRender } from '../with-render'
 
 const head = document.getElementsByTagName('head')[0];
 
 export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount = false, loadingComponent = null, componentName = 'default', reducerName = 'reducers' } = {}) => {
-    const scriptURL = `${server}/js/${chunkName}.js`;
-    const styleURL = `${server}/css/${chunkName}.css`;
-    const META_INF = "$LOADED_COMPONENTS";
-    const SCOPE = window.__APP__;
-
     class LoadModule extends Component {
         state = {
             styleLoaded: false,
@@ -51,7 +45,7 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
             }
 
             el.onload = onLoad;
-            el.id = `@${chunkName}-${type}`;
+            el.id = `__${chunkName}-${type}__`;
 
             if (type === 'link') {
                 el.rel = 'stylesheet';
@@ -63,50 +57,55 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
         }
 
         increasedLoadedComponents() {
-            const loadedComponents = get(SCOPE, [META_INF, chunkName], 0);
+            const loadedComponents = get(window[APP], [COMPONENTS_COUNT, chunkName], 0);
 
-            set(SCOPE, [META_INF, chunkName], loadedComponents + 1);
+            set(window[APP], [COMPONENTS_COUNT, chunkName], loadedComponents + 1);
         }
 
         decreasedLoadedComponents() {
-            const loadedComponents = get(SCOPE, [META_INF, chunkName]);
+            const loadedComponents = get(window[APP], [COMPONENTS_COUNT, chunkName]);
 
-            set(SCOPE, [META_INF, chunkName], loadedComponents - 1);
+            set(window[APP], [COMPONENTS_COUNT, chunkName], loadedComponents - 1);
+        }
+
+        injectAsyncReducer() {
+            const asyncReducers = get(window[APP], [chunkName, reducerName]);
+
+            if (asyncReducers && !get(store, ['asyncReducers', chunkName])) {
+                set(store, ['asyncReducers', chunkName], asyncReducers);
+                store.replaceReducer(createReducer(store.asyncReducers));
+            }
         }
 
         mountedLoadedComponent = (state) => {
-            const LoadedComponent = get(SCOPE, [chunkName, componentName]);
-            const asyncReducers = get(SCOPE, [chunkName, reducerName]);
+            const LoadedComponent = get(window[APP], [chunkName, componentName]);
 
             if (LoadedComponent) {
                 this.increasedLoadedComponents();
-                this.notify(state || 'Loaded');
-                if (asyncReducers && !get(store, ['asyncReducers', chunkName])) {
-                    set(store, ['asyncReducers', chunkName], asyncReducers);
-                    store.replaceReducer(createReducer(store.asyncReducers));
-                }
+                this.injectAsyncReducer();
                 this.setState({ LoadedComponent });
+                this.notify(state || 'Loaded');
             } else {
                 setTimeout(() => this.mountedLoadedComponent('FromCache'))
             }
         };
 
         notify(state) {
-            console.info(`[Module][${chunkName}][${state}][Total count: ${SCOPE[META_INF][chunkName]}]`);
+            console.info(`[Module][${chunkName}][${state}][Total count: ${window[APP][COMPONENTS_COUNT][chunkName]}]`);
         }
 
         loadModule() {
-            const isComponentLoaded = SCOPE[chunkName];
+            const isComponentLoaded = window[APP][chunkName];
 
             if (!isComponentLoaded) {
                 if (loadingComponent) {
                     this.setState({ LoadedComponent: loadingComponent });
                 }
 
-                SCOPE[chunkName] = 'Loading';
+                window[APP][chunkName] = 'Loading';
 
-                this.loadFile({ url: styleURL, type: 'link', onLoad: () => this.setState({ styleLoaded: true }) });
-                this.loadFile({ url: scriptURL, type: 'script', onLoad: () => this.setState({ scriptLoaded: true }) });
+                this.loadFile({ url: `${server}/css/${chunkName}.css`, type: 'link', onLoad: () => this.setState({ styleLoaded: true }) });
+                this.loadFile({ url: `${server}/js/${chunkName}.js`, type: 'script', onLoad: () => this.setState({ scriptLoaded: true }) });
 
                 return;
             }
@@ -116,15 +115,15 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
 
         componentWillUnmount() {
             this.decreasedLoadedComponents();
-            const hasLoadedComponents = SCOPE[META_INF][chunkName] === 0;
+            const hasLoadedComponents = window[APP][COMPONENTS_COUNT][chunkName] === 0;
             const canBeDestroyed = destroyOnUnmount && hasLoadedComponents;
 
             if (canBeDestroyed) {
-                document.getElementById(`@${chunkName}-script`).remove();
-                document.getElementById(`@${chunkName}-link`).remove();
+                document.getElementById(`__${chunkName}-script__`).remove();
+                document.getElementById(`__${chunkName}-link__`).remove();
 
                 delete store.asyncReducers[chunkName];
-                delete SCOPE[chunkName];
+                delete window[APP][chunkName];
 
                 this.notify('Cleared');
             }

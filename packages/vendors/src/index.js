@@ -1,13 +1,16 @@
-window.__APP__ = {};
-window.React = require('react');
-window.ReactDOM = require('react-dom');
-window.propTypes = require('prop-types');
+import { APP } from '../../../configs/namespace.config';
 
-window.reactRouterDom = require('react-router-dom');
-window.History = require('history');
-window.connectedReactRouter = require('connected-react-router');
+window[APP] = {};
 
-window.redux = require('redux');
-window.reactRedux = require('react-redux');
+window[APP].React = window.React = require('react');
+window[APP].ReactDOM = window.ReactDOM = require('react-dom');
+window[APP].propTypes = window.propTypes = require('prop-types');
 
-window.lodash = require('lodash');
+window[APP].reactRouterDom = window.reactRouterDom = require('react-router-dom');
+window[APP].History = window.History = require('history');
+window[APP].connectedReactRouter = window.connectedReactRouter = require('connected-react-router');
+
+window[APP].redux = window.redux = require('redux');
+window[APP].reactRedux = window.reactRedux = require('react-redux');
+
+window[APP].lodash = window.lodash = require('lodash');

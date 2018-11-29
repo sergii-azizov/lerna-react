@@ -104,7 +104,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ \"core\");\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./component.scss */ \"./src/icon/component.scss\");\n/* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_component_scss__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nvar Icon = function Icon(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"i\", {\n    className: _component_scss__WEBPACK_IMPORTED_MODULE_2___default.a.root\n  }, \"\\u2211\");\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(core__WEBPACK_IMPORTED_MODULE_1__[\"withRender\"])()(Icon));\n\n//# sourceURL=webpack://icon/./src/icon/component.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ \"core\");\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./component.scss */ \"./src/icon/component.scss\");\n/* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_component_scss__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nvar Icon = function Icon(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"i\", {\n    className: _component_scss__WEBPACK_IMPORTED_MODULE_2___default.a.root\n  }, \"\\u2211\");\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(core__WEBPACK_IMPORTED_MODULE_1__[\"withRender\"])()(Icon));\n\n//# sourceURL=webpack://%5Bname%5D/./src/icon/component.js?");
 
 /***/ }),
 
@@ -115,7 +115,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin\nmodule.exports = {\"root\":\"icon-1nxIC\"};\n\n//# sourceURL=webpack://icon/./src/icon/component.scss?");
+eval("// extracted by mini-css-extract-plugin\nmodule.exports = {\"root\":\"icon-1nxIC\"};\n\n//# sourceURL=webpack://%5Bname%5D/./src/icon/component.scss?");
 
 /***/ }),
 
@@ -127,7 +127,7 @@ eval("// extracted by mini-css-extract-plugin\nmodule.exports = {\"root\":\"icon
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component */ \"./src/icon/component.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _component__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n\n\n//# sourceURL=webpack://icon/./src/icon/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component */ \"./src/icon/component.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _component__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n\n\n//# sourceURL=webpack://%5Bname%5D/./src/icon/index.js?");
 
 /***/ }),
 
@@ -139,7 +139,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _com
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ \"core\");\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./component.scss */ \"./src/icon2/component.scss\");\n/* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_component_scss__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nvar Icon2 = function Icon2(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"i\", {\n    className: _component_scss__WEBPACK_IMPORTED_MODULE_2___default.a.root\n  }, \"\\u22112\");\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(core__WEBPACK_IMPORTED_MODULE_1__[\"withRender\"])()(Icon2));\n\n//# sourceURL=webpack://icon/./src/icon2/component.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ \"core\");\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./component.scss */ \"./src/icon2/component.scss\");\n/* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_component_scss__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nvar Icon2 = function Icon2(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"i\", {\n    className: _component_scss__WEBPACK_IMPORTED_MODULE_2___default.a.root\n  }, \"\\u22112\");\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(core__WEBPACK_IMPORTED_MODULE_1__[\"withRender\"])()(Icon2));\n\n//# sourceURL=webpack://%5Bname%5D/./src/icon2/component.js?");
 
 /***/ }),
 
@@ -150,7 +150,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin\nmodule.exports = {\"root\":\"icon2-13nGY\"};\n\n//# sourceURL=webpack://icon/./src/icon2/component.scss?");
+eval("// extracted by mini-css-extract-plugin\nmodule.exports = {\"root\":\"icon2-13nGY\"};\n\n//# sourceURL=webpack://%5Bname%5D/./src/icon2/component.scss?");
 
 /***/ }),
 
@@ -162,7 +162,7 @@ eval("// extracted by mini-css-extract-plugin\nmodule.exports = {\"root\":\"icon
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component */ \"./src/icon2/component.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Icon2\", function() { return _component__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n\n\n//# sourceURL=webpack://icon/./src/icon2/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component */ \"./src/icon2/component.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Icon2\", function() { return _component__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n\n\n//# sourceURL=webpack://%5Bname%5D/./src/icon2/index.js?");
 
 /***/ }),
 
@@ -174,7 +174,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _com
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./icon */ \"./src/icon/index.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _icon__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _icon2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./icon2 */ \"./src/icon2/index.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Icon2\", function() { return _icon2__WEBPACK_IMPORTED_MODULE_1__[\"Icon2\"]; });\n\n\n\n\n//# sourceURL=webpack://icon/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./icon */ \"./src/icon/index.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _icon__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _icon2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./icon2 */ \"./src/icon2/index.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Icon2\", function() { return _icon2__WEBPACK_IMPORTED_MODULE_1__[\"Icon2\"]; });\n\n\n\n\n//# sourceURL=webpack://%5Bname%5D/./src/index.js?");
 
 /***/ }),
 
@@ -185,7 +185,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ico
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = __WEBPACK_EXTERNAL_MODULE_core__;\n\n//# sourceURL=webpack://icon/external_%22core%22?");
+eval("module.exports = __WEBPACK_EXTERNAL_MODULE_core__;\n\n//# sourceURL=webpack://%5Bname%5D/external_%22core%22?");
 
 /***/ }),
 
@@ -196,7 +196,7 @@ eval("module.exports = __WEBPACK_EXTERNAL_MODULE_core__;\n\n//# sourceURL=webpac
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = __WEBPACK_EXTERNAL_MODULE_react__;\n\n//# sourceURL=webpack://icon/external_%22React%22?");
+eval("module.exports = __WEBPACK_EXTERNAL_MODULE_react__;\n\n//# sourceURL=webpack://%5Bname%5D/external_%22React%22?");
 
 /***/ })
 

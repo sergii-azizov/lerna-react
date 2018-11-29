@@ -1,12 +1,16 @@
+import { APP } from '../../../../configs/namespace.config';
+
 const STATIC_SERVERS = {
-    DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/99543dbc9ba5da8a963bf340e000e9103450501a/dist'
+    DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/c39ead981eab4ece73cf22a2e5445db68605e070/dist'
 };
 
-export const STATIC_SERVER = STATIC_SERVERS.DT;
+const STATIC_SERVER = window[APP].STATIC_SERVER = window[APP.STATIC_SERVER] || STATIC_SERVERS.DT;
 
-export const MS_NAMES = {
+const MS_NAMES = window[APP].MS_NAMES = {
     ICON: 'icon',
     NAV: 'nav',
     BUTTON: 'button',
     ABOUT_US: 'about-us',
 };
+
+export { STATIC_SERVER, MS_NAMES };

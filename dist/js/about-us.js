@@ -104,7 +104,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _screen__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./screen */ \"./src/screen/index.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _screen__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n\n\n//# sourceURL=webpack://about-us/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _screen__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./screen */ \"./src/screen/index.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _screen__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n\n\n//# sourceURL=webpack://%5Bname%5D/./src/index.js?");
 
 /***/ }),
 
@@ -116,7 +116,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scr
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _screen__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./screen */ \"./src/screen/screen.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _screen__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n\n\n//# sourceURL=webpack://about-us/./src/screen/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _screen__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./screen */ \"./src/screen/screen.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _screen__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n\n\n//# sourceURL=webpack://%5Bname%5D/./src/screen/index.js?");
 
 /***/ }),
 
@@ -128,7 +128,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scr
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ \"core\");\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _screen_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./screen.scss */ \"./src/screen/screen.scss\");\n/* harmony import */ var _screen_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_screen_scss__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\nvar Icon = Object(core__WEBPACK_IMPORTED_MODULE_1__[\"loadModule\"])(core__WEBPACK_IMPORTED_MODULE_1__[\"MS_NAMES\"].ICON);\n\nvar Screen = function Screen(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: _screen_scss__WEBPACK_IMPORTED_MODULE_2___default.a.root\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h2\", null, \"About us\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Icon, null));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(core__WEBPACK_IMPORTED_MODULE_1__[\"withRender\"])()(Screen));\n\n//# sourceURL=webpack://about-us/./src/screen/screen.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ \"core\");\n/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _screen_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./screen.scss */ \"./src/screen/screen.scss\");\n/* harmony import */ var _screen_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_screen_scss__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\nvar Icon = Object(core__WEBPACK_IMPORTED_MODULE_1__[\"loadModule\"])(core__WEBPACK_IMPORTED_MODULE_1__[\"MS_NAMES\"].ICON);\n\nvar Screen = function Screen(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: _screen_scss__WEBPACK_IMPORTED_MODULE_2___default.a.root\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h2\", null, \"About us\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Icon, null));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(core__WEBPACK_IMPORTED_MODULE_1__[\"withRender\"])()(Screen));\n\n//# sourceURL=webpack://%5Bname%5D/./src/screen/screen.js?");
 
 /***/ }),
 
@@ -139,7 +139,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin\nmodule.exports = {\"root\":\"screen-AeXNW\"};\n\n//# sourceURL=webpack://about-us/./src/screen/screen.scss?");
+eval("// extracted by mini-css-extract-plugin\nmodule.exports = {\"root\":\"screen-AeXNW\"};\n\n//# sourceURL=webpack://%5Bname%5D/./src/screen/screen.scss?");
 
 /***/ }),
 
@@ -150,7 +150,7 @@ eval("// extracted by mini-css-extract-plugin\nmodule.exports = {\"root\":\"scre
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = __WEBPACK_EXTERNAL_MODULE_core__;\n\n//# sourceURL=webpack://about-us/external_%22core%22?");
+eval("module.exports = __WEBPACK_EXTERNAL_MODULE_core__;\n\n//# sourceURL=webpack://%5Bname%5D/external_%22core%22?");
 
 /***/ }),
 
@@ -161,7 +161,7 @@ eval("module.exports = __WEBPACK_EXTERNAL_MODULE_core__;\n\n//# sourceURL=webpac
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = __WEBPACK_EXTERNAL_MODULE_react__;\n\n//# sourceURL=webpack://about-us/external_%22React%22?");
+eval("module.exports = __WEBPACK_EXTERNAL_MODULE_react__;\n\n//# sourceURL=webpack://%5Bname%5D/external_%22React%22?");
 
 /***/ })
 
