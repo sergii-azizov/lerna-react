@@ -1,5 +1,7 @@
 import { APP } from '../../../configs/namespace.config';
 
+window[APP].NODE_ENV = process.env.NODE_ENV;
+
 window[APP].React = window.React = require('react');
 window[APP].ReactDOM = require('react-dom');
 window[APP].propTypes = require('prop-types');

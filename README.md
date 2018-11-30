@@ -3,6 +3,7 @@
 - [X] Implement module loader
 - [X] Redux split reducers 
 - [X] Remove dependency from window
+- [ ] Clear Redux
 - [ ] Think about CI/CD 
 
 #### Redux code-splitting

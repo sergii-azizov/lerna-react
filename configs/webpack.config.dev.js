@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const APP = require("./namespace.config").APP;
 const externals = require("./vendors.config");
@@ -14,6 +15,7 @@ module.exports = {
         umdNamedDefine: true,
         globalObject: `window.${APP}`
     },
+    mode: process.env.NODE_ENV,
     resolve: {
         alias: {
             core: path.resolve('../../dist/js/core.js')
@@ -24,6 +26,7 @@ module.exports = {
         historyApiFallback: true
     },
     devtool: isDevelopment ? 'source-map' : undefined,
+    watch: process.env.WATCH === 'true',
     module: {
         rules: [
             {
@@ -53,6 +56,9 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        }),
         new MiniCssExtractPlugin({
             filename: "css/[name].css",
         })

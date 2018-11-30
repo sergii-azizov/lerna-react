@@ -2,32 +2,27 @@ import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import { loadModule, MS_NAMES } from 'core';
 
-import toggleComponentsMounting from './toggle-components-mounting/index.js';
-import toggleComponentsMounting2 from './toggle-components-mounting/index2.js';
-import toggleComponentsMounting3 from './toggle-components-mounting/index3.js';
-import AboutUs from './about-us';
+import { DesktopSummaryScreen } from './screens';
+import { Clear, LoadModule, ToggleModules, ParallelToggleModules } from './tests';
 import styles from './app.scss';
-
-const Nav = loadModule(MS_NAMES.NAV);
 
 const App = props => (
     <div className={styles.root}>
-        <Nav />
         <nav>
             <ul>
-                <li><Link to="/lerna-react/index.html/decrease-mount-count">Toggle Components Mounting</Link></li>
-                <li><Link to="/lerna-react/index.html/decrease-mount-count2">Toggle Components Mounting 2</Link>
-                </li>
-                <li><Link to="/lerna-react/index.html/decrease-mount-count3">Toggle Components Mounting 3</Link>
-                </li>
-                <li><Link to="/lerna-react/index.html/screen">Screen</Link></li>
+                <li><Link to="/lerna-react/index.html">Clear</Link></li>
+                <li><Link to="/lerna-react/index.html/desktop-summary">Desktop Summary</Link></li>
+                <li><Link to="/lerna-react/index.html/load-module">Load Modules</Link></li>
+                <li><Link to="/lerna-react/index.html/toggle-modules">Toggle Modules</Link></li>
+                <li><Link to="/lerna-react/index.html/parallel-toggle-modules">Parallel Toggle Modules</Link></li>
             </ul>
         </nav>
         <Switch>
-            <Route path="/lerna-react/index.html/decrease-mount-count" exact component={toggleComponentsMounting}/>
-            <Route path="/lerna-react/index.html/decrease-mount-count2" component={toggleComponentsMounting2}/>
-            <Route path="/lerna-react/index.html/decrease-mount-count3" component={toggleComponentsMounting3}/>
-            <Route path="/lerna-react/index.html/screen" component={AboutUs}/>
+            <Route path="/lerna-react/index.html" exact component={Clear}/>
+            <Route path="/lerna-react/index.html/desktop-summary" component={DesktopSummaryScreen}/>
+            <Route path="/lerna-react/index.html/load-module" component={LoadModule}/>
+            <Route path="/lerna-react/index.html/toggle-modules" component={ToggleModules}/>
+            <Route path="/lerna-react/index.html/parallel-toggle-modules" component={ParallelToggleModules}/>
         </Switch>
     </div>
 );

@@ -4,7 +4,12 @@
   "private": true,
   "main": "../../dist/core.js",
   "scripts": {
-    "build": "webpack --mode=development --config ./configs/webpack.config.lib.js --colors",
-    "build:watch": "webpack --watch --mode=development --config ./configs/webpack.config.lib.js --colors"
+    "build": "webpack --config ./configs/webpack.config.lib.js",
+    "build:dev": "cross-env NODE_ENV=development npm run build",
+    "build:prod": "cross-env NODE_ENV=production npm run build",
+    "build:watch": "cross-env WATCH=true npm run build:dev"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0"
   }
 }

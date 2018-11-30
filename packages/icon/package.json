@@ -1,9 +1,0 @@
-{
-  "name": "icon",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "build": "webpack --mode=development --config ./configs/webpack.config.lib.js --colors",
-    "build:watch": "webpack --watch --mode=development --config ./configs/webpack.config.lib.js --colors"
-  }
-}
