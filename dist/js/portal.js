@@ -130,6 +130,8 @@ var App = function App(props) {
   }, "Clear")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/lerna-react/index.html/desktop-summary"
   }, "Desktop Summary")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/lerna-react/index.html/load-3-module"
+  }, "Load 3 Modules")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/lerna-react/index.html/load-module"
   }, "Load Modules")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/lerna-react/index.html/toggle-modules"
@@ -142,6 +144,9 @@ var App = function App(props) {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/lerna-react/index.html/desktop-summary",
     component: _screens__WEBPACK_IMPORTED_MODULE_3__["DesktopSummaryScreen"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/lerna-react/index.html/load-3-module",
+    component: _tests__WEBPACK_IMPORTED_MODULE_4__["Load3Module"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/lerna-react/index.html/load-module",
     component: _tests__WEBPACK_IMPORTED_MODULE_4__["LoadModule"]
@@ -301,7 +306,7 @@ function (_PureComponent) {
 /*!****************************!*\
   !*** ./src/tests/index.js ***!
   \****************************/
-/*! exports provided: LoadModule, ToggleModules, ParallelToggleModules, Clear */
+/*! exports provided: LoadModule, Load3Module, ToggleModules, ParallelToggleModules, Clear */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -309,19 +314,86 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _load_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./load-module */ "./src/tests/load-module.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LoadModule", function() { return _load_module__WEBPACK_IMPORTED_MODULE_0__["default"]; });
 
-/* harmony import */ var _toggle_modules__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./toggle-modules */ "./src/tests/toggle-modules.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ToggleModules", function() { return _toggle_modules__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+/* harmony import */ var _load_3_modules__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./load-3-modules */ "./src/tests/load-3-modules.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Load3Module", function() { return _load_3_modules__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
-/* harmony import */ var _parallel_toggle_modules__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./parallel-toggle-modules */ "./src/tests/parallel-toggle-modules.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ParallelToggleModules", function() { return _parallel_toggle_modules__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+/* harmony import */ var _toggle_modules__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./toggle-modules */ "./src/tests/toggle-modules.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ToggleModules", function() { return _toggle_modules__WEBPACK_IMPORTED_MODULE_2__["default"]; });
 
-/* harmony import */ var _clear__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./clear */ "./src/tests/clear.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Clear", function() { return _clear__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+/* harmony import */ var _parallel_toggle_modules__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./parallel-toggle-modules */ "./src/tests/parallel-toggle-modules.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ParallelToggleModules", function() { return _parallel_toggle_modules__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _clear__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./clear */ "./src/tests/clear.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Clear", function() { return _clear__WEBPACK_IMPORTED_MODULE_4__["default"]; });
 
 
 
 
 
+
+
+/***/ }),
+
+/***/ "./src/tests/load-3-modules.js":
+/*!*************************************!*\
+  !*** ./src/tests/load-3-modules.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Load3Module; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ "core");
+/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Sc1 = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].SCRIPTING);
+var Sc2 = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].SCRIPTING);
+
+var Load3Module =
+/*#__PURE__*/
+function (_PureComponent) {
+  _inherits(Load3Module, _PureComponent);
+
+  function Load3Module() {
+    _classCallCheck(this, Load3Module);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Load3Module).apply(this, arguments));
+  }
+
+  _createClass(Load3Module, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Load 3 Module"), React.createElement(Sc1, null), React.createElement(Sc2, null));
+    }
+  }]);
+
+  return Load3Module;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+
+
+;
 
 /***/ }),
 
@@ -530,7 +602,7 @@ function (_Component) {
           Button1 = _this$state.Button1,
           Button2 = _this$state.Button2,
           Button3 = _this$state.Button3;
-      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Toggle Components Mounting"), React.createElement("div", null, React.createElement(Button1, null)), React.createElement("div", null, React.createElement(Button2, null)), React.createElement("div", null, React.createElement(Button3, null)));
+      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Toggle Components Mounting"), React.createElement("div", null, React.createElement(Button1, null, "Button1")), React.createElement("div", null, React.createElement(Button2, null, "Button2")), React.createElement("div", null, React.createElement(Button3, null, "Button")));
     }
   }]);
 

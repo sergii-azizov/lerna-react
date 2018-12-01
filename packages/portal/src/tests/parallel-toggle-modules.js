@@ -34,9 +34,9 @@ export default class ParallelToggleComponentsMounting extends Component {
         return (
             <Fragment>
                 <h2>Toggle Components Mounting</h2>
-                <div><Button1 /></div>
-                <div><Button2 /></div>
-                <div><Button3 /></div>
+                <div><Button1>Button1</Button1></div>
+                <div><Button2>Button2</Button2></div>
+                <div><Button3>Button</Button3></div>
             </Fragment>
         )
     }

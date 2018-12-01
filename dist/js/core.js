@@ -1127,6 +1127,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var head = document.getElementsByTagName('head')[0];
 var TOTAL = 'total';
+var FROM_CACHE = 'From Cache';
+var LOADED = 'Loaded';
+var ASYNC_REDUCERS = 'asyncReducers';
 var loadModule = function loadModule(chunkName) {
   var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
       _ref$server = _ref.server,
@@ -1142,95 +1145,81 @@ var loadModule = function loadModule(chunkName) {
 
   var LoadModule =
   /*#__PURE__*/
-  function (_Component) {
-    _inherits(LoadModule, _Component);
+  function (_PureComponent) {
+    _inherits(LoadModule, _PureComponent);
 
-    function LoadModule() {
-      var _getPrototypeOf2;
-
+    function LoadModule(props) {
       var _this;
 
       _classCallCheck(this, LoadModule);
 
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(LoadModule)).call.apply(_getPrototypeOf2, [this].concat(args)));
+      _this = _possibleConstructorReturn(this, _getPrototypeOf(LoadModule).call(this, props));
 
       _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "PATHS", {
-        SCOPE: window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["APP"]],
+        APP: window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["APP"]],
         NAME: [chunkName, componentName],
         COUNT: [_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["COMPONENTS_COUNT"], chunkName],
-        REDUCER_CACHE: ['asyncReducers', chunkName],
+        REDUCER_CACHE: [ASYNC_REDUCERS, chunkName],
         REDUCER: [chunkName, reducerName]
       });
 
-      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-        styleLoaded: false,
-        scriptLoaded: false,
-        LoadedComponent: _this.props.loadingComponent
-      });
-
       _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "mountLoadedComponent", function (fromCache) {
-        var LoadedComponent = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(_this.PATHS.SCOPE, _this.PATHS.NAME);
-
-        if (fromCache) {
-          _this.setState({
-            styleLoaded: true,
-            scriptLoaded: true,
-            LoadedComponent: LoadedComponent
-          });
-        } else if (LoadedComponent) {
-          _this.resolve();
+        if (!fromCache) {
+          _this.resolve && _this.resolve();
 
           _this.injectAsyncReducer();
 
           _this.setState({
-            LoadedComponent: LoadedComponent
+            LoadedComponent: _this.getLoadedComponent()
           });
         }
 
         _this.increasedLoadedComponents();
 
-        _this.notify(fromCache || 'Loaded');
+        _this.notify(fromCache || LOADED);
       });
+
+      _this.init();
 
       return _this;
     }
 
     _createClass(LoadModule, [{
-      key: "componentDidMount",
-      value: function componentDidMount() {
-        this.loadModule();
+      key: "init",
+      value: function init() {
+        var _this2 = this;
+
+        var LoadedComponent = this.getLoadedComponent();
+        var isModuleLoading = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, [chunkName, 'then']);
+        this.state = {
+          LoadedComponent: LoadedComponent || this.props.loadingComponent
+        };
+
+        if (isModuleLoading) {
+          this.PATHS.APP[chunkName].then(function () {
+            _this2.setState({
+              LoadedComponent: _this2.getLoadedComponent()
+            });
+
+            _this2.mountLoadedComponent(FROM_CACHE);
+          });
+        } else if (LoadedComponent) {
+          this.mountLoadedComponent(FROM_CACHE);
+        } else if (!LoadedComponent) {
+          this.loadModule();
+        }
       }
     }, {
-      key: "shouldComponentUpdate",
-      value: function shouldComponentUpdate(nextProps, _ref2) {
-        var styleLoaded = _ref2.styleLoaded,
-            scriptLoaded = _ref2.scriptLoaded,
-            LoadedComponent = _ref2.LoadedComponent;
-        var isModuleLoaded = styleLoaded && scriptLoaded;
-        var isLoadedComponentMounted = LoadedComponent === Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.SCOPE, this.PATHS.NAME);
-        var updatedLoadedComponent = this.state.LoadedComponent !== LoadedComponent;
-
-        if (isModuleLoaded && !isLoadedComponentMounted) {
-          this.mountLoadedComponent();
-          return true;
-        }
-
-        if (isModuleLoaded && updatedLoadedComponent) {
-          return true;
-        }
-
-        return false;
+      key: "getLoadedComponent",
+      value: function getLoadedComponent() {
+        return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, this.PATHS.NAME);
       }
     }, {
       key: "loadFile",
-      value: function loadFile(_ref3) {
-        var url = _ref3.url,
-            type = _ref3.type,
-            onLoad = _ref3.onLoad;
+      value: function loadFile(_ref2) {
+        var url = _ref2.url,
+            type = _ref2.type,
+            onLoad = _ref2.onLoad;
         var el = document.createElement(type);
 
         if (type === 'script') {
@@ -1252,78 +1241,67 @@ var loadModule = function loadModule(chunkName) {
     }, {
       key: "getLoadedComponentsCount",
       value: function getLoadedComponentsCount(name) {
-        return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.SCOPE, this.PATHS.COUNT.concat([name]), 0);
+        return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, this.PATHS.COUNT.concat([name]), 0);
       }
     }, {
       key: "increasedLoadedComponents",
       value: function increasedLoadedComponents() {
         var _objectSpread2;
 
-        Object(lodash__WEBPACK_IMPORTED_MODULE_2__["set"])(this.PATHS.SCOPE, this.PATHS.COUNT, _objectSpread({}, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.SCOPE, this.PATHS.COUNT), (_objectSpread2 = {}, _defineProperty(_objectSpread2, componentName, this.getLoadedComponentsCount(componentName) + 1), _defineProperty(_objectSpread2, TOTAL, this.getLoadedComponentsCount(TOTAL) + 1), _objectSpread2)));
+        Object(lodash__WEBPACK_IMPORTED_MODULE_2__["set"])(this.PATHS.APP, this.PATHS.COUNT, _objectSpread({}, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, this.PATHS.COUNT), (_objectSpread2 = {}, _defineProperty(_objectSpread2, componentName, this.getLoadedComponentsCount(componentName) + 1), _defineProperty(_objectSpread2, TOTAL, this.getLoadedComponentsCount(TOTAL) + 1), _objectSpread2)));
       }
     }, {
       key: "decreasedLoadedComponents",
       value: function decreasedLoadedComponents() {
         var _objectSpread3;
 
-        Object(lodash__WEBPACK_IMPORTED_MODULE_2__["set"])(this.PATHS.SCOPE, this.PATHS.COUNT, _objectSpread({}, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.SCOPE, this.PATHS.COUNT), (_objectSpread3 = {}, _defineProperty(_objectSpread3, componentName, this.getLoadedComponentsCount(componentName) - 1), _defineProperty(_objectSpread3, TOTAL, this.getLoadedComponentsCount(TOTAL) - 1), _objectSpread3)));
+        Object(lodash__WEBPACK_IMPORTED_MODULE_2__["set"])(this.PATHS.APP, this.PATHS.COUNT, _objectSpread({}, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, this.PATHS.COUNT), (_objectSpread3 = {}, _defineProperty(_objectSpread3, componentName, this.getLoadedComponentsCount(componentName) - 1), _defineProperty(_objectSpread3, TOTAL, this.getLoadedComponentsCount(TOTAL) - 1), _objectSpread3)));
       }
     }, {
       key: "injectAsyncReducer",
       value: function injectAsyncReducer() {
-        var asyncReducers = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.SCOPE, this.PATHS.REDUCER);
+        var asyncReducers = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, this.PATHS.REDUCER);
 
         if (asyncReducers && !Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(_index__WEBPACK_IMPORTED_MODULE_4__["store"], this.PATHS.REDUCER_CACHE)) {
           Object(lodash__WEBPACK_IMPORTED_MODULE_2__["set"])(_index__WEBPACK_IMPORTED_MODULE_4__["store"], this.PATHS.REDUCER_CACHE, asyncReducers);
-          _index__WEBPACK_IMPORTED_MODULE_4__["store"].replaceReducer(Object(_index__WEBPACK_IMPORTED_MODULE_4__["createReducer"])(_index__WEBPACK_IMPORTED_MODULE_4__["store"].asyncReducers));
+          _index__WEBPACK_IMPORTED_MODULE_4__["store"].replaceReducer(Object(_index__WEBPACK_IMPORTED_MODULE_4__["createReducer"])(_index__WEBPACK_IMPORTED_MODULE_4__["store"][ASYNC_REDUCERS]));
         }
       }
     }, {
       key: "notify",
       value: function notify(state) {
-        console.groupCollapsed('[Module][%s][%s][Component][%s]', chunkName, state, componentName);
-        console.log('[The total count imports of the components from the chunk %d on the screen]', this.getLoadedComponentsCount());
-        console.groupEnd();
+        try {
+          if (Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(JSON.parse(window.localStorage.getItem(_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["APP"])), 'DEBUG')) {
+            console.groupCollapsed('[Module][%s][%s][Component][%s]', chunkName, state, componentName);
+            console.log('[The total count imports of the components from the chunk %d on the screen]', this.getLoadedComponentsCount(componentName));
+            console.groupEnd();
+          }
+        } catch (e) {
+          console.error(e);
+        }
       }
     }, {
       key: "loadModule",
       value: function loadModule() {
-        var _this2 = this;
+        var _this3 = this;
 
-        var isModuleLoaded = this.PATHS.SCOPE[chunkName];
+        var isModuleLoaded = this.PATHS.APP[chunkName];
 
         if (!isModuleLoaded) {
-          this.PATHS.SCOPE[chunkName] = new Promise(function (resolve, reject) {
-            _this2.resolve = resolve;
+          this.PATHS.APP[chunkName] = new Promise(function (resolve, reject) {
+            _this3.resolve = resolve;
           });
           this.loadFile({
-            url: "".concat(server, "/css/").concat(chunkName, ".css"),
             type: 'link',
-            onLoad: function onLoad() {
-              return _this2.setState({
-                styleLoaded: true
-              });
-            }
+            url: "".concat(server, "/css/").concat(chunkName, ".css")
           });
           this.loadFile({
-            url: "".concat(server, "/js/").concat(chunkName, ".js"),
             type: 'script',
+            url: "".concat(server, "/js/").concat(chunkName, ".js"),
             onLoad: function onLoad() {
-              return _this2.setState({
-                scriptLoaded: true
-              });
+              _this3.mountLoadedComponent();
             }
           });
-        } else {
-          var isLoading = this.PATHS.SCOPE[chunkName].then;
-
-          if (isLoading) {
-            this.PATHS.SCOPE[chunkName].then(function () {
-              return _this2.mountLoadedComponent('From Cache');
-            });
-          } else {
-            this.mountLoadedComponent('From Cache');
-          }
         }
       }
     }, {
@@ -1336,9 +1314,10 @@ var loadModule = function loadModule(chunkName) {
         if (canBeDestroyed) {
           document.getElementById("__".concat(chunkName, "-script__")).remove();
           document.getElementById("__".concat(chunkName, "-link__")).remove();
-          delete this.PATHS.SCOPE[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["COMPONENTS_COUNT"]][chunkName];
-          delete this.PATHS.SCOPE[chunkName];
-          delete _index__WEBPACK_IMPORTED_MODULE_4__["store"].asyncReducers[chunkName];
+          delete this.PATHS.APP[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["COMPONENTS_COUNT"]][chunkName];
+          delete this.PATHS.APP[chunkName];
+          delete _index__WEBPACK_IMPORTED_MODULE_4__["store"][ASYNC_REDUCERS][chunkName];
+          _index__WEBPACK_IMPORTED_MODULE_4__["store"].replaceReducer(Object(_index__WEBPACK_IMPORTED_MODULE_4__["createReducer"])(_index__WEBPACK_IMPORTED_MODULE_4__["store"][ASYNC_REDUCERS]));
           this.notify('Cleared');
         }
       }
@@ -1351,7 +1330,7 @@ var loadModule = function loadModule(chunkName) {
     }]);
 
     return LoadModule;
-  }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+  }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 
   LoadModule.defaultProps = {
     loadingComponent: loadingComponent || function () {
