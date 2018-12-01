@@ -148,7 +148,6 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
                 delete this.PATHS.APP[COMPONENTS_COUNT][chunkName];
                 delete this.PATHS.APP[chunkName];
                 delete store[ASYNC_REDUCERS][chunkName];
-                store.replaceReducer(createReducer(store[ASYNC_REDUCERS]));
 
                 this.notify('Cleared');
             }
