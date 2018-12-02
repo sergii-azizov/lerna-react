@@ -28,10 +28,10 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
         }
 
         init() {
-            const LoadedComponent = this.getLoadedComponent();
+            const LoadedComponent = this.getLoadedComponent() || loadingComponent;
             const isModuleLoading = get(this.PATHS.APP, [chunkName, 'then']);
 
-            this.state = { LoadedComponent: LoadedComponent || this.props.loadingComponent };
+            this.state = { LoadedComponent };
 
             if (isModuleLoading) {
                 this.PATHS.APP[chunkName].then(() => {
@@ -169,10 +169,6 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
             );
         }
     }
-
-    LoadModule.defaultProps = {
-        loadingComponent: loadingComponent || (() => (<div>loading</div>))
-    };
 
     return withRender()(LoadModule);
 };
