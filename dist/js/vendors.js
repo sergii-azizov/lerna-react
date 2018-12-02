@@ -47552,6 +47552,38 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "../../node_modules/redux-thunk/es/index.js":
+/*!***************************************************************************************!*\
+  !*** /Users/saziz/projects/training/lerna-react/node_modules/redux-thunk/es/index.js ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function createThunkMiddleware(extraArgument) {
+  return function (_ref) {
+    var dispatch = _ref.dispatch,
+        getState = _ref.getState;
+    return function (next) {
+      return function (action) {
+        if (typeof action === 'function') {
+          return action(dispatch, getState, extraArgument);
+        }
+
+        return next(action);
+      };
+    };
+  };
+}
+
+var thunk = createThunkMiddleware();
+thunk.withExtraArgument = createThunkMiddleware;
+
+/* harmony default export */ __webpack_exports__["default"] = (thunk);
+
+/***/ }),
+
 /***/ "../../node_modules/redux/es/redux.js":
 /*!*********************************************************************************!*\
   !*** /Users/saziz/projects/training/lerna-react/node_modules/redux/es/redux.js ***!
@@ -49707,6 +49739,7 @@ __webpack_require__.r(__webpack_exports__);
 
 window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__["APP"]].NODE_ENV = "development";
 window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__["APP"]].React = window.React = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
+window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__["APP"]].ReduxThunk = window.ReduxThunk = __webpack_require__(/*! redux-thunk */ "../../node_modules/redux-thunk/es/index.js");
 window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__["APP"]].ReactDOM = __webpack_require__(/*! react-dom */ "../../node_modules/react-dom/index.js");
 window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__["APP"]].propTypes = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
 window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__["APP"]].reactRouterDom = __webpack_require__(/*! react-router-dom */ "../../node_modules/react-router-dom/es/index.js");

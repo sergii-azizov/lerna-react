@@ -101,10 +101,10 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
         mountLoadedComponent = (fromCache) => {
             if(!fromCache) {
                 this.resolve && this.resolve();
-                this.injectAsyncReducer();
                 this.setState({ LoadedComponent: this.getLoadedComponent() });
             }
 
+            this.injectAsyncReducer();
             this.increasedLoadedComponents();
             this.notify(fromCache || LOADED);
         };
@@ -142,12 +142,18 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
             const canBeDestroyed = destroyOnUnmount && !hasLoadedComponents;
 
             if (canBeDestroyed) {
-                document.getElementById(`__${chunkName}-script__`).remove();
-                document.getElementById(`__${chunkName}-link__`).remove();
+                const scriptEl = document.getElementById(`__${chunkName}-script__`);
+                const linkEl = document.getElementById(`__${chunkName}-link__`);
+
+                scriptEl && scriptEl.remove();
+                linkEl && linkEl.remove();
 
                 delete this.PATHS.APP[COMPONENTS_COUNT][chunkName];
                 delete this.PATHS.APP[chunkName];
-                delete store[ASYNC_REDUCERS][chunkName];
+
+                if (store[ASYNC_REDUCERS]) {
+                    delete store[ASYNC_REDUCERS][chunkName];
+                }
 
                 this.notify('Cleared');
             }

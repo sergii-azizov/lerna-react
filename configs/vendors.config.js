@@ -7,6 +7,7 @@ module.exports = {
     "react-redux": "reactRedux",
     "connected-react-router": "connectedReactRouter",
     "history": "History",
+    "redux-thunk": "ReduxThunk",
     "lodash": 'lodash',
     "core": "core"
 };
