@@ -13,6 +13,9 @@ const LOADED = 'Loaded';
 const ASYNC_REDUCERS = 'asyncReducers';
 
 export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount = true, loadingComponent = null, componentName = 'default', reducerName = 'rootReducers' } = {}) => {
+
+    if (!chunkName) return () => null;
+
     class LoadModule extends PureComponent {
         PATHS = {
             APP: window[APP],
