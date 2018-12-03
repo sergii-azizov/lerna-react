@@ -102,12 +102,13 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
         }
 
         mountLoadedComponent = (fromCache) => {
+            this.injectAsyncReducer();
+
             if(!fromCache) {
                 this.resolve && this.resolve();
                 this.setState({ LoadedComponent: this.getLoadedComponent() });
             }
 
-            this.injectAsyncReducer();
             this.increasedLoadedComponents();
             this.notify(fromCache || LOADED);
         };
