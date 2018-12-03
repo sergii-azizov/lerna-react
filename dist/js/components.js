@@ -148,7 +148,8 @@ function (_PureComponent) {
     key: "render",
     value: function render() {
       return React.createElement("button", {
-        className: _component_scss__WEBPACK_IMPORTED_MODULE_2___default.a.root
+        className: _component_scss__WEBPACK_IMPORTED_MODULE_2___default.a.root,
+        onClick: this.props.onClick
       }, this.props.children);
     }
   }]);

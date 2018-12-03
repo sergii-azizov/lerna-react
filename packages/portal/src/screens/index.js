@@ -1,1 +1,2 @@
-export { default as DesktopSummaryScreen } from './desktop-summary-screen';
+export { default as LoadModule } from './load-module';
+export { default as Home } from './home';

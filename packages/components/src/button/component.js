@@ -6,7 +6,7 @@ import styles from './component.scss';
 class Button extends PureComponent {
     render() {
         return (
-           <button className={styles.root}>{this.props.children}</button>
+           <button className={styles.root} onClick={this.props.onClick}>{this.props.children}</button>
         );
     }
 }
