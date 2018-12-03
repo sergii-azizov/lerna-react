@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { loadModule, MS_NAMES } from 'core';
 
-const Button = loadModule(MS_NAMES.COMPONENTS, { componentName: 'Button', destroyOnUnmount: true });
+const Button = loadModule(MS_NAMES.COMPONENTS, { componentName: 'Button', destroyOnUnmount: true, loadingComponent: () => <div>loading</div> });
 
 export default props => (
     <Fragment>

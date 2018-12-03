@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("connectedReactRouter"), require("lodash"), require("propTypes"), require("React"), require("redux"), require("ReduxThunk"));
+		module.exports = factory(require("connectedReactRouter"), require("lodash"), require("propTypes"), require("React"), require("redux"));
 	else if(typeof define === 'function' && define.amd)
-		define("core", ["connectedReactRouter", "lodash", "propTypes", "React", "redux", "ReduxThunk"], factory);
+		define("core", ["connectedReactRouter", "lodash", "propTypes", "React", "redux"], factory);
 	else if(typeof exports === 'object')
-		exports["core"] = factory(require("connectedReactRouter"), require("lodash"), require("propTypes"), require("React"), require("redux"), require("ReduxThunk"));
+		exports["core"] = factory(require("connectedReactRouter"), require("lodash"), require("propTypes"), require("React"), require("redux"));
 	else
-		root["core"] = factory(root["connectedReactRouter"], root["lodash"], root["propTypes"], root["React"], root["redux"], root["ReduxThunk"]);
-})(window.__APP__, function(__WEBPACK_EXTERNAL_MODULE_connected_react_router__, __WEBPACK_EXTERNAL_MODULE_lodash__, __WEBPACK_EXTERNAL_MODULE_prop_types__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_redux__, __WEBPACK_EXTERNAL_MODULE_redux_thunk__) {
+		root["core"] = factory(root["connectedReactRouter"], root["lodash"], root["propTypes"], root["React"], root["redux"]);
+})(window.__APP__, function(__WEBPACK_EXTERNAL_MODULE_connected_react_router__, __WEBPACK_EXTERNAL_MODULE_lodash__, __WEBPACK_EXTERNAL_MODULE_prop_types__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_redux__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -885,6 +885,38 @@ module.exports = invariant;
 
 /***/ }),
 
+/***/ "../../node_modules/redux-thunk/es/index.js":
+/*!***************************************************************************************!*\
+  !*** /Users/saziz/projects/training/lerna-react/node_modules/redux-thunk/es/index.js ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function createThunkMiddleware(extraArgument) {
+  return function (_ref) {
+    var dispatch = _ref.dispatch,
+        getState = _ref.getState;
+    return function (next) {
+      return function (action) {
+        if (typeof action === 'function') {
+          return action(dispatch, getState, extraArgument);
+        }
+
+        return next(action);
+      };
+    };
+  };
+}
+
+var thunk = createThunkMiddleware();
+thunk.withExtraArgument = createThunkMiddleware;
+
+/* harmony default export */ __webpack_exports__["default"] = (thunk);
+
+/***/ }),
+
 /***/ "../../node_modules/resolve-pathname/index.js":
 /*!*****************************************************************************************!*\
   !*** /Users/saziz/projects/training/lerna-react/node_modules/resolve-pathname/index.js ***!
@@ -1062,7 +1094,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _configs_namespace_config__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__);
 
 var STATIC_SERVERS = {
-  DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/b50a0efc0516f3c42e1dada39cf25259d3b624a2/dist'
+  DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/f73e04e5c508c16c8df03f428c3a80fb2627649d/dist'
 };
 var STATIC_SERVER = window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__["APP"]].STATIC_SERVER = window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__["APP"].STATIC_SERVER] || STATIC_SERVERS.DT;
 var MS_NAMES = window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__["APP"]].MS_NAMES = {
@@ -1193,10 +1225,12 @@ var loadModule = function loadModule(chunkName) {
       value: function init() {
         var _this2 = this;
 
-        var LoadedComponent = this.getLoadedComponent() || loadingComponent;
+        var LoadedComponent = this.getLoadedComponent();
         var isModuleLoading = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, [chunkName, 'then']);
         this.state = {
-          LoadedComponent: LoadedComponent
+          LoadedComponent: LoadedComponent || loadingComponent || function () {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "loading");
+          }
         };
 
         if (isModuleLoading) {
@@ -1435,8 +1469,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var history_createBrowserHistory__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(history_createBrowserHistory__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var connected_react_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! connected-react-router */ "connected-react-router");
 /* harmony import */ var connected_react_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(connected_react_router__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux-thunk */ "redux-thunk");
-/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(redux_thunk__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux-thunk */ "../../node_modules/redux-thunk/es/index.js");
 /* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./reducers */ "./src/shared/store/reducers.js");
 /* harmony import */ var _configs_namespace_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../configs/namespace.config */ "../../configs/namespace.config.js");
 /* harmony import */ var _configs_namespace_config__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_configs_namespace_config__WEBPACK_IMPORTED_MODULE_5__);
@@ -1448,7 +1481,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var history = history_createBrowserHistory__WEBPACK_IMPORTED_MODULE_1___default()();
 var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEBPACK_IMPORTED_MODULE_0__["compose"];
-var middleware = composeEnhancers(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(Object(connected_react_router__WEBPACK_IMPORTED_MODULE_2__["routerMiddleware"])(history), redux_thunk__WEBPACK_IMPORTED_MODULE_3___default.a));
+var middleware = composeEnhancers(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(Object(connected_react_router__WEBPACK_IMPORTED_MODULE_2__["routerMiddleware"])(history), redux_thunk__WEBPACK_IMPORTED_MODULE_3__["default"]));
 var store = window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_5__["APP"]].store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(Object(_reducers__WEBPACK_IMPORTED_MODULE_4__["default"])(), middleware);
 
 
@@ -1561,17 +1594,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_react__;
 /***/ (function(module, exports) {
 
 module.exports = __WEBPACK_EXTERNAL_MODULE_redux__;
-
-/***/ }),
-
-/***/ "redux-thunk":
-/*!*****************************!*\
-  !*** external "ReduxThunk" ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_redux_thunk__;
 
 /***/ })
 

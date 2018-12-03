@@ -279,7 +279,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var Button = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
   componentName: 'Button',
-  destroyOnUnmount: true
+  destroyOnUnmount: true,
+  loadingComponent: function loadingComponent() {
+    return React.createElement("div", null, "loading");
+  }
 });
 /* harmony default export */ __webpack_exports__["default"] = (function (props) {
   return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Load Module"), React.createElement(Button, null, "Button"));
