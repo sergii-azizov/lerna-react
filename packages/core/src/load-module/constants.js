@@ -1,7 +1,7 @@
 import { APP } from '../../../../configs/namespace.config';
 
 const STATIC_SERVERS = {
-    DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/f73e04e5c508c16c8df03f428c3a80fb2627649d/dist'
+    DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/ae3992d8e30e3a24e728408fcc4d835170ee4880/dist'
 };
 
 const STATIC_SERVER = window[APP].STATIC_SERVER = window[APP.STATIC_SERVER] || STATIC_SERVERS.DT;

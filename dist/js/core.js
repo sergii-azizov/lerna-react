@@ -1062,7 +1062,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _configs_namespace_config__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__);
 
 var STATIC_SERVERS = {
-  DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/f73e04e5c508c16c8df03f428c3a80fb2627649d/dist'
+  DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/ae3992d8e30e3a24e728408fcc4d835170ee4880/dist'
 };
 var STATIC_SERVER = window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__["APP"]].STATIC_SERVER = window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__["APP"].STATIC_SERVER] || STATIC_SERVERS.DT;
 var MS_NAMES = window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__["APP"]].MS_NAMES = {
