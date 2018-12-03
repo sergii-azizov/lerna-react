@@ -127,13 +127,18 @@ var App = function App(props) {
     to: "/lerna-react/index.html"
   }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/lerna-react/index.html/load-module"
-  }, "Load Modules")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }, "Load Modules")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/lerna-react/index.html/desktop-summary"
+  }, "Desktop Summary")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/lerna-react/index.html",
     exact: true,
-    component: _screens__WEBPACK_IMPORTED_MODULE_3__["Home"]
+    component: _screens__WEBPACK_IMPORTED_MODULE_3__["HomeScreen"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/lerna-react/index.html/load-module",
-    component: _screens__WEBPACK_IMPORTED_MODULE_3__["LoadModule"]
+    component: _screens__WEBPACK_IMPORTED_MODULE_3__["LoadModuleScreen"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/lerna-react/index.html/desktop-summary",
+    component: _screens__WEBPACK_IMPORTED_MODULE_3__["DesktopSummaryScreen"]
   })));
 };
 
@@ -184,10 +189,32 @@ react_dom__WEBPACK_IMPORTED_MODULE_0___default.a.render(React.createElement(reac
 
 /***/ }),
 
-/***/ "./src/screens/home.js":
-/*!*****************************!*\
-  !*** ./src/screens/home.js ***!
-  \*****************************/
+/***/ "./src/screens/desktop-summary-screen.js":
+/*!***********************************************!*\
+  !*** ./src/screens/desktop-summary-screen.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ "core");
+/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var DesktopSummaryScreen = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].DESKTOP_SUMMARY_SCREEN);
+/* harmony default export */ __webpack_exports__["default"] = (function (props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DesktopSummaryScreen, props);
+});
+
+/***/ }),
+
+/***/ "./src/screens/home-screen.js":
+/*!************************************!*\
+  !*** ./src/screens/home-screen.js ***!
+  \************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -246,26 +273,30 @@ function (_PureComponent) {
 /*!******************************!*\
   !*** ./src/screens/index.js ***!
   \******************************/
-/*! exports provided: LoadModule, Home */
+/*! exports provided: LoadModuleScreen, DesktopSummaryScreen, HomeScreen */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _load_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./load-module */ "./src/screens/load-module.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LoadModule", function() { return _load_module__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+/* harmony import */ var _load_module_screen__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./load-module-screen */ "./src/screens/load-module-screen.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LoadModuleScreen", function() { return _load_module_screen__WEBPACK_IMPORTED_MODULE_0__["default"]; });
 
-/* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home */ "./src/screens/home.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Home", function() { return _home__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+/* harmony import */ var _desktop_summary_screen__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./desktop-summary-screen */ "./src/screens/desktop-summary-screen.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DesktopSummaryScreen", function() { return _desktop_summary_screen__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _home_screen__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./home-screen */ "./src/screens/home-screen.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HomeScreen", function() { return _home_screen__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
 
 
 
 
 /***/ }),
 
-/***/ "./src/screens/load-module.js":
-/*!************************************!*\
-  !*** ./src/screens/load-module.js ***!
-  \************************************/
+/***/ "./src/screens/load-module-screen.js":
+/*!*******************************************!*\
+  !*** ./src/screens/load-module-screen.js ***!
+  \*******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
