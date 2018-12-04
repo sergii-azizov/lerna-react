@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { loadModule, MS_NAMES } from 'core';
 
 import { increment, decrement } from './actions.js';
+import styles from './screen.scss';
 
 const Counter = loadModule(MS_NAMES.COMPONENTS);
+const Button = loadModule(MS_NAMES.COMPONENTS, { componentName: 'Button' });
 const TaskSelector = loadModule(MS_NAMES.TASK_SELECTOR);
 
 class DesktopSummaryScreen extends React.Component {
@@ -12,11 +14,10 @@ class DesktopSummaryScreen extends React.Component {
         return (
             <div>
                 <h2>Desktop Summary</h2>
-                <TaskSelector />
 
-                <button onClick={this.props.decrement}>-</button>
-                <span>{this.props.count}</span>
-                <button onClick={this.props.increment}>+</button>
+                <Button onClick={this.props.decrement}>-</Button>
+                <span className={styles.counter}>{this.props.count}</span>
+                <Button onClick={this.props.increment}>+</Button>
 
                 <Counter />
             </div>
@@ -28,7 +29,7 @@ function mapStateToProps(state) {
     console.log("==> ", state);
 
     return {
-        count: state
+        count: state['desktop-summary-screen'].count
     };
 }
 

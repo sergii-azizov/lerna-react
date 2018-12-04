@@ -1,5 +1,9 @@
 .src-desktop-summary-screen--desktop-summary-screen-root {
-  border: 2px solid black; }
+  font-size: 12px; }
+
+.src-desktop-summary-screen--desktop-summary-screen-counter {
+  margin: 10px;
+  display: inline-block; }
 
 
 /*# sourceMappingURL=desktop-summary-screen.css.map*/

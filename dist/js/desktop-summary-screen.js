@@ -110,14 +110,14 @@ __webpack_require__.r(__webpack_exports__);
 var increment = function increment() {
   return function (dispatch) {
     return dispatch({
-      type: 'INCREMENT'
+      type: 'INCREMENT-1'
     });
   };
 };
 var decrement = function decrement() {
   return function (dispatch) {
     return dispatch({
-      type: 'DECREMENT'
+      type: 'DECREMENT-1'
     });
   };
 };
@@ -156,12 +156,12 @@ __webpack_require__.r(__webpack_exports__);
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case 'INCREMENT':
+    case 'INCREMENT-1':
       return {
         count: state.count + 1
       };
 
-    case 'DECREMENT':
+    case 'DECREMENT-1':
       return {
         count: state.count - 1
       };
@@ -189,6 +189,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core */ "core");
 /* harmony import */ var core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _actions_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./actions.js */ "./src/desktop-summary-screen/actions.js");
+/* harmony import */ var _screen_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./screen.scss */ "./src/desktop-summary-screen/screen.scss");
+/* harmony import */ var _screen_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_screen_scss__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -211,7 +213,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Counter = Object(core__WEBPACK_IMPORTED_MODULE_2__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_2__["MS_NAMES"].COMPONENTS);
+var Button = Object(core__WEBPACK_IMPORTED_MODULE_2__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_2__["MS_NAMES"].COMPONENTS, {
+  componentName: 'Button'
+});
 var TaskSelector = Object(core__WEBPACK_IMPORTED_MODULE_2__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_2__["MS_NAMES"].TASK_SELECTOR);
 
 var DesktopSummaryScreen =
@@ -228,9 +234,11 @@ function (_React$Component) {
   _createClass(DesktopSummaryScreen, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Desktop Summary"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TaskSelector, null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Desktop Summary"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Button, {
         onClick: this.props.decrement
-      }, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.count), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: _screen_scss__WEBPACK_IMPORTED_MODULE_4___default.a.counter
+      }, this.props.count), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Button, {
         onClick: this.props.increment
       }, "+"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Counter, null));
     }
@@ -242,7 +250,7 @@ function (_React$Component) {
 function mapStateToProps(state) {
   console.log("==> ", state);
   return {
-    count: state
+    count: state['desktop-summary-screen'].count
   };
 }
 
@@ -250,6 +258,18 @@ function mapStateToProps(state) {
   increment: _actions_js__WEBPACK_IMPORTED_MODULE_3__["increment"],
   decrement: _actions_js__WEBPACK_IMPORTED_MODULE_3__["decrement"]
 })(DesktopSummaryScreen));
+
+/***/ }),
+
+/***/ "./src/desktop-summary-screen/screen.scss":
+/*!************************************************!*\
+  !*** ./src/desktop-summary-screen/screen.scss ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+module.exports = {"root":"src-desktop-summary-screen--desktop-summary-screen-root","counter":"src-desktop-summary-screen--desktop-summary-screen-counter"};
 
 /***/ }),
 
