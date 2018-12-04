@@ -5,6 +5,7 @@ import { loadModule, MS_NAMES } from 'core';
 import { increment, decrement } from './actions.js';
 
 const Counter = loadModule(MS_NAMES.COMPONENTS);
+const TaskSelector = loadModule(MS_NAMES.TASK_SELECTOR);
 
 class DesktopSummaryScreen extends React.Component {
     render() {

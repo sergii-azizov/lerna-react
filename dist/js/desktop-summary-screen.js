@@ -212,6 +212,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 var Counter = Object(core__WEBPACK_IMPORTED_MODULE_2__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_2__["MS_NAMES"].COMPONENTS);
+var TaskSelector = Object(core__WEBPACK_IMPORTED_MODULE_2__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_2__["MS_NAMES"].TASK_SELECTOR);
 
 var DesktopSummaryScreen =
 /*#__PURE__*/
