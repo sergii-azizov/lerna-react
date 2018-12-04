@@ -14,9 +14,9 @@ export default class ToggleModules extends PureComponent {
         setTimeout(() => { this.setState({ TaskSelector: () => <div>TaskSelector</div> }); }, 4000);
         setTimeout(() => { this.setState({ TaskSelector: loadModule(MS_NAMES.TASK_SELECTOR) }); }, 5000);
 
-        setTimeout(() => { this.setState({ Button: loadModule(MS_NAMES.COMPONENTS, { componentName: 'Button' }) }); }, 1000);
+        setTimeout(() => { this.setState({ Button: loadModule(MS_NAMES.COMPONENTS, { component: 'Button' }) }); }, 1000);
         setTimeout(() => { this.setState({ Button: () => <div>Button</div> }); }, 2000);
-        setTimeout(() => { this.setState({ Button: loadModule(MS_NAMES.COMPONENTS, { componentName: 'Button' }) }); }, 3000);
+        setTimeout(() => { this.setState({ Button: loadModule(MS_NAMES.COMPONENTS, { component: 'Button' }) }); }, 3000);
     }
 
     render() {

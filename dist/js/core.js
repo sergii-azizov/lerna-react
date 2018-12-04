@@ -1130,7 +1130,7 @@ var TOTAL = 'total';
 var FROM_CACHE = 'From Cache';
 var LOADED = 'Loaded';
 var ASYNC_REDUCERS = 'asyncReducers';
-var loadModule = function loadModule(chunkName) {
+var loadModule = function loadModule(chunk) {
   var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
       _ref$server = _ref.server,
       server = _ref$server === void 0 ? _constants_js__WEBPACK_IMPORTED_MODULE_5__["STATIC_SERVER"] : _ref$server,
@@ -1138,12 +1138,12 @@ var loadModule = function loadModule(chunkName) {
       destroyOnUnmount = _ref$destroyOnUnmount === void 0 ? true : _ref$destroyOnUnmount,
       _ref$loadingComponent = _ref.loadingComponent,
       loadingComponent = _ref$loadingComponent === void 0 ? null : _ref$loadingComponent,
-      _ref$componentName = _ref.componentName,
-      componentName = _ref$componentName === void 0 ? 'default' : _ref$componentName,
-      _ref$reducerName = _ref.reducerName,
-      reducerName = _ref$reducerName === void 0 ? 'rootReducers' : _ref$reducerName;
+      _ref$component = _ref.component,
+      component = _ref$component === void 0 ? 'default' : _ref$component,
+      _ref$reducer = _ref.reducer,
+      reducer = _ref$reducer === void 0 ? 'rootReducers' : _ref$reducer;
 
-  if (!chunkName) return function () {
+  if (!chunk) return function () {
     return null;
   };
 
@@ -1161,10 +1161,20 @@ var loadModule = function loadModule(chunkName) {
 
       _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "PATHS", {
         APP: window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["APP"]],
-        NAME: [chunkName, componentName],
-        COUNT: [_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["COMPONENTS_COUNT"], chunkName],
-        REDUCER_CACHE: [ASYNC_REDUCERS, chunkName],
-        REDUCER: [chunkName, reducerName]
+        NAME: [chunk, component],
+        COUNT: [_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["COMPONENTS_COUNT"], chunk],
+        REDUCER_CACHE: [ASYNC_REDUCERS, chunk],
+        REDUCER: [chunk, reducer]
+      });
+
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleLoad", function () {
+        _this.setState({
+          LoadedComponent: _this.getLoadedComponent()
+        });
+
+        if (callback) {
+          callback(_this.PATHS.APP[chunk]);
+        }
       });
 
       _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "mountLoadedComponent", function (fromCache) {
@@ -1173,9 +1183,7 @@ var loadModule = function loadModule(chunkName) {
         if (!fromCache) {
           _this.resolve && _this.resolve();
 
-          _this.setState({
-            LoadedComponent: _this.getLoadedComponent()
-          });
+          _this.this.handleLoad();
         }
 
         _this.increasedLoadedComponents();
@@ -1194,16 +1202,14 @@ var loadModule = function loadModule(chunkName) {
         var _this2 = this;
 
         var LoadedComponent = this.getLoadedComponent() || loadingComponent;
-        var isModuleLoading = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, [chunkName, 'then']);
+        var isModuleLoading = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, [chunk, 'then']);
         this.state = {
           LoadedComponent: LoadedComponent
         };
 
         if (isModuleLoading) {
-          this.PATHS.APP[chunkName].then(function () {
-            _this2.setState({
-              LoadedComponent: _this2.getLoadedComponent()
-            });
+          this.PATHS.APP[chunk].then(function () {
+            _this2.handleLoad();
 
             _this2.mountLoadedComponent(FROM_CACHE);
           });
@@ -1232,7 +1238,7 @@ var loadModule = function loadModule(chunkName) {
         }
 
         el.onload = onLoad;
-        el.id = "__".concat(chunkName, "-").concat(type, "__");
+        el.id = "__".concat(chunk, "-").concat(type, "__");
 
         if (type === 'link') {
           el.rel = 'stylesheet';
@@ -1252,14 +1258,14 @@ var loadModule = function loadModule(chunkName) {
       value: function increasedLoadedComponents() {
         var _objectSpread2;
 
-        Object(lodash__WEBPACK_IMPORTED_MODULE_2__["set"])(this.PATHS.APP, this.PATHS.COUNT, _objectSpread({}, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, this.PATHS.COUNT), (_objectSpread2 = {}, _defineProperty(_objectSpread2, componentName, this.getLoadedComponentsCount(componentName) + 1), _defineProperty(_objectSpread2, TOTAL, this.getLoadedComponentsCount(TOTAL) + 1), _objectSpread2)));
+        Object(lodash__WEBPACK_IMPORTED_MODULE_2__["set"])(this.PATHS.APP, this.PATHS.COUNT, _objectSpread({}, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, this.PATHS.COUNT), (_objectSpread2 = {}, _defineProperty(_objectSpread2, component, this.getLoadedComponentsCount(component) + 1), _defineProperty(_objectSpread2, TOTAL, this.getLoadedComponentsCount(TOTAL) + 1), _objectSpread2)));
       }
     }, {
       key: "decreasedLoadedComponents",
       value: function decreasedLoadedComponents() {
         var _objectSpread3;
 
-        Object(lodash__WEBPACK_IMPORTED_MODULE_2__["set"])(this.PATHS.APP, this.PATHS.COUNT, _objectSpread({}, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, this.PATHS.COUNT), (_objectSpread3 = {}, _defineProperty(_objectSpread3, componentName, this.getLoadedComponentsCount(componentName) - 1), _defineProperty(_objectSpread3, TOTAL, this.getLoadedComponentsCount(TOTAL) - 1), _objectSpread3)));
+        Object(lodash__WEBPACK_IMPORTED_MODULE_2__["set"])(this.PATHS.APP, this.PATHS.COUNT, _objectSpread({}, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, this.PATHS.COUNT), (_objectSpread3 = {}, _defineProperty(_objectSpread3, component, this.getLoadedComponentsCount(component) - 1), _defineProperty(_objectSpread3, TOTAL, this.getLoadedComponentsCount(TOTAL) - 1), _objectSpread3)));
       }
     }, {
       key: "injectAsyncReducer",
@@ -1276,8 +1282,8 @@ var loadModule = function loadModule(chunkName) {
       value: function notify(state) {
         try {
           if (Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(JSON.parse(window.localStorage.getItem(_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["APP"])), 'DEBUG')) {
-            console.groupCollapsed('[Module][%s][%s][Component][%s]', chunkName, state, componentName);
-            console.log('[The total count imports of the components from the chunk %d on the screen]', this.getLoadedComponentsCount(componentName));
+            console.groupCollapsed('[Module][%s][%s][Component][%s]', chunk, state, component);
+            console.log('[The total count imports of the components from the chunk %d on the screen]', this.getLoadedComponentsCount(component));
             console.groupEnd();
           }
         } catch (e) {
@@ -1289,19 +1295,19 @@ var loadModule = function loadModule(chunkName) {
       value: function loadModule() {
         var _this3 = this;
 
-        var isModuleLoaded = this.PATHS.APP[chunkName];
+        var isModuleLoaded = this.PATHS.APP[chunk];
 
         if (!isModuleLoaded) {
-          this.PATHS.APP[chunkName] = new Promise(function (resolve, reject) {
+          this.PATHS.APP[chunk] = new Promise(function (resolve, reject) {
             _this3.resolve = resolve;
           });
           this.loadFile({
             type: 'link',
-            url: "".concat(server, "/css/").concat(chunkName, ".css")
+            url: "".concat(server, "/css/").concat(chunk, ".css")
           });
           this.loadFile({
             type: 'script',
-            url: "".concat(server, "/js/").concat(chunkName, ".js"),
+            url: "".concat(server, "/js/").concat(chunk, ".js"),
             onLoad: function onLoad() {
               _this3.mountLoadedComponent();
             }
@@ -1316,15 +1322,15 @@ var loadModule = function loadModule(chunkName) {
         var canBeDestroyed = destroyOnUnmount && !hasLoadedComponents;
 
         if (canBeDestroyed) {
-          var scriptEl = document.getElementById("__".concat(chunkName, "-script__"));
-          var linkEl = document.getElementById("__".concat(chunkName, "-link__"));
+          var scriptEl = document.getElementById("__".concat(chunk, "-script__"));
+          var linkEl = document.getElementById("__".concat(chunk, "-link__"));
           scriptEl && scriptEl.remove();
           linkEl && linkEl.remove();
-          delete this.PATHS.APP[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["COMPONENTS_COUNT"]][chunkName];
-          delete this.PATHS.APP[chunkName];
+          delete this.PATHS.APP[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["COMPONENTS_COUNT"]][chunk];
+          delete this.PATHS.APP[chunk];
 
           if (_index__WEBPACK_IMPORTED_MODULE_4__["store"][ASYNC_REDUCERS]) {
-            delete _index__WEBPACK_IMPORTED_MODULE_4__["store"][ASYNC_REDUCERS][chunkName];
+            delete _index__WEBPACK_IMPORTED_MODULE_4__["store"][ASYNC_REDUCERS][chunk];
           }
 
           this.notify('Cleared');

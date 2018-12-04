@@ -1,3 +1,15 @@
-.root:hover {
-  border: 2px solid red;
+.root {
+  background-color: #0078e7;
+  color: white;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  font-size: 100%;
+  padding: .5em 2em;
+  border-radius: 2px;
+  border: none;
+
+  &:hover {
+    background-color: #0062c3;
+  }
 }

@@ -10,9 +10,9 @@ export default class ParallelToggleComponentsMounting extends Component {
 
     add = () => {
         this.setState({
-            Button1: loadModule(MS_NAMES.COMPONENTS, { componentName: 'Button' }),
-            Button2: loadModule(MS_NAMES.COMPONENTS, { componentName: 'Button' }),
-            Button3: loadModule(MS_NAMES.COMPONENTS, { componentName: 'Button' })
+            Button1: loadModule(MS_NAMES.COMPONENTS, { component: 'Button' }),
+            Button2: loadModule(MS_NAMES.COMPONENTS, { component: 'Button' }),
+            Button3: loadModule(MS_NAMES.COMPONENTS, { component: 'Button' })
         });
 
         setTimeout(this.remove, 2000);

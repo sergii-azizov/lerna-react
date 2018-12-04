@@ -437,25 +437,25 @@ var Counter = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBP
   }
 });
 var Button = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
-  componentName: 'Button'
+  component: 'Button'
 });
 var Button1 = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
-  componentName: 'Button'
+  component: 'Button'
 });
 var Button2 = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
-  componentName: 'Button'
+  component: 'Button'
 });
 var Button3 = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
-  componentName: 'Button'
+  component: 'Button'
 });
 var Button4 = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
-  componentName: 'Button'
+  component: 'Button'
 });
 var Button5 = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
-  componentName: 'Button'
+  component: 'Button'
 });
 var Button6 = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
-  componentName: 'Button'
+  component: 'Button'
 });
 
 var LoadModule =
@@ -554,13 +554,13 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "add", function () {
       _this.setState({
         Button1: Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
-          componentName: 'Button'
+          component: 'Button'
         }),
         Button2: Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
-          componentName: 'Button'
+          component: 'Button'
         }),
         Button3: Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
-          componentName: 'Button'
+          component: 'Button'
         })
       });
 
@@ -717,7 +717,7 @@ function (_PureComponent) {
       setTimeout(function () {
         _this2.setState({
           Button: Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
-            componentName: 'Button'
+            component: 'Button'
           })
         });
       }, 1000);
@@ -731,7 +731,7 @@ function (_PureComponent) {
       setTimeout(function () {
         _this2.setState({
           Button: Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
-            componentName: 'Button'
+            component: 'Button'
           })
         });
       }, 3000);

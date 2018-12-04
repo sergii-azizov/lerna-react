@@ -3,7 +3,7 @@ import { loadModule, MS_NAMES } from 'core';
 import styles from './screen.scss';
 
 const TaskSelector = loadModule(MS_NAMES.TASK_SELECTOR);
-const Button = loadModule(MS_NAMES.COMPONENTS, { componentName: 'Button' });
+const Button = loadModule(MS_NAMES.COMPONENTS, { component: 'Button' });
 
 class DesktopSummaryScreen extends PureComponent {
     render() {

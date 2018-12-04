@@ -4,7 +4,7 @@ import styles from './component.scss';
 
 const Scripting = loadModule(MS_NAMES.SCRIPTING);
 const Sequence = loadModule(MS_NAMES.SEQUENCE);
-const Button = loadModule(MS_NAMES.COMPONENTS, { componentName: 'Button' });
+const Button = loadModule(MS_NAMES.COMPONENTS, { component: 'Button' });
 
 class TaskSelector extends PureComponent {
     render() {

@@ -12,17 +12,17 @@ const FROM_CACHE = 'From Cache';
 const LOADED = 'Loaded';
 const ASYNC_REDUCERS = 'asyncReducers';
 
-export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount = true, loadingComponent = null, componentName = 'default', reducerName = 'rootReducers' } = {}) => {
+export const loadModule = (chunk, { server = STATIC_SERVER, destroyOnUnmount = true, loadingComponent = null, component = 'default', reducer = 'rootReducers' } = {}) => {
 
-    if (!chunkName) return () => null;
+    if (!chunk) return () => null;
 
     class LoadModule extends PureComponent {
         PATHS = {
             APP: window[APP],
-            NAME: [chunkName, componentName],
-            COUNT: [COMPONENTS_COUNT, chunkName],
-            REDUCER_CACHE: [ASYNC_REDUCERS, chunkName],
-            REDUCER: [chunkName, reducerName]
+            NAME: [chunk, component],
+            COUNT: [COMPONENTS_COUNT, chunk],
+            REDUCER_CACHE: [ASYNC_REDUCERS, chunk],
+            REDUCER: [chunk, reducer]
         };
 
         constructor(props) {
@@ -32,13 +32,13 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
 
         init() {
             const LoadedComponent = this.getLoadedComponent() || loadingComponent;
-            const isModuleLoading = get(this.PATHS.APP, [chunkName, 'then']);
+            const isModuleLoading = get(this.PATHS.APP, [chunk, 'then']);
 
             this.state = { LoadedComponent };
 
             if (isModuleLoading) {
-                this.PATHS.APP[chunkName].then(() => {
-                    this.setState({ LoadedComponent: this.getLoadedComponent() });
+                this.PATHS.APP[chunk].then(() => {
+                    this.handleLoad();
                     this.mountLoadedComponent(FROM_CACHE);
                 });
             } else if (LoadedComponent) {
@@ -47,6 +47,13 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
                 this.loadModule();
             }
         }
+
+        handleLoad = () => {
+            this.setState({ LoadedComponent: this.getLoadedComponent() });
+            if (callback) {
+                callback(this.PATHS.APP[chunk])
+            }
+        };
 
         getLoadedComponent() {
             return get(this.PATHS.APP, this.PATHS.NAME);
@@ -61,7 +68,7 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
             }
 
             el.onload = onLoad;
-            el.id = `__${chunkName}-${type}__`;
+            el.id = `__${chunk}-${type}__`;
 
             if (type === 'link') {
                 el.rel = 'stylesheet';
@@ -79,7 +86,7 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
         increasedLoadedComponents() {
             set(this.PATHS.APP, this.PATHS.COUNT, {
                 ...get(this.PATHS.APP, this.PATHS.COUNT),
-                [componentName]: this.getLoadedComponentsCount(componentName) + 1,
+                [component]: this.getLoadedComponentsCount(component) + 1,
                 [TOTAL]: this.getLoadedComponentsCount(TOTAL) + 1
             });
         }
@@ -87,7 +94,7 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
         decreasedLoadedComponents() {
             set(this.PATHS.APP, this.PATHS.COUNT, {
                 ...get(this.PATHS.APP, this.PATHS.COUNT),
-                [componentName]: this.getLoadedComponentsCount(componentName) - 1,
+                [component]: this.getLoadedComponentsCount(component) - 1,
                 [TOTAL]: this.getLoadedComponentsCount(TOTAL) - 1
             });
         }
@@ -106,7 +113,7 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
 
             if(!fromCache) {
                 this.resolve && this.resolve();
-                this.setState({ LoadedComponent: this.getLoadedComponent() });
+                this.this.handleLoad();
             }
 
             this.increasedLoadedComponents();
@@ -116,8 +123,8 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
         notify(state) {
             try {
                 if (get(JSON.parse(window.localStorage.getItem(APP)), 'DEBUG')) {
-                    console.groupCollapsed('[Module][%s][%s][Component][%s]', chunkName, state, componentName);
-                    console.log('[The total count imports of the components from the chunk %d on the screen]', this.getLoadedComponentsCount(componentName));
+                    console.groupCollapsed('[Module][%s][%s][Component][%s]', chunk, state, component);
+                    console.log('[The total count imports of the components from the chunk %d on the screen]', this.getLoadedComponentsCount(component));
                     console.groupEnd();
                 }
             } catch (e) {
@@ -126,15 +133,15 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
         }
 
         loadModule() {
-            const isModuleLoaded = this.PATHS.APP[chunkName];
+            const isModuleLoaded = this.PATHS.APP[chunk];
 
             if (!isModuleLoaded) {
-                this.PATHS.APP[chunkName] = new Promise((resolve, reject) => {
+                this.PATHS.APP[chunk] = new Promise((resolve, reject) => {
                     this.resolve = resolve;
                 });
 
-                this.loadFile({ type: 'link', url: `${server}/css/${chunkName}.css`});
-                this.loadFile({ type: 'script', url: `${server}/js/${chunkName}.js`, onLoad: () => {
+                this.loadFile({ type: 'link', url: `${server}/css/${chunk}.css`});
+                this.loadFile({ type: 'script', url: `${server}/js/${chunk}.js`, onLoad: () => {
                     this.mountLoadedComponent();
                 }});
             }
@@ -146,17 +153,17 @@ export const loadModule = (chunkName, { server = STATIC_SERVER, destroyOnUnmount
             const canBeDestroyed = destroyOnUnmount && !hasLoadedComponents;
 
             if (canBeDestroyed) {
-                const scriptEl = document.getElementById(`__${chunkName}-script__`);
-                const linkEl = document.getElementById(`__${chunkName}-link__`);
+                const scriptEl = document.getElementById(`__${chunk}-script__`);
+                const linkEl = document.getElementById(`__${chunk}-link__`);
 
                 scriptEl && scriptEl.remove();
                 linkEl && linkEl.remove();
 
-                delete this.PATHS.APP[COMPONENTS_COUNT][chunkName];
-                delete this.PATHS.APP[chunkName];
+                delete this.PATHS.APP[COMPONENTS_COUNT][chunk];
+                delete this.PATHS.APP[chunk];
 
                 if (store[ASYNC_REDUCERS]) {
-                    delete store[ASYNC_REDUCERS][chunkName];
+                    delete store[ASYNC_REDUCERS][chunk];
                 }
 
                 this.notify('Cleared');
