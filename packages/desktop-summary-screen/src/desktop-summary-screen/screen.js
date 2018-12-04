@@ -1,20 +1,34 @@
-import { PureComponent } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import { loadModule, MS_NAMES } from 'core';
-import styles from './screen.scss';
 
-const TaskSelector = loadModule(MS_NAMES.TASK_SELECTOR);
-const Button = loadModule(MS_NAMES.COMPONENTS, { componentName: 'Button' });
+import { increment, decrement } from './actions.js';
 
-class DesktopSummaryScreen extends PureComponent {
+const Counter = loadModule(MS_NAMES.COMPONENTS);
+
+class DesktopSummaryScreen extends React.Component {
     render() {
-      return (
-          <div className={styles.root}>
-              <h1>Desktop Summary</h1>
-              <TaskSelector />
-              <Button>desktop summary button</Button>
-          </div>
-      );
+        return (
+            <div>
+                <h2>Desktop Summary</h2>
+                <TaskSelector />
+
+                <button onClick={this.props.decrement}>-</button>
+                <span>{this.props.count}</span>
+                <button onClick={this.props.increment}>+</button>
+
+                <Counter />
+            </div>
+        )
     }
 }
 
-export default DesktopSummaryScreen;
+function mapStateToProps(state) {
+    console.log("==> ", state);
+
+    return {
+        count: state
+    };
+}
+
+export default connect(mapStateToProps, { increment, decrement })(DesktopSummaryScreen);

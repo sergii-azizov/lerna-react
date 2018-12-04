@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("reactRedux"), require("connectedReactRouter"), require("core"), require("React"), require("ReactDOM"), require("reactRouterDom"));
+		module.exports = factory(require("connectedReactRouter"), require("core"), require("React"), require("ReactDOM"), require("reactRedux"), require("reactRouterDom"));
 	else if(typeof define === 'function' && define.amd)
-		define("portal", ["reactRedux", "connectedReactRouter", "core", "React", "ReactDOM", "reactRouterDom"], factory);
+		define("portal", ["connectedReactRouter", "core", "React", "ReactDOM", "reactRedux", "reactRouterDom"], factory);
 	else if(typeof exports === 'object')
-		exports["portal"] = factory(require("reactRedux"), require("connectedReactRouter"), require("core"), require("React"), require("ReactDOM"), require("reactRouterDom"));
+		exports["portal"] = factory(require("connectedReactRouter"), require("core"), require("React"), require("ReactDOM"), require("reactRedux"), require("reactRouterDom"));
 	else
-		root["portal"] = factory(root["reactRedux"], root["connectedReactRouter"], root["core"], root["React"], root["ReactDOM"], root["reactRouterDom"]);
-})(window.__APP__, function(__WEBPACK_EXTERNAL_MODULE_react_redux__, __WEBPACK_EXTERNAL_MODULE_connected_react_router__, __WEBPACK_EXTERNAL_MODULE_core__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_react_dom__, __WEBPACK_EXTERNAL_MODULE_react_router_dom__) {
+		root["portal"] = factory(root["connectedReactRouter"], root["core"], root["React"], root["ReactDOM"], root["reactRedux"], root["reactRouterDom"]);
+})(window.__APP__, function(__WEBPACK_EXTERNAL_MODULE_connected_react_router__, __WEBPACK_EXTERNAL_MODULE_core__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_react_dom__, __WEBPACK_EXTERNAL_MODULE_react_redux__, __WEBPACK_EXTERNAL_MODULE_react_router_dom__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
