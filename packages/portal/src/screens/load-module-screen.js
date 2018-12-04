@@ -1,11 +1,15 @@
 import { Fragment } from "react";
 import { loadModule, MS_NAMES } from 'core';
 
-const Button = loadModule(MS_NAMES.COMPONENTS, { componentName: 'Button', destroyOnUnmount: true, loadingComponent: () => <div>loading</div> });
+const Counter = loadModule(MS_NAMES.COMPONENTS);
+const Counter1 = loadModule(MS_NAMES.COMPONENTS);
+const Counter2 = loadModule(MS_NAMES.COMPONENTS);
 
 export default props => (
     <Fragment>
         <h2>Load Module</h2>
-        <Button>Button</Button>
+        <Counter />
+        <Counter1 />
+        <Counter2 />
     </Fragment>
 );
