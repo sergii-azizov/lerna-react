@@ -7,6 +7,7 @@
 - [X] Implement feature toggle
 - [X] Optimize load flow and recalculation
 - [X] Implement ability to destroy Packages
+- [X] Add Server
 - [ ] Implement CI/CD process
 - [ ] Design activity diagrams
 - [ ] Unit tests 
