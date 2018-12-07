@@ -2,11 +2,11 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define("vendors", [], factory);
+		define("vendor", [], factory);
 	else if(typeof exports === 'object')
-		exports["vendors"] = factory();
+		exports["vendor"] = factory();
 	else
-		root["vendors"] = factory();
+		root["vendor"] = factory();
 })(window.__APP__, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -104,8 +104,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, exports) {
 
 module.exports = {
-    APP: '__APP__',
-    COMPONENTS_COUNT: "LOADED_COMPONENTS_COUNT"
+    APP: '__APP__'
 };
 
 
@@ -49753,4 +49752,4 @@ window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__["APP"]].lodash = _
 
 /******/ });
 });
-//# sourceMappingURL=vendors.js.map
+//# sourceMappingURL=vendor.js.map

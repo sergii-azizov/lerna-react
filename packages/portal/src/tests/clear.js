@@ -1,6 +1,6 @@
 import { Fragment, PureComponent } from "react";
 
-export default class Clear extends PureComponent {
+export default class ClearScreen extends PureComponent {
     render() {
         return (
             <Fragment>

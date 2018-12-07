@@ -1,16 +1,16 @@
 import { Fragment, PureComponent } from "react";
-import { loadModule, MS_NAMES } from 'core';
+import { asyncImportComponent, PACKAGE_NAMES } from 'core';
 
-const Counter = loadModule(MS_NAMES.COMPONENTS, { loadingComponent: () => <div>12312313123</div>});
-const Button = loadModule(MS_NAMES.COMPONENTS, { component: 'Button'});
-const Button1 = loadModule(MS_NAMES.COMPONENTS, { component: 'Button'});
-const Button2 = loadModule(MS_NAMES.COMPONENTS, { component: 'Button'});
-const Button3 = loadModule(MS_NAMES.COMPONENTS, { component: 'Button'});
-const Button4 = loadModule(MS_NAMES.COMPONENTS, { component: 'Button'});
-const Button5 = loadModule(MS_NAMES.COMPONENTS, { component: 'Button'});
-const Button6 = loadModule(MS_NAMES.COMPONENTS, { component: 'Button'});
+const Counter = asyncImportComponent(PACKAGE_NAMES.components, { component: 'Counter', loadingComponent: <div>12312313123</div>});
+const Button = asyncImportComponent(PACKAGE_NAMES.components, { component: 'Button'});
+const Button1 = asyncImportComponent(PACKAGE_NAMES.components, { component: 'Button'});
+const Button2 = asyncImportComponent(PACKAGE_NAMES.components, { component: 'Button'});
+const Button3 = asyncImportComponent(PACKAGE_NAMES.components, { component: 'Button'});
+const Button4 = asyncImportComponent(PACKAGE_NAMES.components, { component: 'Button'});
+const Button5 = asyncImportComponent(PACKAGE_NAMES.components, { component: 'Button'});
+const Button6 = asyncImportComponent(PACKAGE_NAMES.components, { component: 'Button'});
 
-export default class LoadModule extends PureComponent {
+export default class LoadModuleScreen extends PureComponent {
     render() {
         return (
             <Fragment>

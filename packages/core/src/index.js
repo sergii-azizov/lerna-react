@@ -1,3 +1,5 @@
-export { loadModule, MS_NAMES } from './load-module';
-export { withRender } from './shared/with-render';
-export { store, history, createReducer } from './shared/store';
+export { asyncImportComponent } from './async-import-component';
+export { asyncImport } from './async-import';
+export { PACKAGE_NAMES } from './constants';
+export { withRender } from './with-render';
+export { store, history, createReducer } from './store';

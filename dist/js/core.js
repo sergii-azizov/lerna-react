@@ -104,8 +104,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, exports) {
 
 module.exports = {
-    APP: '__APP__',
-    COMPONENTS_COUNT: "LOADED_COMPONENTS_COUNT"
+    APP: '__APP__'
 };
 
 
@@ -1017,87 +1016,199 @@ function valueEqual(a, b) {
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/*! exports provided: loadModule, MS_NAMES, withRender, store, history, createReducer */
+/***/ "./src/async-import-component.js":
+/*!***************************************!*\
+  !*** ./src/async-import-component.js ***!
+  \***************************************/
+/*! exports provided: asyncImportComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _load_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./load-module */ "./src/load-module/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "loadModule", function() { return _load_module__WEBPACK_IMPORTED_MODULE_0__["loadModule"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MS_NAMES", function() { return _load_module__WEBPACK_IMPORTED_MODULE_0__["MS_NAMES"]; });
-
-/* harmony import */ var _shared_with_render__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shared/with-render */ "./src/shared/with-render/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "withRender", function() { return _shared_with_render__WEBPACK_IMPORTED_MODULE_1__["withRender"]; });
-
-/* harmony import */ var _shared_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shared/store */ "./src/shared/store/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "store", function() { return _shared_store__WEBPACK_IMPORTED_MODULE_2__["store"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "history", function() { return _shared_store__WEBPACK_IMPORTED_MODULE_2__["history"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createReducer", function() { return _shared_store__WEBPACK_IMPORTED_MODULE_2__["createReducer"]; });
-
-
-
-
-
-/***/ }),
-
-/***/ "./src/load-module/constants.js":
-/*!**************************************!*\
-  !*** ./src/load-module/constants.js ***!
-  \**************************************/
-/*! exports provided: STATIC_SERVER, MS_NAMES */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "STATIC_SERVER", function() { return STATIC_SERVER; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MS_NAMES", function() { return MS_NAMES; });
-/* harmony import */ var _configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../configs/namespace.config */ "../../configs/namespace.config.js");
-/* harmony import */ var _configs_namespace_config__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__);
-
-var STATIC_SERVERS = {
-  DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/b50a0efc0516f3c42e1dada39cf25259d3b624a2/dist'
-};
-var STATIC_SERVER = window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__["APP"]].STATIC_SERVER = window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__["APP"].STATIC_SERVER] || STATIC_SERVERS.DT;
-var MS_NAMES = window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_0__["APP"]].MS_NAMES = {
-  PORTAL: 'portal',
-  COMPONENTS: 'components',
-  DESKTOP_SUMMARY_SCREEN: 'desktop-summary-screen',
-  TASK_SELECTOR: 'task-selector',
-  SCRIPTING: 'scripting',
-  SEQUENCE: 'sequence'
-};
-
-
-/***/ }),
-
-/***/ "./src/load-module/hoc.js":
-/*!********************************!*\
-  !*** ./src/load-module/hoc.js ***!
-  \********************************/
-/*! exports provided: loadModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadModule", function() { return loadModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "asyncImportComponent", function() { return asyncImportComponent; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "prop-types");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "lodash");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../configs/namespace.config */ "../../configs/namespace.config.js");
+/* harmony import */ var _configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../configs/namespace.config */ "../../configs/namespace.config.js");
 /* harmony import */ var _configs_namespace_config__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../index */ "./src/index.js");
-/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./constants.js */ "./src/load-module/constants.js");
+/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./constants.js */ "./src/constants.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helpers */ "./src/helpers.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+var head = document.getElementsByTagName('head')[0];
+var asyncImportComponent = function asyncImportComponent(packageName) {
+  var configs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  if (!packageName) return function () {
+    return null;
+  };
+  var _configs$server = configs.server,
+      server = _configs$server === void 0 ? _constants_js__WEBPACK_IMPORTED_MODULE_4__["STATIC_SERVER"] : _configs$server,
+      _configs$component = configs.component,
+      component = _configs$component === void 0 ? 'default' : _configs$component,
+      _configs$destroyOnUnm = configs.destroyOnUnmount,
+      destroyOnUnmount = _configs$destroyOnUnm === void 0 ? false : _configs$destroyOnUnm,
+      _configs$loadingCompo = configs.loadingComponent,
+      loadingComponent = _configs$loadingCompo === void 0 ? null : _configs$loadingCompo,
+      _configs$reducer = configs.reducer,
+      reducer = _configs$reducer === void 0 ? 'rootReducer' : _configs$reducer;
+
+  var asyncImportComponent =
+  /*#__PURE__*/
+  function (_PureComponent) {
+    _inherits(asyncImportComponent, _PureComponent);
+
+    function asyncImportComponent(props) {
+      var _this;
+
+      _classCallCheck(this, asyncImportComponent);
+
+      _this = _possibleConstructorReturn(this, _getPrototypeOf(asyncImportComponent).call(this, props));
+
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "loadingPackage", function (packageName) {
+        Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getLoadPackage"])(packageName).then(function () {
+          _this.setState({
+            LoadedComponent: Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getLoadPackage"])([packageName, component])
+          });
+
+          _this.mountLoadedComponent(packageName, _constants_js__WEBPACK_IMPORTED_MODULE_4__["PACKAGE_STATUSES"].FROM_CACHE);
+        });
+      });
+
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "mountLoadedComponent", function (packageName, fromCache) {
+        Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["injectAsyncReducer"])(packageName, reducer);
+
+        if (!fromCache) {
+          _this.resolve && _this.resolve();
+
+          _this.setState({
+            LoadedComponent: Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getLoadPackage"])([packageName, component])
+          });
+        }
+
+        Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["increasedLoadedComponents"])(packageName, component);
+        Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["notify"])(packageName, component, fromCache || _constants_js__WEBPACK_IMPORTED_MODULE_4__["PACKAGE_STATUSES"].LOADED);
+      });
+
+      _this.init();
+
+      return _this;
+    }
+
+    _createClass(asyncImportComponent, [{
+      key: "init",
+      value: function init() {
+        var LoadedComponent = Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getLoadPackage"])([packageName, component]);
+        var loadingPackage = Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getLoadPackage"])([packageName, 'then']);
+        this.state = {
+          LoadedComponent: LoadedComponent
+        };
+
+        if (loadingPackage) {
+          this.loadingPackage(packageName);
+        } else if (LoadedComponent) {
+          this.mountLoadedComponent(packageName, _constants_js__WEBPACK_IMPORTED_MODULE_4__["PACKAGE_STATUSES"].FROM_CACHE);
+        } else if (!LoadedComponent) {
+          this.loadPackage(packageName);
+        }
+      }
+    }, {
+      key: "loadPackage",
+      value: function loadPackage(packageName) {
+        var _this2 = this;
+
+        var isModuleLoaded = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(window.APP, [packageName]);
+
+        if (!isModuleLoaded) {
+          Object(lodash__WEBPACK_IMPORTED_MODULE_2__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["APP"]], [packageName], new Promise(function (resolve, reject) {
+            _this2.resolve = resolve;
+          }));
+          Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["loadFile"])({
+            inject: head,
+            type: 'link',
+            url: "".concat(server, "/css/").concat(packageName, ".css"),
+            packageName: packageName
+          });
+          Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["loadFile"])({
+            inject: head,
+            type: 'script',
+            url: "".concat(server, "/js/").concat(packageName, ".js"),
+            packageName: packageName
+          }).then(function () {
+            _this2.mountLoadedComponent(packageName);
+          });
+        }
+      }
+    }, {
+      key: "componentWillUnmount",
+      value: function componentWillUnmount() {
+        Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["destroy"])(packageName, component, destroyOnUnmount);
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var LoadedComponent = this.state.LoadedComponent;
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, LoadedComponent ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(LoadedComponent, this.props) : loadingComponent);
+      }
+    }]);
+
+    return asyncImportComponent;
+  }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+
+  return asyncImportComponent;
+};
+
+/***/ }),
+
+/***/ "./src/async-import.js":
+/*!*****************************!*\
+  !*** ./src/async-import.js ***!
+  \*****************************/
+/*! exports provided: asyncImport */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "asyncImport", function() { return asyncImport; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "prop-types");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../configs/namespace.config */ "../../configs/namespace.config.js");
+/* harmony import */ var _configs_namespace_config__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./constants.js */ "./src/constants.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helpers */ "./src/helpers.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
@@ -1126,267 +1237,353 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var head = document.getElementsByTagName('head')[0];
-var TOTAL = 'total';
-var FROM_CACHE = 'From Cache';
-var LOADED = 'Loaded';
-var ASYNC_REDUCERS = 'asyncReducers';
-var loadModule = function loadModule(chunk) {
-  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-      _ref$server = _ref.server,
-      server = _ref$server === void 0 ? _constants_js__WEBPACK_IMPORTED_MODULE_5__["STATIC_SERVER"] : _ref$server,
-      _ref$destroyOnUnmount = _ref.destroyOnUnmount,
-      destroyOnUnmount = _ref$destroyOnUnmount === void 0 ? true : _ref$destroyOnUnmount,
-      _ref$loadingComponent = _ref.loadingComponent,
-      loadingComponent = _ref$loadingComponent === void 0 ? null : _ref$loadingComponent,
-      _ref$component = _ref.component,
-      component = _ref$component === void 0 ? 'default' : _ref$component,
-      _ref$reducer = _ref.reducer,
-      reducer = _ref$reducer === void 0 ? 'rootReducers' : _ref$reducer;
+var asyncImport = function asyncImport(packages) {
+  var configs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  return function (WrappedComponent) {
+    var _configs$server = configs.server,
+        server = _configs$server === void 0 ? _constants_js__WEBPACK_IMPORTED_MODULE_4__["STATIC_SERVER"] : _configs$server,
+        _configs$destroyOnUnm = configs.destroyOnUnmount,
+        destroyOnUnmount = _configs$destroyOnUnm === void 0 ? false : _configs$destroyOnUnm,
+        _configs$reducer = configs.reducer,
+        reducer = _configs$reducer === void 0 ? 'rootReducer' : _configs$reducer,
+        _configs$withConnect = configs.withConnect,
+        withConnect = _configs$withConnect === void 0 ? null : _configs$withConnect;
+    var availablePackageNames = Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getAvailablePackageNames"])(packages);
 
-  if (!chunk) return function () {
-    return null;
-  };
-
-  var LoadModule =
-  /*#__PURE__*/
-  function (_PureComponent) {
-    _inherits(LoadModule, _PureComponent);
-
-    function LoadModule(props) {
-      var _this;
-
-      _classCallCheck(this, LoadModule);
-
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(LoadModule).call(this, props));
-
-      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "PATHS", {
-        APP: window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["APP"]],
-        NAME: [chunk, component],
-        COUNT: [_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["COMPONENTS_COUNT"], chunk],
-        REDUCER_CACHE: [ASYNC_REDUCERS, chunk],
-        REDUCER: [chunk, reducer]
-      });
-
-      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleLoad", function () {
-        _this.setState({
-          LoadedComponent: _this.getLoadedComponent()
-        });
-
-        if (callback) {
-          callback(_this.PATHS.APP[chunk]);
-        }
-      });
-
-      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "mountLoadedComponent", function (fromCache) {
-        _this.injectAsyncReducer();
-
-        if (!fromCache) {
-          _this.resolve && _this.resolve();
-
-          _this.this.handleLoad();
-        }
-
-        _this.increasedLoadedComponents();
-
-        _this.notify(fromCache || LOADED);
-      });
-
-      _this.init();
-
-      return _this;
+    if (!availablePackageNames) {
+      console.groupCollapsed('No Available Packages for Loading');
+      console.log(packages);
+      console.groupEnd();
+      return WrappedComponent;
     }
 
-    _createClass(LoadModule, [{
-      key: "init",
-      value: function init() {
-        var _this2 = this;
+    var LoadPackages =
+    /*#__PURE__*/
+    function (_PureComponent) {
+      _inherits(LoadPackages, _PureComponent);
 
-        var LoadedComponent = this.getLoadedComponent() || loadingComponent;
-        var isModuleLoading = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, [chunk, 'then']);
-        this.state = {
-          LoadedComponent: LoadedComponent
-        };
+      function LoadPackages(props) {
+        var _this;
 
-        if (isModuleLoading) {
-          this.PATHS.APP[chunk].then(function () {
-            _this2.handleLoad();
+        _classCallCheck(this, LoadPackages);
 
-            _this2.mountLoadedComponent(FROM_CACHE);
+        _this = _possibleConstructorReturn(this, _getPrototypeOf(LoadPackages).call(this, props));
+
+        _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "loadingPackage", function (packageName) {
+          Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getLoadPackage"])(packageName).then(function () {
+            _this.setState(_defineProperty({}, packageName, Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getLoadPackage"])(packageName)));
+
+            _this.mountLoadedComponent(packageName, _constants_js__WEBPACK_IMPORTED_MODULE_4__["PACKAGE_STATUSES"].FROM_CACHE);
           });
-        } else if (LoadedComponent) {
-          this.mountLoadedComponent(FROM_CACHE);
-        } else if (!LoadedComponent) {
-          this.loadModule();
-        }
-      }
-    }, {
-      key: "getLoadedComponent",
-      value: function getLoadedComponent() {
-        return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, this.PATHS.NAME);
-      }
-    }, {
-      key: "loadFile",
-      value: function loadFile(_ref2) {
-        var url = _ref2.url,
-            type = _ref2.type,
-            onLoad = _ref2.onLoad;
-        var el = document.createElement(type);
+        });
 
-        if (type === 'script') {
-          el.async = true;
-          el.src = url;
-        }
+        _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "mountLoadedComponent", function (packageName, fromCache) {
+          Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["injectAsyncReducer"])(packageName, reducer);
 
-        el.onload = onLoad;
-        el.id = "__".concat(chunk, "-").concat(type, "__");
+          if (!fromCache) {
+            _this.resolve && _this.resolve();
 
-        if (type === 'link') {
-          el.rel = 'stylesheet';
-          el.type = 'text/css';
-          el.href = url;
-        }
-
-        head.insertBefore(el, head.lastChild);
-      }
-    }, {
-      key: "getLoadedComponentsCount",
-      value: function getLoadedComponentsCount(name) {
-        return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, this.PATHS.COUNT.concat([name]), 0);
-      }
-    }, {
-      key: "increasedLoadedComponents",
-      value: function increasedLoadedComponents() {
-        var _objectSpread2;
-
-        Object(lodash__WEBPACK_IMPORTED_MODULE_2__["set"])(this.PATHS.APP, this.PATHS.COUNT, _objectSpread({}, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, this.PATHS.COUNT), (_objectSpread2 = {}, _defineProperty(_objectSpread2, component, this.getLoadedComponentsCount(component) + 1), _defineProperty(_objectSpread2, TOTAL, this.getLoadedComponentsCount(TOTAL) + 1), _objectSpread2)));
-      }
-    }, {
-      key: "decreasedLoadedComponents",
-      value: function decreasedLoadedComponents() {
-        var _objectSpread3;
-
-        Object(lodash__WEBPACK_IMPORTED_MODULE_2__["set"])(this.PATHS.APP, this.PATHS.COUNT, _objectSpread({}, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, this.PATHS.COUNT), (_objectSpread3 = {}, _defineProperty(_objectSpread3, component, this.getLoadedComponentsCount(component) - 1), _defineProperty(_objectSpread3, TOTAL, this.getLoadedComponentsCount(TOTAL) - 1), _objectSpread3)));
-      }
-    }, {
-      key: "injectAsyncReducer",
-      value: function injectAsyncReducer() {
-        var asyncReducers = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this.PATHS.APP, this.PATHS.REDUCER);
-
-        if (asyncReducers && !Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(_index__WEBPACK_IMPORTED_MODULE_4__["store"], this.PATHS.REDUCER_CACHE)) {
-          Object(lodash__WEBPACK_IMPORTED_MODULE_2__["set"])(_index__WEBPACK_IMPORTED_MODULE_4__["store"], this.PATHS.REDUCER_CACHE, asyncReducers);
-          _index__WEBPACK_IMPORTED_MODULE_4__["store"].replaceReducer(Object(_index__WEBPACK_IMPORTED_MODULE_4__["createReducer"])(_index__WEBPACK_IMPORTED_MODULE_4__["store"][ASYNC_REDUCERS]));
-        }
-      }
-    }, {
-      key: "notify",
-      value: function notify(state) {
-        try {
-          if (Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(JSON.parse(window.localStorage.getItem(_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["APP"])), 'DEBUG')) {
-            console.groupCollapsed('[Module][%s][%s][Component][%s]', chunk, state, component);
-            console.log('[The total count imports of the components from the chunk %d on the screen]', this.getLoadedComponentsCount(component));
-            console.groupEnd();
+            _this.setState(_defineProperty({}, packageName, Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getLoadPackage"])(packageName)));
           }
-        } catch (e) {
-          console.error(e);
-        }
+
+          packages[packageName].forEach(function (module) {
+            Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["increasedLoadedComponents"])(packageName, module);
+            Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["notify"])(packageName, module, fromCache || _constants_js__WEBPACK_IMPORTED_MODULE_4__["PACKAGE_STATUSES"].LOADED);
+          });
+        });
+
+        _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "packagesLoaded", function () {
+          return availablePackageNames.every(function (packageName) {
+            return _this.state[packageName] && !_this.state[packageName].then;
+          });
+        });
+
+        _this.state = _this.getInitialState();
+        return _this;
       }
-    }, {
-      key: "loadModule",
-      value: function loadModule() {
-        var _this3 = this;
 
-        var isModuleLoaded = this.PATHS.APP[chunk];
+      _createClass(LoadPackages, [{
+        key: "getInitialState",
+        value: function getInitialState() {
+          var _this2 = this;
 
-        if (!isModuleLoaded) {
-          this.PATHS.APP[chunk] = new Promise(function (resolve, reject) {
-            _this3.resolve = resolve;
-          });
-          this.loadFile({
-            type: 'link',
-            url: "".concat(server, "/css/").concat(chunk, ".css")
-          });
-          this.loadFile({
-            type: 'script',
-            url: "".concat(server, "/js/").concat(chunk, ".js"),
-            onLoad: function onLoad() {
-              _this3.mountLoadedComponent();
+          return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["reduce"])(availablePackageNames, function (state, packageName) {
+            var LoadedPackage = Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getLoadPackage"])(packageName);
+            var loadingPackage = Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getLoadPackage"])([packageName, 'then']);
+
+            if (loadingPackage) {
+              _this2.loadingPackage(packageName);
+            } else if (LoadedPackage) {
+              _this2.mountLoadedComponent(packageName, _constants_js__WEBPACK_IMPORTED_MODULE_4__["PACKAGE_STATUSES"].FROM_CACHE);
+            } else if (!LoadedPackage) {
+              _this2.loadPackage(packageName);
             }
+
+            return _objectSpread({}, state, _defineProperty({}, packageName, LoadedPackage));
+          }, {});
+        }
+      }, {
+        key: "loadPackage",
+        value: function loadPackage(packageName) {
+          var _this3 = this;
+
+          var isModuleLoaded = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(window.APP, [packageName]);
+
+          if (!isModuleLoaded) {
+            Object(lodash__WEBPACK_IMPORTED_MODULE_2__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["APP"]], [packageName], new Promise(function (resolve, reject) {
+              _this3.resolve = resolve;
+            }));
+            Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["loadFile"])({
+              inject: head,
+              type: 'link',
+              url: "".concat(server, "/css/").concat(packageName, ".css"),
+              packageName: packageName
+            });
+            Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["loadFile"])({
+              inject: head,
+              type: 'script',
+              url: "".concat(server, "/js/").concat(packageName, ".js"),
+              packageName: packageName
+            }).then(function () {
+              _this3.mountLoadedComponent(packageName);
+            });
+          }
+        }
+      }, {
+        key: "componentWillUnmount",
+        value: function componentWillUnmount() {
+          availablePackageNames.forEach(function (packageName) {
+            packages[packageName].forEach(function (module) {
+              Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["destroy"])(packageName, module, destroyOnUnmount);
+            });
           });
         }
-      }
-    }, {
-      key: "componentWillUnmount",
-      value: function componentWillUnmount() {
-        this.decreasedLoadedComponents();
-        var hasLoadedComponents = this.getLoadedComponentsCount(TOTAL) !== 0;
-        var canBeDestroyed = destroyOnUnmount && !hasLoadedComponents;
-
-        if (canBeDestroyed) {
-          var scriptEl = document.getElementById("__".concat(chunk, "-script__"));
-          var linkEl = document.getElementById("__".concat(chunk, "-link__"));
-          scriptEl && scriptEl.remove();
-          linkEl && linkEl.remove();
-          delete this.PATHS.APP[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_3__["COMPONENTS_COUNT"]][chunk];
-          delete this.PATHS.APP[chunk];
-
-          if (_index__WEBPACK_IMPORTED_MODULE_4__["store"][ASYNC_REDUCERS]) {
-            delete _index__WEBPACK_IMPORTED_MODULE_4__["store"][ASYNC_REDUCERS][chunk];
-          }
-
-          this.notify('Cleared');
+      }, {
+        key: "render",
+        value: function render() {
+          var packagesLoaded = this.packagesLoaded();
+          var Component = withConnect && packagesLoaded ? withConnect(this.state)(WrappedComponent) : WrappedComponent;
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, packagesLoaded ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, _extends({
+            loading: !packagesLoaded
+          }, this.state, this.props)) : null);
         }
-      }
-    }, {
-      key: "render",
-      value: function render() {
-        var LoadedComponent = this.state.LoadedComponent;
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, LoadedComponent && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(LoadedComponent, this.props));
-      }
-    }]);
+      }]);
 
-    return LoadModule;
-  }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+      return LoadPackages;
+    }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 
-  return Object(_index__WEBPACK_IMPORTED_MODULE_4__["withRender"])()(LoadModule);
+    return LoadPackages;
+  };
 };
 
 /***/ }),
 
-/***/ "./src/load-module/index.js":
-/*!**********************************!*\
-  !*** ./src/load-module/index.js ***!
-  \**********************************/
-/*! exports provided: loadModule, MS_NAMES */
+/***/ "./src/constants.js":
+/*!**************************!*\
+  !*** ./src/constants.js ***!
+  \**************************/
+/*! exports provided: STATIC_SERVER, ASYNC_REDUCERS, TOTAL_COUNT, COMPONENTS_COUNT, PACKAGE_NAMES, PACKAGE_STATUSES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _hoc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hoc */ "./src/load-module/hoc.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "loadModule", function() { return _hoc__WEBPACK_IMPORTED_MODULE_0__["loadModule"]; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "STATIC_SERVER", function() { return STATIC_SERVER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ASYNC_REDUCERS", function() { return ASYNC_REDUCERS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOTAL_COUNT", function() { return TOTAL_COUNT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "COMPONENTS_COUNT", function() { return COMPONENTS_COUNT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PACKAGE_NAMES", function() { return PACKAGE_NAMES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PACKAGE_STATUSES", function() { return PACKAGE_STATUSES; });
+var STATIC_SERVERS = {
+  DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/17297edfe9edda30467d34564fc70e27f25eceea/dist/'
+};
+var STATIC_SERVER = STATIC_SERVERS.DT;
+var ASYNC_REDUCERS = 'asyncReducers';
+var TOTAL_COUNT = 'TOTAL_COUNT';
+var COMPONENTS_COUNT = 'LOADED_COMPONENTS_COUNT';
+var PACKAGE_NAMES = {
+  portal: 'portal',
+  components: 'components',
+  desktopSummaryScreen: 'desktopSummaryScreen',
+  taskSelector: 'taskSelector',
+  scripting: 'scripting',
+  sequence: 'sequence'
+};
+var PACKAGE_STATUSES = {
+  FROM_CACHE: 'From Cache',
+  LOADED: 'Loaded'
+};
 
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ "./src/load-module/constants.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MS_NAMES", function() { return _constants__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"]; });
+/***/ }),
+
+/***/ "./src/helpers.js":
+/*!************************!*\
+  !*** ./src/helpers.js ***!
+  \************************/
+/*! exports provided: getAvailablePackageNames, getLoadPackage, loadFile, getImportCount, increasedLoadedComponents, decreasedLoadedComponents, injectAsyncReducer, notify, destroy */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAvailablePackageNames", function() { return getAvailablePackageNames; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLoadPackage", function() { return getLoadPackage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadFile", function() { return loadFile; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getImportCount", function() { return getImportCount; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "increasedLoadedComponents", function() { return increasedLoadedComponents; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decreasedLoadedComponents", function() { return decreasedLoadedComponents; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "injectAsyncReducer", function() { return injectAsyncReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "notify", function() { return notify; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroy", function() { return destroy; });
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../configs/namespace.config */ "../../configs/namespace.config.js");
+/* harmony import */ var _configs_namespace_config__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./src/constants.js");
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index */ "./src/index.js");
+
+
+
+
+var getAvailablePackageNames = function getAvailablePackageNames(packages) {
+  return Object.keys(packages).filter(function (packageName) {
+    return _constants__WEBPACK_IMPORTED_MODULE_2__["PACKAGE_NAMES"][packageName];
+  });
+};
+var getLoadPackage = function getLoadPackage(path) {
+  return Object(lodash__WEBPACK_IMPORTED_MODULE_0__["get"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], path);
+};
+var loadFile = function loadFile(_ref) {
+  var inject = _ref.inject,
+      url = _ref.url,
+      type = _ref.type,
+      onLoad = _ref.onLoad,
+      packageName = _ref.packageName;
+  var resolve = null;
+  var el = document.createElement(type);
+  var promise = new Promise(function (res) {
+    resolve = res;
+  });
+
+  if (type === 'script') {
+    el.async = true;
+    el.src = url;
+  }
+
+  el.onload = resolve;
+  el.id = "__".concat(packageName, "-").concat(type, "__");
+
+  if (type === 'link') {
+    el.rel = 'stylesheet';
+    el.type = 'text/css';
+    el.href = url;
+  }
+
+  inject.insertBefore(el, inject.lastChild);
+  return promise;
+};
+var getImportCount = function getImportCount(packageName, module) {
+  return Object(lodash__WEBPACK_IMPORTED_MODULE_0__["get"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, module], 0);
+};
+var increasedLoadedComponents = function increasedLoadedComponents(packageName, module) {
+  Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, module], getImportCount(packageName, module) + 1);
+  Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_COUNT"]], getImportCount(packageName, _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_COUNT"]) + 1);
+};
+var decreasedLoadedComponents = function decreasedLoadedComponents(packageName, module) {
+  Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, module], getImportCount(packageName, module) - 1);
+  Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_COUNT"]], getImportCount(packageName, _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_COUNT"]) - 1);
+};
+var injectAsyncReducer = function injectAsyncReducer(packageName, reducer) {
+  var asyncReducers = Object(lodash__WEBPACK_IMPORTED_MODULE_0__["get"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [packageName, reducer]);
+
+  if (asyncReducers && !Object(lodash__WEBPACK_IMPORTED_MODULE_0__["get"])(_index__WEBPACK_IMPORTED_MODULE_3__["store"], [_constants__WEBPACK_IMPORTED_MODULE_2__["ASYNC_REDUCERS"], packageName])) {
+    Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(_index__WEBPACK_IMPORTED_MODULE_3__["store"], [_constants__WEBPACK_IMPORTED_MODULE_2__["ASYNC_REDUCERS"], packageName], asyncReducers);
+    _index__WEBPACK_IMPORTED_MODULE_3__["store"].replaceReducer(Object(_index__WEBPACK_IMPORTED_MODULE_3__["createReducer"])(_index__WEBPACK_IMPORTED_MODULE_3__["store"][_constants__WEBPACK_IMPORTED_MODULE_2__["ASYNC_REDUCERS"]]));
+  }
+};
+var notify = function notify(packageName, module, state) {
+  try {
+    if (Object(lodash__WEBPACK_IMPORTED_MODULE_0__["get"])(JSON.parse(window.localStorage.getItem(_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"])), 'DEBUG')) {
+      console.groupCollapsed('[Module][%s][%s][Component][%s]', packageName, state, module);
+      console.log('[The total count imports of the components from the chunk %d on the screen]', getImportCount(packageName, module));
+      console.groupEnd();
+    }
+  } catch (e) {
+    console.error(e);
+  }
+};
+var destroy = function destroy(packageName, module, destroyOnUnmount) {
+  decreasedLoadedComponents(packageName, module);
+  var hasLoadedComponents = getImportCount(packageName, module) !== 0;
+  var canBeDestroyed = destroyOnUnmount && !hasLoadedComponents;
+
+  if (canBeDestroyed) {
+    var scriptEl = document.getElementById("__".concat(packageName, "-script__"));
+    var linkEl = document.getElementById("__".concat(packageName, "-link__"));
+    scriptEl && scriptEl.remove();
+    linkEl && linkEl.remove();
+    delete window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]][_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"]][packageName];
+    delete window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]][packageName];
+
+    if (_index__WEBPACK_IMPORTED_MODULE_3__["store"][_constants__WEBPACK_IMPORTED_MODULE_2__["ASYNC_REDUCERS"]]) {
+      delete _index__WEBPACK_IMPORTED_MODULE_3__["store"][_constants__WEBPACK_IMPORTED_MODULE_2__["ASYNC_REDUCERS"]][packageName];
+    }
+
+    notify('Cleared');
+  }
+};
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! exports provided: asyncImportComponent, asyncImport, PACKAGE_NAMES, withRender, store, history, createReducer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _async_import_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./async-import-component */ "./src/async-import-component.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "asyncImportComponent", function() { return _async_import_component__WEBPACK_IMPORTED_MODULE_0__["asyncImportComponent"]; });
+
+/* harmony import */ var _async_import__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./async-import */ "./src/async-import.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "asyncImport", function() { return _async_import__WEBPACK_IMPORTED_MODULE_1__["asyncImport"]; });
+
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./src/constants.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PACKAGE_NAMES", function() { return _constants__WEBPACK_IMPORTED_MODULE_2__["PACKAGE_NAMES"]; });
+
+/* harmony import */ var _with_render__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./with-render */ "./src/with-render/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "withRender", function() { return _with_render__WEBPACK_IMPORTED_MODULE_3__["withRender"]; });
+
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./src/store/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "store", function() { return _store__WEBPACK_IMPORTED_MODULE_4__["store"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "history", function() { return _store__WEBPACK_IMPORTED_MODULE_4__["history"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createReducer", function() { return _store__WEBPACK_IMPORTED_MODULE_4__["createReducer"]; });
+
+
+
 
 
 
 
 /***/ }),
 
-/***/ "./src/shared/store/index.js":
-/*!***********************************!*\
-  !*** ./src/shared/store/index.js ***!
-  \***********************************/
+/***/ "./src/store/index.js":
+/*!****************************!*\
+  !*** ./src/store/index.js ***!
+  \****************************/
 /*! exports provided: store, history, createReducer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./store */ "./src/shared/store/store.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./store */ "./src/store/store.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "store", function() { return _store__WEBPACK_IMPORTED_MODULE_0__["store"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "history", function() { return _store__WEBPACK_IMPORTED_MODULE_0__["history"]; });
 
-/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers */ "./src/shared/store/reducers.js");
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers */ "./src/store/reducers.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createReducer", function() { return _reducers__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
 
@@ -1394,10 +1591,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/shared/store/reducers.js":
-/*!**************************************!*\
-  !*** ./src/shared/store/reducers.js ***!
-  \**************************************/
+/***/ "./src/store/reducers.js":
+/*!*******************************!*\
+  !*** ./src/store/reducers.js ***!
+  \*******************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1407,7 +1604,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var connected_react_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! connected-react-router */ "connected-react-router");
 /* harmony import */ var connected_react_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(connected_react_router__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store */ "./src/shared/store/store.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store */ "./src/store/store.js");
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1424,10 +1621,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
-/***/ "./src/shared/store/store.js":
-/*!***********************************!*\
-  !*** ./src/shared/store/store.js ***!
-  \***********************************/
+/***/ "./src/store/store.js":
+/*!****************************!*\
+  !*** ./src/store/store.js ***!
+  \****************************/
 /*! exports provided: store, history */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1443,8 +1640,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var connected_react_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(connected_react_router__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux-thunk */ "redux-thunk");
 /* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(redux_thunk__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./reducers */ "./src/shared/store/reducers.js");
-/* harmony import */ var _configs_namespace_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../configs/namespace.config */ "../../configs/namespace.config.js");
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./reducers */ "./src/store/reducers.js");
+/* harmony import */ var _configs_namespace_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../configs/namespace.config */ "../../configs/namespace.config.js");
 /* harmony import */ var _configs_namespace_config__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_configs_namespace_config__WEBPACK_IMPORTED_MODULE_5__);
 
 
@@ -1460,10 +1657,10 @@ var store = window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_5__["APP"]
 
 /***/ }),
 
-/***/ "./src/shared/with-render/hoc.js":
-/*!***************************************!*\
-  !*** ./src/shared/with-render/hoc.js ***!
-  \***************************************/
+/***/ "./src/with-render/hoc.js":
+/*!********************************!*\
+  !*** ./src/with-render/hoc.js ***!
+  \********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1499,16 +1696,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/shared/with-render/index.js":
-/*!*****************************************!*\
-  !*** ./src/shared/with-render/index.js ***!
-  \*****************************************/
+/***/ "./src/with-render/index.js":
+/*!**********************************!*\
+  !*** ./src/with-render/index.js ***!
+  \**********************************/
 /*! exports provided: withRender */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _hoc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hoc */ "./src/shared/with-render/hoc.js");
+/* harmony import */ var _hoc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hoc */ "./src/with-render/hoc.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "withRender", function() { return _hoc__WEBPACK_IMPORTED_MODULE_0__["default"]; });
 
 

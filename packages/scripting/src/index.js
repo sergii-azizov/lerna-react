@@ -1,1 +1,1 @@
-export { default } from './scripting';
+export { Scripting } from './scripting';

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "cross-env NODE_ENV=development node ./server.js",
     "build": "webpack --config ./configs/webpack.config.lib.js",
     "build:dev": "cross-env NODE_ENV=development npm run build",
     "build:prod": "cross-env NODE_ENV=production npm run build",

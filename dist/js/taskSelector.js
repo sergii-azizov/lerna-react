@@ -2,11 +2,11 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("core"), require("React"));
 	else if(typeof define === 'function' && define.amd)
-		define("sequence", ["core", "React"], factory);
+		define("taskSelector", ["core", "React"], factory);
 	else if(typeof exports === 'object')
-		exports["sequence"] = factory(require("core"), require("React"));
+		exports["taskSelector"] = factory(require("core"), require("React"));
 	else
-		root["sequence"] = factory(root["core"], root["React"]);
+		root["taskSelector"] = factory(root["core"], root["React"]);
 })(window.__APP__, function(__WEBPACK_EXTERNAL_MODULE_core__, __WEBPACK_EXTERNAL_MODULE_react__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -105,17 +105,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _sequence__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sequence */ "./src/sequence/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _sequence__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+/* harmony import */ var _task_selector__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./task-selector */ "./src/task-selector/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _task_selector__WEBPACK_IMPORTED_MODULE_0__["default"]; });
 
 
 
 /***/ }),
 
-/***/ "./src/sequence/component.js":
-/*!***********************************!*\
-  !*** ./src/sequence/component.js ***!
-  \***********************************/
+/***/ "./src/task-selector/component.js":
+/*!****************************************!*\
+  !*** ./src/task-selector/component.js ***!
+  \****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -125,7 +125,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ "core");
 /* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./component.scss */ "./src/sequence/component.scss");
+/* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./component.scss */ "./src/task-selector/component.scss");
 /* harmony import */ var _component_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_component_scss__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -148,59 +148,61 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+var Scripting = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].scripting);
+var Sequence = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].sequence);
 var Button = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
   component: 'Button'
 });
 
-var Sequence =
+var TaskSelector =
 /*#__PURE__*/
 function (_PureComponent) {
-  _inherits(Sequence, _PureComponent);
+  _inherits(TaskSelector, _PureComponent);
 
-  function Sequence() {
-    _classCallCheck(this, Sequence);
+  function TaskSelector() {
+    _classCallCheck(this, TaskSelector);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Sequence).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(TaskSelector).apply(this, arguments));
   }
 
-  _createClass(Sequence, [{
+  _createClass(TaskSelector, [{
     key: "render",
     value: function render() {
       return React.createElement("div", {
         className: _component_scss__WEBPACK_IMPORTED_MODULE_2___default.a.root
-      }, React.createElement("h3", null, "Sequence"), React.createElement(Button, null, "sequence button"));
+      }, React.createElement("h2", null, "Task Selector"), React.createElement(Scripting, null), React.createElement(Sequence, null), React.createElement(Button, null, "task selector button"));
     }
   }]);
 
-  return Sequence;
+  return TaskSelector;
 }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(core__WEBPACK_IMPORTED_MODULE_1__["withRender"])()(Sequence));
+/* harmony default export */ __webpack_exports__["default"] = (Object(core__WEBPACK_IMPORTED_MODULE_1__["withRender"])()(TaskSelector));
 
 /***/ }),
 
-/***/ "./src/sequence/component.scss":
-/*!*************************************!*\
-  !*** ./src/sequence/component.scss ***!
-  \*************************************/
+/***/ "./src/task-selector/component.scss":
+/*!******************************************!*\
+  !*** ./src/task-selector/component.scss ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-module.exports = {"root":"src-sequence--sequence-root"};
+module.exports = {"root":"src-task-selector--task-selector-root"};
 
 /***/ }),
 
-/***/ "./src/sequence/index.js":
-/*!*******************************!*\
-  !*** ./src/sequence/index.js ***!
-  \*******************************/
+/***/ "./src/task-selector/index.js":
+/*!************************************!*\
+  !*** ./src/task-selector/index.js ***!
+  \************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component */ "./src/sequence/component.js");
+/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component */ "./src/task-selector/component.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _component__WEBPACK_IMPORTED_MODULE_0__["default"]; });
 
 
@@ -231,4 +233,4 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_react__;
 
 /******/ });
 });
-//# sourceMappingURL=sequence.js.map
+//# sourceMappingURL=taskSelector.js.map

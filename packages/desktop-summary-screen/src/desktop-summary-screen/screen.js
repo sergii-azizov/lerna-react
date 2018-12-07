@@ -1,9 +1,9 @@
 import { PureComponent } from 'react';
-import { loadModule, MS_NAMES } from 'core';
+import { asyncImportComponent, PACKAGE_NAMES } from 'core';
 import styles from './screen.scss';
 
-const TaskSelector = loadModule(MS_NAMES.TASK_SELECTOR);
-const Button = loadModule(MS_NAMES.COMPONENTS, { component: 'Button' });
+const TaskSelector = asyncImportComponent(PACKAGE_NAMES.taskSelector);
+const Button = asyncImportComponent(PACKAGE_NAMES.components, { component: 'Button' });
 
 class DesktopSummaryScreen extends PureComponent {
     render() {

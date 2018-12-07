@@ -1,5 +1,5 @@
 {
-  "name": "vendors",
+  "name": "vendor",
   "version": "0.1.0",
   "private": true,
   "main": "./src/index.js",

@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "clear": "rm -rf dist",
+    "start": "lerna exec --scope portal -- npm start",
     "build": "lerna exec npm run build:dev"
   },
   "dependencies": {
@@ -36,6 +37,7 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.11.1",
+    "express": "^4.16.4",
     "file-loader": "2.0.0",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
@@ -48,7 +50,7 @@
     "url-loader": "1.1.1",
     "webpack": "4.19.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "3.1.9",
+    "webpack-dev-middleware": "^3.4.0",
     "webpack-merge": "^4.1.4"
   }
 }

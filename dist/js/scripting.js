@@ -100,13 +100,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! exports provided: default */
+/*! exports provided: Scripting */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scripting__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scripting */ "./src/scripting/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _scripting__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Scripting", function() { return _scripting__WEBPACK_IMPORTED_MODULE_0__["Scripting"]; });
 
 
 
@@ -148,7 +148,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Button = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
+var Button = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
   component: 'Button'
 });
 
@@ -195,13 +195,13 @@ module.exports = {"root":"src-scripting--scripting-root"};
 /*!********************************!*\
   !*** ./src/scripting/index.js ***!
   \********************************/
-/*! exports provided: default */
+/*! exports provided: Scripting */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component */ "./src/scripting/component.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _component__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Scripting", function() { return _component__WEBPACK_IMPORTED_MODULE_0__["default"]; });
 
 
 

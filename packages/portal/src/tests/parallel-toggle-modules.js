@@ -1,7 +1,7 @@
 import { Fragment, Component } from "react";
-import { loadModule, MS_NAMES } from 'core';
+import { asyncImportComponent, PACKAGE_NAMES } from 'core';
 
-export default class ParallelToggleComponentsMounting extends Component {
+export default class ParallelToggleComponentsMountingScreen extends Component {
     state = {
         Button1: () => <div>loading Button-1</div>,
         Button2: () => <div>loading Button-2</div>,
@@ -10,9 +10,9 @@ export default class ParallelToggleComponentsMounting extends Component {
 
     add = () => {
         this.setState({
-            Button1: loadModule(MS_NAMES.COMPONENTS, { component: 'Button' }),
-            Button2: loadModule(MS_NAMES.COMPONENTS, { component: 'Button' }),
-            Button3: loadModule(MS_NAMES.COMPONENTS, { component: 'Button' })
+            Button1: asyncImportComponent(PACKAGE_NAMES.components, { component: 'Button' }),
+            Button2: asyncImportComponent(PACKAGE_NAMES.components, { component: 'Button' }),
+            Button3: asyncImportComponent(PACKAGE_NAMES.components, { component: 'Button' })
         });
 
         setTimeout(this.remove, 2000);

@@ -1,6 +1,6 @@
 import React from "react";
-import { loadModule, MS_NAMES } from 'core';
+import { asyncImportComponent, PACKAGE_NAMES } from 'core';
 
-const DesktopSummaryScreen = loadModule(MS_NAMES.DESKTOP_SUMMARY_SCREEN);
+const DesktopSummaryScreen = asyncImportComponent(PACKAGE_NAMES.desktopSummaryScreen);
 
 export default props => <DesktopSummaryScreen {...props} />;

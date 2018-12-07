@@ -188,6 +188,24 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/constants.js":
+/*!**************************!*\
+  !*** ./src/constants.js ***!
+  \**************************/
+/*! exports provided: CONST_A, CONST_B, CONST_C */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CONST_A", function() { return CONST_A; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CONST_B", function() { return CONST_B; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CONST_C", function() { return CONST_C; });
+var CONST_A = "A";
+var CONST_B = "B";
+var CONST_C = "C";
+
+/***/ }),
+
 /***/ "./src/counter/actions.js":
 /*!********************************!*\
   !*** ./src/counter/actions.js ***!
@@ -295,13 +313,13 @@ function mapStateToProps(state) {
 /*!******************************!*\
   !*** ./src/counter/index.js ***!
   \******************************/
-/*! exports provided: default, counterReducer, increment, decrement */
+/*! exports provided: Counter, counterReducer, increment, decrement */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component */ "./src/counter/component.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _component__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Counter", function() { return _component__WEBPACK_IMPORTED_MODULE_0__["default"]; });
 
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actions */ "./src/counter/actions.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "increment", function() { return _actions__WEBPACK_IMPORTED_MODULE_1__["increment"]; });
@@ -350,27 +368,57 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/*! exports provided: Button, rootReducers, counterReducer, increment, decrement */
+/***/ "./src/helpers.js":
+/*!************************!*\
+  !*** ./src/helpers.js ***!
+  \************************/
+/*! exports provided: sum */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./button */ "./src/button/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Button", function() { return _button__WEBPACK_IMPORTED_MODULE_0__["Button"]; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sum", function() { return sum; });
+var sum = function sum(a, b) {
+  return a + b;
+};
 
-/* harmony import */ var _counter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./counter */ "./src/counter/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "counterReducer", function() { return _counter__WEBPACK_IMPORTED_MODULE_1__["counterReducer"]; });
+/***/ }),
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "increment", function() { return _counter__WEBPACK_IMPORTED_MODULE_1__["increment"]; });
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! exports provided: Button, rootReducer, Counter, counterReducer, sum, CONST_A, CONST_B, CONST_C, increment, decrement */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "decrement", function() { return _counter__WEBPACK_IMPORTED_MODULE_1__["decrement"]; });
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _counter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./counter */ "./src/counter/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Counter", function() { return _counter__WEBPACK_IMPORTED_MODULE_0__["Counter"]; });
 
-/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./reducers */ "./src/reducers.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "rootReducers", function() { return _reducers__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "counterReducer", function() { return _counter__WEBPACK_IMPORTED_MODULE_0__["counterReducer"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "increment", function() { return _counter__WEBPACK_IMPORTED_MODULE_0__["increment"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "decrement", function() { return _counter__WEBPACK_IMPORTED_MODULE_0__["decrement"]; });
+
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers */ "./src/helpers.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sum", function() { return _helpers__WEBPACK_IMPORTED_MODULE_1__["sum"]; });
+
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./src/constants.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CONST_A", function() { return _constants__WEBPACK_IMPORTED_MODULE_2__["CONST_A"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CONST_B", function() { return _constants__WEBPACK_IMPORTED_MODULE_2__["CONST_B"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CONST_C", function() { return _constants__WEBPACK_IMPORTED_MODULE_2__["CONST_C"]; });
+
+/* harmony import */ var _button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./button */ "./src/button/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Button", function() { return _button__WEBPACK_IMPORTED_MODULE_3__["Button"]; });
+
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./reducers */ "./src/reducers.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "rootReducer", function() { return _reducers__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+
 
 
 

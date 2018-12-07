@@ -1,10 +1,10 @@
 import { Fragment, PureComponent } from "react";
-import { loadModule, MS_NAMES } from 'core';
+import { asyncImportComponent, PACKAGE_NAMES } from 'core';
 
-const Sc1 = loadModule(MS_NAMES.SCRIPTING);
-const Sc2 = loadModule(MS_NAMES.SCRIPTING);
+const Sc1 = asyncImportComponent(PACKAGE_NAMES.scripting, { component: 'Scripting' });
+const Sc2 = asyncImportComponent(PACKAGE_NAMES.scripting, { component: 'Scripting' });
 
-export default class Load3Module extends PureComponent {
+export default class Load3ModuleScreen extends PureComponent {
     render() {
         return (
             <Fragment>

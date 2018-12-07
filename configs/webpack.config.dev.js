@@ -11,20 +11,17 @@ module.exports = {
         filename: `js/[name].js`,
         libraryTarget: 'umd',
         library: '[name]',
-        path: path.resolve('../../dist'),
+        path: path.resolve(__dirname, '../dist'),
         umdNamedDefine: true,
         globalObject: `window.${APP}`
     },
     mode: process.env.NODE_ENV,
     resolve: {
         alias: {
-            core: path.resolve('../../dist/js/core.js')
+            core: path.resolve(__dirname, '../dist/js/core.js')
         }
     },
     externals,
-    devServer: {
-        historyApiFallback: true
-    },
     devtool: isDevelopment ? 'source-map' : undefined,
     watch: process.env.WATCH === 'true',
     module: {
@@ -34,7 +31,7 @@ module.exports = {
                 include: /packages/,
                 loader: 'babel-loader',
                 options: {
-                    configFile: path.resolve('../../configs/babel.config.js')
+                    configFile: path.resolve(__dirname, '../configs/babel.config.js')
                 }
             },
             {
@@ -62,5 +59,5 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "css/[name].css",
         })
-    ],
+    ]
 };

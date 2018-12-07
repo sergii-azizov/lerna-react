@@ -8,7 +8,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
     entry: { [name]: path.resolve(__dirname, '../src/index.js') },
     plugins: [
         new HtmlWebpackPlugin({
-            inject: true,
+            inject: false,
             template: "./src/index.html"
         })
     ]

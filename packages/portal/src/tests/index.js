@@ -1,5 +1,6 @@
-export { default as LoadModule } from './load-module';
-export { default as Load3Module } from './load-3-modules';
-export { default as ToggleModules } from './toggle-modules';
-export { default as ParallelToggleModules } from './parallel-toggle-modules';
-export { default as Clear } from './clear';
+export { default as LoadModuleScreen } from './load-module';
+export { default as LoadModuleHOCScreen } from './load-module-hoc';
+export { default as Load3ModuleScreen } from './load-3-modules';
+export { default as ToggleModulesScreen } from './toggle-modules';
+export { default as ParallelToggleComponentsMountingScreen } from './parallel-toggle-modules';
+export { default as ClearScreen } from './clear';

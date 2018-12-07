@@ -126,36 +126,41 @@ var App = function App(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: _app_scss__WEBPACK_IMPORTED_MODULE_5___default.a.root
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/lerna-react/index.html"
+    to: "/"
   }, "Clear")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/lerna-react/index.html/desktop-summary"
+    to: "/desktop-summary"
   }, "Desktop Summary")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/lerna-react/index.html/load-3-module"
+    to: "/load-3-module"
   }, "Load 3 Modules")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/lerna-react/index.html/load-module"
+    to: "/load-module"
   }, "Load Modules")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/lerna-react/index.html/toggle-modules"
+    to: "/load-module-hoc"
+  }, "Load Modules HOC")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/toggle-modules"
   }, "Toggle Modules")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/lerna-react/index.html/parallel-toggle-modules"
+    to: "/parallel-toggle-modules"
   }, "Parallel Toggle Modules")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/lerna-react/index.html",
+    path: "/",
     exact: true,
-    component: _tests__WEBPACK_IMPORTED_MODULE_4__["Clear"]
+    component: _tests__WEBPACK_IMPORTED_MODULE_4__["ClearScreen"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/lerna-react/index.html/desktop-summary",
+    path: "/desktop-summary",
     component: _screens__WEBPACK_IMPORTED_MODULE_3__["DesktopSummaryScreen"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/lerna-react/index.html/load-3-module",
-    component: _tests__WEBPACK_IMPORTED_MODULE_4__["Load3Module"]
+    path: "/load-3-module",
+    component: _tests__WEBPACK_IMPORTED_MODULE_4__["Load3ModuleScreen"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/lerna-react/index.html/load-module",
-    component: _tests__WEBPACK_IMPORTED_MODULE_4__["LoadModule"]
+    path: "/load-module-hoc",
+    component: _tests__WEBPACK_IMPORTED_MODULE_4__["LoadModuleHOCScreen"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/lerna-react/index.html/toggle-modules",
-    component: _tests__WEBPACK_IMPORTED_MODULE_4__["ToggleModules"]
+    path: "/load-module",
+    component: _tests__WEBPACK_IMPORTED_MODULE_4__["LoadModuleScreen"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/lerna-react/index.html/parallel-toggle-modules",
-    component: _tests__WEBPACK_IMPORTED_MODULE_4__["ParallelToggleModules"]
+    path: "/toggle-modules",
+    component: _tests__WEBPACK_IMPORTED_MODULE_4__["ToggleModulesScreen"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/parallel-toggle-modules",
+    component: _tests__WEBPACK_IMPORTED_MODULE_4__["ParallelToggleComponentsMountingScreen"]
   })));
 };
 
@@ -221,7 +226,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var DesktopSummaryScreen = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].DESKTOP_SUMMARY_SCREEN);
+var DesktopSummaryScreen = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].desktopSummaryScreen);
 /* harmony default export */ __webpack_exports__["default"] = (function (props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DesktopSummaryScreen, props);
 });
@@ -253,7 +258,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Clear; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ClearScreen; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -276,25 +281,25 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Clear =
+var ClearScreen =
 /*#__PURE__*/
 function (_PureComponent) {
-  _inherits(Clear, _PureComponent);
+  _inherits(ClearScreen, _PureComponent);
 
-  function Clear() {
-    _classCallCheck(this, Clear);
+  function ClearScreen() {
+    _classCallCheck(this, ClearScreen);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Clear).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(ClearScreen).apply(this, arguments));
   }
 
-  _createClass(Clear, [{
+  _createClass(ClearScreen, [{
     key: "render",
     value: function render() {
       return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Clear"));
     }
   }]);
 
-  return Clear;
+  return ClearScreen;
 }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 
 
@@ -306,25 +311,29 @@ function (_PureComponent) {
 /*!****************************!*\
   !*** ./src/tests/index.js ***!
   \****************************/
-/*! exports provided: LoadModule, Load3Module, ToggleModules, ParallelToggleModules, Clear */
+/*! exports provided: LoadModuleScreen, LoadModuleHOCScreen, Load3ModuleScreen, ToggleModulesScreen, ParallelToggleComponentsMountingScreen, ClearScreen */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _load_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./load-module */ "./src/tests/load-module.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LoadModule", function() { return _load_module__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LoadModuleScreen", function() { return _load_module__WEBPACK_IMPORTED_MODULE_0__["default"]; });
 
-/* harmony import */ var _load_3_modules__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./load-3-modules */ "./src/tests/load-3-modules.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Load3Module", function() { return _load_3_modules__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+/* harmony import */ var _load_module_hoc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./load-module-hoc */ "./src/tests/load-module-hoc.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LoadModuleHOCScreen", function() { return _load_module_hoc__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
-/* harmony import */ var _toggle_modules__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./toggle-modules */ "./src/tests/toggle-modules.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ToggleModules", function() { return _toggle_modules__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+/* harmony import */ var _load_3_modules__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./load-3-modules */ "./src/tests/load-3-modules.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Load3ModuleScreen", function() { return _load_3_modules__WEBPACK_IMPORTED_MODULE_2__["default"]; });
 
-/* harmony import */ var _parallel_toggle_modules__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./parallel-toggle-modules */ "./src/tests/parallel-toggle-modules.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ParallelToggleModules", function() { return _parallel_toggle_modules__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+/* harmony import */ var _toggle_modules__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./toggle-modules */ "./src/tests/toggle-modules.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ToggleModulesScreen", function() { return _toggle_modules__WEBPACK_IMPORTED_MODULE_3__["default"]; });
 
-/* harmony import */ var _clear__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./clear */ "./src/tests/clear.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Clear", function() { return _clear__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+/* harmony import */ var _parallel_toggle_modules__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./parallel-toggle-modules */ "./src/tests/parallel-toggle-modules.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ParallelToggleComponentsMountingScreen", function() { return _parallel_toggle_modules__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _clear__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./clear */ "./src/tests/clear.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ClearScreen", function() { return _clear__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
 
 
 
@@ -343,7 +352,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Load3Module; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Load3ModuleScreen; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ "core");
@@ -368,32 +377,81 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Sc1 = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].SCRIPTING);
-var Sc2 = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].SCRIPTING);
+var Sc1 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].scripting, {
+  component: 'Scripting'
+});
+var Sc2 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].scripting, {
+  component: 'Scripting'
+});
 
-var Load3Module =
+var Load3ModuleScreen =
 /*#__PURE__*/
 function (_PureComponent) {
-  _inherits(Load3Module, _PureComponent);
+  _inherits(Load3ModuleScreen, _PureComponent);
 
-  function Load3Module() {
-    _classCallCheck(this, Load3Module);
+  function Load3ModuleScreen() {
+    _classCallCheck(this, Load3ModuleScreen);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Load3Module).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(Load3ModuleScreen).apply(this, arguments));
   }
 
-  _createClass(Load3Module, [{
+  _createClass(Load3ModuleScreen, [{
     key: "render",
     value: function render() {
       return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Load 3 Module"), React.createElement(Sc1, null), React.createElement(Sc2, null));
     }
   }]);
 
-  return Load3Module;
+  return Load3ModuleScreen;
 }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 
 
 ;
+
+/***/ }),
+
+/***/ "./src/tests/load-module-hoc.js":
+/*!**************************************!*\
+  !*** ./src/tests/load-module-hoc.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ "core");
+/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);
+var _modules;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var LoadModuleHOCScreen = function LoadModuleHOCScreen(_ref) {
+  var _ref$components = _ref.components,
+      Button = _ref$components.Button,
+      Counter = _ref$components.Counter,
+      increment = _ref.increment;
+  return React.createElement("div", null, React.createElement("h2", null, "Load Module"), React.createElement(Counter, null), React.createElement("button", {
+    onClick: increment
+  }, "+1"));
+};
+
+var modules = (_modules = {}, _defineProperty(_modules, core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, ['Button']), _defineProperty(_modules, core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].scripting, ['Scripting']), _modules);
+
+var withConnect = function withConnect(_ref2) {
+  var increment = _ref2.components.increment;
+  return Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(null, {
+    increment: increment
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImport"])(modules, {
+  withConnect: withConnect
+})(LoadModuleHOCScreen));
 
 /***/ }),
 
@@ -406,7 +464,7 @@ function (_PureComponent) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LoadModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LoadModuleScreen; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ "core");
@@ -431,52 +489,51 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Counter = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
-  loadingComponent: function loadingComponent() {
-    return React.createElement("div", null, "12312313123");
-  }
+var Counter = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+  component: 'Counter',
+  loadingComponent: React.createElement("div", null, "12312313123")
 });
-var Button = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
+var Button = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
   component: 'Button'
 });
-var Button1 = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
+var Button1 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
   component: 'Button'
 });
-var Button2 = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
+var Button2 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
   component: 'Button'
 });
-var Button3 = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
+var Button3 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
   component: 'Button'
 });
-var Button4 = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
+var Button4 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
   component: 'Button'
 });
-var Button5 = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
+var Button5 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
   component: 'Button'
 });
-var Button6 = Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
+var Button6 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
   component: 'Button'
 });
 
-var LoadModule =
+var LoadModuleScreen =
 /*#__PURE__*/
 function (_PureComponent) {
-  _inherits(LoadModule, _PureComponent);
+  _inherits(LoadModuleScreen, _PureComponent);
 
-  function LoadModule() {
-    _classCallCheck(this, LoadModule);
+  function LoadModuleScreen() {
+    _classCallCheck(this, LoadModuleScreen);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(LoadModule).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(LoadModuleScreen).apply(this, arguments));
   }
 
-  _createClass(LoadModule, [{
+  _createClass(LoadModuleScreen, [{
     key: "render",
     value: function render() {
       return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Load Module"), React.createElement(Counter, null), React.createElement(Button, null, "Button"), React.createElement(Button1, null, "Button1"), React.createElement(Button2, null, "Button2"), React.createElement(Button3, null, "Button3"), React.createElement(Button4, null, "Button4"), React.createElement(Button5, null, "Button5"), React.createElement(Button6, null, "Button6"));
     }
   }]);
 
-  return LoadModule;
+  return LoadModuleScreen;
 }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 
 
@@ -493,7 +550,7 @@ function (_PureComponent) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ParallelToggleComponentsMounting; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ParallelToggleComponentsMountingScreen; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ "core");
@@ -521,23 +578,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var ParallelToggleComponentsMounting =
+var ParallelToggleComponentsMountingScreen =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(ParallelToggleComponentsMounting, _Component);
+  _inherits(ParallelToggleComponentsMountingScreen, _Component);
 
-  function ParallelToggleComponentsMounting() {
+  function ParallelToggleComponentsMountingScreen() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, ParallelToggleComponentsMounting);
+    _classCallCheck(this, ParallelToggleComponentsMountingScreen);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ParallelToggleComponentsMounting)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ParallelToggleComponentsMountingScreen)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       Button1: function Button1() {
@@ -553,13 +610,13 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "add", function () {
       _this.setState({
-        Button1: Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
+        Button1: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
           component: 'Button'
         }),
-        Button2: Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
+        Button2: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
           component: 'Button'
         }),
-        Button3: Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
+        Button3: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
           component: 'Button'
         })
       });
@@ -590,7 +647,7 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(ParallelToggleComponentsMounting, [{
+  _createClass(ParallelToggleComponentsMountingScreen, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       setInterval(this.add, 3000);
@@ -606,7 +663,7 @@ function (_Component) {
     }
   }]);
 
-  return ParallelToggleComponentsMounting;
+  return ParallelToggleComponentsMountingScreen;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -622,7 +679,7 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ToggleModules; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ToggleModulesScreen; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ "core");
@@ -650,23 +707,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var ToggleModules =
+var ToggleModulesScreen =
 /*#__PURE__*/
 function (_PureComponent) {
-  _inherits(ToggleModules, _PureComponent);
+  _inherits(ToggleModulesScreen, _PureComponent);
 
-  function ToggleModules() {
+  function ToggleModulesScreen() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, ToggleModules);
+    _classCallCheck(this, ToggleModulesScreen);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ToggleModules)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ToggleModulesScreen)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       TaskSelector: function TaskSelector() {
@@ -680,14 +737,14 @@ function (_PureComponent) {
     return _this;
   }
 
-  _createClass(ToggleModules, [{
+  _createClass(ToggleModulesScreen, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
       setTimeout(function () {
         _this2.setState({
-          TaskSelector: Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].TASK_SELECTOR)
+          TaskSelector: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].taskSelector)
         });
       }, 1000);
       setTimeout(function () {
@@ -699,7 +756,7 @@ function (_PureComponent) {
       }, 2000);
       setTimeout(function () {
         _this2.setState({
-          TaskSelector: Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].TASK_SELECTOR)
+          TaskSelector: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].taskSelector)
         });
       }, 3000);
       setTimeout(function () {
@@ -711,12 +768,12 @@ function (_PureComponent) {
       }, 4000);
       setTimeout(function () {
         _this2.setState({
-          TaskSelector: Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].TASK_SELECTOR)
+          TaskSelector: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].taskSelector)
         });
       }, 5000);
       setTimeout(function () {
         _this2.setState({
-          Button: Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
+          Button: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
             component: 'Button'
           })
         });
@@ -730,7 +787,7 @@ function (_PureComponent) {
       }, 2000);
       setTimeout(function () {
         _this2.setState({
-          Button: Object(core__WEBPACK_IMPORTED_MODULE_1__["loadModule"])(core__WEBPACK_IMPORTED_MODULE_1__["MS_NAMES"].COMPONENTS, {
+          Button: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
             component: 'Button'
           })
         });
@@ -746,7 +803,7 @@ function (_PureComponent) {
     }
   }]);
 
-  return ToggleModules;
+  return ToggleModulesScreen;
 }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 
 

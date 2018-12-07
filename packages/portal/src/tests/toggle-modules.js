@@ -1,22 +1,22 @@
 import { Fragment, PureComponent } from "react";
-import { loadModule, MS_NAMES } from 'core';
+import { asyncImportComponent, PACKAGE_NAMES } from 'core';
 
-export default class ToggleModules extends PureComponent {
+export default class ToggleModulesScreen extends PureComponent {
     state = {
         TaskSelector: () => <div>TaskSelector</div>,
         Button: () => <div>Button</div>
     };
 
     componentDidMount() {
-        setTimeout(() => { this.setState({ TaskSelector: loadModule(MS_NAMES.TASK_SELECTOR) }); }, 1000);
+        setTimeout(() => { this.setState({ TaskSelector: asyncImportComponent(PACKAGE_NAMES.taskSelector) }); }, 1000);
         setTimeout(() => { this.setState({ TaskSelector: () => <div>TaskSelector</div> }); }, 2000);
-        setTimeout(() => { this.setState({ TaskSelector: loadModule(MS_NAMES.TASK_SELECTOR) }); }, 3000);
+        setTimeout(() => { this.setState({ TaskSelector: asyncImportComponent(PACKAGE_NAMES.taskSelector) }); }, 3000);
         setTimeout(() => { this.setState({ TaskSelector: () => <div>TaskSelector</div> }); }, 4000);
-        setTimeout(() => { this.setState({ TaskSelector: loadModule(MS_NAMES.TASK_SELECTOR) }); }, 5000);
+        setTimeout(() => { this.setState({ TaskSelector: asyncImportComponent(PACKAGE_NAMES.taskSelector) }); }, 5000);
 
-        setTimeout(() => { this.setState({ Button: loadModule(MS_NAMES.COMPONENTS, { component: 'Button' }) }); }, 1000);
+        setTimeout(() => { this.setState({ Button: asyncImportComponent(PACKAGE_NAMES.components, { component: 'Button' }) }); }, 1000);
         setTimeout(() => { this.setState({ Button: () => <div>Button</div> }); }, 2000);
-        setTimeout(() => { this.setState({ Button: loadModule(MS_NAMES.COMPONENTS, { component: 'Button' }) }); }, 3000);
+        setTimeout(() => { this.setState({ Button: asyncImportComponent(PACKAGE_NAMES.components, { component: 'Button' }) }); }, 3000);
     }
 
     render() {
