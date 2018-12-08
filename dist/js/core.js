@@ -1394,7 +1394,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PACKAGE_NAMES", function() { return PACKAGE_NAMES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PACKAGE_STATUSES", function() { return PACKAGE_STATUSES; });
 var STATIC_SERVERS = {
-  DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/17297edfe9edda30467d34564fc70e27f25eceea/dist/'
+  DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/cf97d409fa1bf975428de496854c9fdfa851db2d/dist/'
 };
 var STATIC_SERVER = STATIC_SERVERS.DT;
 var ASYNC_REDUCERS = 'asyncReducers';
