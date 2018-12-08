@@ -11,11 +11,7 @@ const LoadModuleHOCScreen = ({ components: { Button, Counter }, increment}) => {
         );
 };
 
-const modules =  {
-    [PACKAGE_NAMES.components]: ['Button'],
-    [PACKAGE_NAMES.scripting]: ['Scripting']
-};
-
+const packages =  [PACKAGE_NAMES.components, PACKAGE_NAMES.scripting];
 const withConnect = ({ components: { increment } }) => connect(null, { increment });
 
-export default asyncImport(modules, { withConnect })(LoadModuleHOCScreen)
+export default asyncImport(packages, { withConnect })(LoadModuleHOCScreen)

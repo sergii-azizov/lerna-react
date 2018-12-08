@@ -22,7 +22,7 @@ export const asyncImportComponent = (packageName, configs = {}) => {
     const {
         server = STATIC_SERVER,
         component = 'default',
-        destroyOnUnmount = false,
+        destroyOnUnmount = true,
         loadingComponent = null,
         reducer = 'rootReducer'
     } = configs;
@@ -56,15 +56,15 @@ export const asyncImportComponent = (packageName, configs = {}) => {
         };
 
         mountLoadedComponent = (packageName, fromCache) => {
-            injectAsyncReducer(packageName, reducer);
+            injectAsyncReducer({ packageName, reducer });
 
             if (!fromCache) {
                 this.resolve && this.resolve();
                 this.setState({ LoadedComponent: getLoadPackage([packageName, component]) });
             }
 
-            increasedLoadedComponents(packageName, component);
-            notify(packageName, component, fromCache || PACKAGE_STATUSES.LOADED);
+            increasedLoadedComponents({ packageName, module: component });
+            notify({ packageName, module: component, state: fromCache || PACKAGE_STATUSES.LOADED });
         };
 
         loadPackage(packageName) {
@@ -80,7 +80,7 @@ export const asyncImportComponent = (packageName, configs = {}) => {
         }
 
         componentWillUnmount() {
-            destroy(packageName, component, destroyOnUnmount);
+            destroy({ packageName, module: component, destroyOnUnmount });
         }
 
         render() {

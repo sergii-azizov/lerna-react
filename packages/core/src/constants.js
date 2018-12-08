@@ -4,7 +4,8 @@ const STATIC_SERVERS = {
 
 export const STATIC_SERVER = STATIC_SERVERS.DT;
 export const ASYNC_REDUCERS = 'asyncReducers';
-export const TOTAL_COUNT = 'TOTAL_COUNT';
+export const TOTAL_IMPORT = 'totalImport';
+export const ASYNC_IMPORT = 'asyncImport';
 export const COMPONENTS_COUNT = 'LOADED_COMPONENTS_COUNT';
 
 export const PACKAGE_NAMES = {

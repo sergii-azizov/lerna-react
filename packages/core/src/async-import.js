@@ -18,7 +18,7 @@ import {
 const head = document.getElementsByTagName('head')[0];
 
 export const asyncImport = (packages, configs = {}) => WrappedComponent => {
-    const { server = STATIC_SERVER, destroyOnUnmount = false, reducer = 'rootReducer', withConnect = null } = configs;
+    const { server = STATIC_SERVER, destroyOnUnmount = true, reducer = 'rootReducer', withConnect = null } = configs;
     const availablePackageNames = getAvailablePackageNames(packages);
 
     if (!availablePackageNames) {
@@ -60,17 +60,15 @@ export const asyncImport = (packages, configs = {}) => WrappedComponent => {
         };
 
         mountLoadedComponent = (packageName, fromCache) => {
-            injectAsyncReducer(packageName, reducer);
+            injectAsyncReducer({ packageName, reducer });
 
             if (!fromCache) {
                 this.resolve && this.resolve();
                 this.setState({ [packageName]: getLoadPackage(packageName) });
             }
 
-            packages[packageName].forEach(module => {
-                increasedLoadedComponents(packageName, module);
-                notify(packageName, module, fromCache || PACKAGE_STATUSES.LOADED);
-            });
+            increasedLoadedComponents({ packageName });
+            notify({ packageName, state: fromCache || PACKAGE_STATUSES.LOADED });
         };
 
         loadPackage(packageName) {
@@ -93,9 +91,7 @@ export const asyncImport = (packages, configs = {}) => WrappedComponent => {
 
         componentWillUnmount() {
             availablePackageNames.forEach(packageName => {
-                packages[packageName].forEach(module => {
-                    destroy(packageName, module, destroyOnUnmount)
-                });
+                destroy({ packageName, destroyOnUnmount });
             });
         }
 

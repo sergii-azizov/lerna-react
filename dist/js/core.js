@@ -1073,7 +1073,7 @@ var asyncImportComponent = function asyncImportComponent(packageName) {
       _configs$component = configs.component,
       component = _configs$component === void 0 ? 'default' : _configs$component,
       _configs$destroyOnUnm = configs.destroyOnUnmount,
-      destroyOnUnmount = _configs$destroyOnUnm === void 0 ? false : _configs$destroyOnUnm,
+      destroyOnUnmount = _configs$destroyOnUnm === void 0 ? true : _configs$destroyOnUnm,
       _configs$loadingCompo = configs.loadingComponent,
       loadingComponent = _configs$loadingCompo === void 0 ? null : _configs$loadingCompo,
       _configs$reducer = configs.reducer,
@@ -1102,7 +1102,10 @@ var asyncImportComponent = function asyncImportComponent(packageName) {
       });
 
       _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "mountLoadedComponent", function (packageName, fromCache) {
-        Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["injectAsyncReducer"])(packageName, reducer);
+        Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["injectAsyncReducer"])({
+          packageName: packageName,
+          reducer: reducer
+        });
 
         if (!fromCache) {
           _this.resolve && _this.resolve();
@@ -1112,8 +1115,15 @@ var asyncImportComponent = function asyncImportComponent(packageName) {
           });
         }
 
-        Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["increasedLoadedComponents"])(packageName, component);
-        Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["notify"])(packageName, component, fromCache || _constants_js__WEBPACK_IMPORTED_MODULE_4__["PACKAGE_STATUSES"].LOADED);
+        Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["increasedLoadedComponents"])({
+          packageName: packageName,
+          module: component
+        });
+        Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["notify"])({
+          packageName: packageName,
+          module: component,
+          state: fromCache || _constants_js__WEBPACK_IMPORTED_MODULE_4__["PACKAGE_STATUSES"].LOADED
+        });
       });
 
       _this.init();
@@ -1168,7 +1178,11 @@ var asyncImportComponent = function asyncImportComponent(packageName) {
     }, {
       key: "componentWillUnmount",
       value: function componentWillUnmount() {
-        Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["destroy"])(packageName, component, destroyOnUnmount);
+        Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["destroy"])({
+          packageName: packageName,
+          module: component,
+          destroyOnUnmount: destroyOnUnmount
+        });
       }
     }, {
       key: "render",
@@ -1243,7 +1257,7 @@ var asyncImport = function asyncImport(packages) {
     var _configs$server = configs.server,
         server = _configs$server === void 0 ? _constants_js__WEBPACK_IMPORTED_MODULE_4__["STATIC_SERVER"] : _configs$server,
         _configs$destroyOnUnm = configs.destroyOnUnmount,
-        destroyOnUnmount = _configs$destroyOnUnm === void 0 ? false : _configs$destroyOnUnm,
+        destroyOnUnmount = _configs$destroyOnUnm === void 0 ? true : _configs$destroyOnUnm,
         _configs$reducer = configs.reducer,
         reducer = _configs$reducer === void 0 ? 'rootReducer' : _configs$reducer,
         _configs$withConnect = configs.withConnect,
@@ -1278,7 +1292,10 @@ var asyncImport = function asyncImport(packages) {
         });
 
         _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "mountLoadedComponent", function (packageName, fromCache) {
-          Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["injectAsyncReducer"])(packageName, reducer);
+          Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["injectAsyncReducer"])({
+            packageName: packageName,
+            reducer: reducer
+          });
 
           if (!fromCache) {
             _this.resolve && _this.resolve();
@@ -1286,9 +1303,12 @@ var asyncImport = function asyncImport(packages) {
             _this.setState(_defineProperty({}, packageName, Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getLoadPackage"])(packageName)));
           }
 
-          packages[packageName].forEach(function (module) {
-            Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["increasedLoadedComponents"])(packageName, module);
-            Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["notify"])(packageName, module, fromCache || _constants_js__WEBPACK_IMPORTED_MODULE_4__["PACKAGE_STATUSES"].LOADED);
+          Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["increasedLoadedComponents"])({
+            packageName: packageName
+          });
+          Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["notify"])({
+            packageName: packageName,
+            state: fromCache || _constants_js__WEBPACK_IMPORTED_MODULE_4__["PACKAGE_STATUSES"].LOADED
           });
         });
 
@@ -1353,8 +1373,9 @@ var asyncImport = function asyncImport(packages) {
         key: "componentWillUnmount",
         value: function componentWillUnmount() {
           availablePackageNames.forEach(function (packageName) {
-            packages[packageName].forEach(function (module) {
-              Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["destroy"])(packageName, module, destroyOnUnmount);
+            Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["destroy"])({
+              packageName: packageName,
+              destroyOnUnmount: destroyOnUnmount
             });
           });
         }
@@ -1382,14 +1403,15 @@ var asyncImport = function asyncImport(packages) {
 /*!**************************!*\
   !*** ./src/constants.js ***!
   \**************************/
-/*! exports provided: STATIC_SERVER, ASYNC_REDUCERS, TOTAL_COUNT, COMPONENTS_COUNT, PACKAGE_NAMES, PACKAGE_STATUSES */
+/*! exports provided: STATIC_SERVER, ASYNC_REDUCERS, TOTAL_IMPORT, ASYNC_IMPORT, COMPONENTS_COUNT, PACKAGE_NAMES, PACKAGE_STATUSES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "STATIC_SERVER", function() { return STATIC_SERVER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ASYNC_REDUCERS", function() { return ASYNC_REDUCERS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOTAL_COUNT", function() { return TOTAL_COUNT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOTAL_IMPORT", function() { return TOTAL_IMPORT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ASYNC_IMPORT", function() { return ASYNC_IMPORT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "COMPONENTS_COUNT", function() { return COMPONENTS_COUNT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PACKAGE_NAMES", function() { return PACKAGE_NAMES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PACKAGE_STATUSES", function() { return PACKAGE_STATUSES; });
@@ -1398,7 +1420,8 @@ var STATIC_SERVERS = {
 };
 var STATIC_SERVER = STATIC_SERVERS.DT;
 var ASYNC_REDUCERS = 'asyncReducers';
-var TOTAL_COUNT = 'TOTAL_COUNT';
+var TOTAL_IMPORT = 'totalImport';
+var ASYNC_IMPORT = 'asyncImport';
 var COMPONENTS_COUNT = 'LOADED_COMPONENTS_COUNT';
 var PACKAGE_NAMES = {
   portal: 'portal',
@@ -1444,7 +1467,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var getAvailablePackageNames = function getAvailablePackageNames(packages) {
-  return Object.keys(packages).filter(function (packageName) {
+  return packages.filter(function (packageName) {
     return _constants__WEBPACK_IMPORTED_MODULE_2__["PACKAGE_NAMES"][packageName];
   });
 };
@@ -1480,24 +1503,56 @@ var loadFile = function loadFile(_ref) {
   inject.insertBefore(el, inject.lastChild);
   return promise;
 };
-var getImportCount = function getImportCount(packageName, module) {
-  return Object(lodash__WEBPACK_IMPORTED_MODULE_0__["get"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, module], 0);
+var getImportCount = function getImportCount(_ref2) {
+  var packageName = _ref2.packageName,
+      name = _ref2.name;
+  return Object(lodash__WEBPACK_IMPORTED_MODULE_0__["get"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, name], 0);
 };
-var increasedLoadedComponents = function increasedLoadedComponents(packageName, module) {
+var increasedLoadedComponents = function increasedLoadedComponents(_ref3) {
+  var packageName = _ref3.packageName,
+      module = _ref3.module;
+
   if (module) {
-    Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, module], getImportCount(packageName, module) + 1);
+    Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, module], getImportCount({
+      packageName: packageName,
+      name: module
+    }) + 1);
+  } else {
+    Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, _constants__WEBPACK_IMPORTED_MODULE_2__["ASYNC_IMPORT"]], getImportCount({
+      packageName: packageName,
+      name: _constants__WEBPACK_IMPORTED_MODULE_2__["ASYNC_IMPORT"]
+    }) + 1);
   }
 
-  Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_COUNT"]], getImportCount(packageName, _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_COUNT"]) + 1);
+  Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_IMPORT"]], getImportCount({
+    packageName: packageName,
+    name: _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_IMPORT"]
+  }) + 1);
 };
-var decreasedLoadedComponents = function decreasedLoadedComponents(packageName, module) {
+var decreasedLoadedComponents = function decreasedLoadedComponents(_ref4) {
+  var packageName = _ref4.packageName,
+      module = _ref4.module;
+
   if (module) {
-    Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, module], getImportCount(packageName, module) - 1);
+    Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, module], getImportCount({
+      packageName: packageName,
+      name: module
+    }) - 1);
+  } else {
+    Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, _constants__WEBPACK_IMPORTED_MODULE_2__["ASYNC_IMPORT"]], getImportCount({
+      packageName: packageName,
+      name: _constants__WEBPACK_IMPORTED_MODULE_2__["ASYNC_IMPORT"]
+    }) - 1);
   }
 
-  Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_COUNT"]], getImportCount(packageName, _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_COUNT"]) - 1);
+  Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_IMPORT"]], getImportCount({
+    packageName: packageName,
+    name: _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_IMPORT"]
+  }) - 1);
 };
-var injectAsyncReducer = function injectAsyncReducer(packageName, reducer) {
+var injectAsyncReducer = function injectAsyncReducer(_ref5) {
+  var packageName = _ref5.packageName,
+      reducer = _ref5.reducer;
   var asyncReducers = Object(lodash__WEBPACK_IMPORTED_MODULE_0__["get"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [packageName, reducer]);
 
   if (asyncReducers && !Object(lodash__WEBPACK_IMPORTED_MODULE_0__["get"])(_index__WEBPACK_IMPORTED_MODULE_3__["store"], [_constants__WEBPACK_IMPORTED_MODULE_2__["ASYNC_REDUCERS"], packageName])) {
@@ -1505,22 +1560,40 @@ var injectAsyncReducer = function injectAsyncReducer(packageName, reducer) {
     _index__WEBPACK_IMPORTED_MODULE_3__["store"].replaceReducer(Object(_index__WEBPACK_IMPORTED_MODULE_3__["createReducer"])(_index__WEBPACK_IMPORTED_MODULE_3__["store"][_constants__WEBPACK_IMPORTED_MODULE_2__["ASYNC_REDUCERS"]]));
   }
 };
-var notify = function notify(packageName, module, state) {
+var notify = function notify(_ref6) {
+  var packageName = _ref6.packageName,
+      module = _ref6.module,
+      state = _ref6.state;
+
   try {
     if (Object(lodash__WEBPACK_IMPORTED_MODULE_0__["get"])(JSON.parse(window.localStorage.getItem(_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"])), 'DEBUG')) {
-      console.groupCollapsed('[Module][%s][%s][Component][%s]', packageName, state, module);
-      console.log('[The total count imports of the components from the chunk %d on the screen]', getImportCount(packageName, module));
+      var moduleMsg = module ? "[Component][".concat(module, "]") : '';
+      console.groupCollapsed("[Package][%s][%s]".concat(moduleMsg), packageName, state);
+      console.log('[The total count imports of the components from the chunk %d on the screen]', getImportCount({
+        packageName: packageName,
+        name: module
+      }));
       console.groupEnd();
     }
   } catch (e) {
     console.error(e);
   }
 };
-var destroy = function destroy(packageName) {
-  var module = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_COUNT"];
-  var destroyOnUnmount = arguments.length > 2 ? arguments[2] : undefined;
-  decreasedLoadedComponents(packageName, module);
-  var hasLoadedComponents = getImportCount(packageName, module) !== 0;
+var destroy = function destroy() {
+  var _ref7 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      packageName = _ref7.packageName,
+      _ref7$module = _ref7.module,
+      module = _ref7$module === void 0 ? _constants__WEBPACK_IMPORTED_MODULE_2__["ASYNC_IMPORT"] : _ref7$module,
+      destroyOnUnmount = _ref7.destroyOnUnmount;
+
+  decreasedLoadedComponents({
+    packageName: packageName,
+    module: module
+  });
+  var hasLoadedComponents = getImportCount({
+    packageName: packageName,
+    name: _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_IMPORT"]
+  }) !== 0;
   var canBeDestroyed = destroyOnUnmount && !hasLoadedComponents;
 
   if (canBeDestroyed) {
@@ -1535,7 +1608,10 @@ var destroy = function destroy(packageName) {
       delete _index__WEBPACK_IMPORTED_MODULE_3__["store"][_constants__WEBPACK_IMPORTED_MODULE_2__["ASYNC_REDUCERS"]][packageName];
     }
 
-    notify('Cleared');
+    notify({
+      packageName: packageName,
+      state: 'Cleared'
+    });
   }
 };
 
