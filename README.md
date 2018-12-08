@@ -26,4 +26,4 @@ https://stackoverflow.com/questions/35411423/how-to-dispatch-a-redux-action-with
 
 ### Glossary
 - Package - chunk which consist of *.js and *.css files
-- Module - exports things which can be reusable
+- Module - exportd things which can be reusable
