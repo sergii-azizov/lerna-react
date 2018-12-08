@@ -148,7 +148,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Scripting = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].scripting);
+var Scripting = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].scripting, {
+  component: 'Scripting'
+});
 var Sequence = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].sequence);
 var Button = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
   component: 'Button'

@@ -1484,11 +1484,17 @@ var getImportCount = function getImportCount(packageName, module) {
   return Object(lodash__WEBPACK_IMPORTED_MODULE_0__["get"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, module], 0);
 };
 var increasedLoadedComponents = function increasedLoadedComponents(packageName, module) {
-  Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, module], getImportCount(packageName, module) + 1);
+  if (module) {
+    Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, module], getImportCount(packageName, module) + 1);
+  }
+
   Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_COUNT"]], getImportCount(packageName, _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_COUNT"]) + 1);
 };
 var decreasedLoadedComponents = function decreasedLoadedComponents(packageName, module) {
-  Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, module], getImportCount(packageName, module) - 1);
+  if (module) {
+    Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, module], getImportCount(packageName, module) - 1);
+  }
+
   Object(lodash__WEBPACK_IMPORTED_MODULE_0__["set"])(window[_configs_namespace_config__WEBPACK_IMPORTED_MODULE_1__["APP"]], [_constants__WEBPACK_IMPORTED_MODULE_2__["COMPONENTS_COUNT"], packageName, _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_COUNT"]], getImportCount(packageName, _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_COUNT"]) - 1);
 };
 var injectAsyncReducer = function injectAsyncReducer(packageName, reducer) {
@@ -1510,7 +1516,9 @@ var notify = function notify(packageName, module, state) {
     console.error(e);
   }
 };
-var destroy = function destroy(packageName, module, destroyOnUnmount) {
+var destroy = function destroy(packageName) {
+  var module = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_COUNT"];
+  var destroyOnUnmount = arguments.length > 2 ? arguments[2] : undefined;
   decreasedLoadedComponents(packageName, module);
   var hasLoadedComponents = getImportCount(packageName, module) !== 0;
   var canBeDestroyed = destroyOnUnmount && !hasLoadedComponents;

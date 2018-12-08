@@ -37,12 +37,16 @@ export const getImportCount = (packageName, module) => {
 };
 
 export const increasedLoadedComponents = (packageName, module) => {
-    set(window[APP], [COMPONENTS_COUNT, packageName, module], getImportCount(packageName, module) + 1);
+    if (module) {
+        set(window[APP], [COMPONENTS_COUNT, packageName, module], getImportCount(packageName, module) + 1);
+    }
     set(window[APP], [COMPONENTS_COUNT, packageName, TOTAL_COUNT], getImportCount(packageName, TOTAL_COUNT) + 1);
 };
 
 export const decreasedLoadedComponents = (packageName, module) => {
-    set(window[APP], [COMPONENTS_COUNT, packageName, module], getImportCount(packageName, module) - 1);
+    if (module) {
+        set(window[APP], [COMPONENTS_COUNT, packageName, module], getImportCount(packageName, module) - 1);
+    }
     set(window[APP], [COMPONENTS_COUNT, packageName, TOTAL_COUNT], getImportCount(packageName, TOTAL_COUNT) - 1);
 };
 
@@ -67,7 +71,7 @@ export const notify = (packageName, module, state) => {
     }
 };
 
-export const destroy = (packageName, module, destroyOnUnmount) => {
+export const destroy = (packageName, module = TOTAL_COUNT, destroyOnUnmount) => {
     decreasedLoadedComponents(packageName, module);
 
     const hasLoadedComponents = getImportCount(packageName, module) !== 0;
