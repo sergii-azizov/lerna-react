@@ -1260,6 +1260,8 @@ var asyncImport = function asyncImport(packages) {
         destroyOnUnmount = _configs$destroyOnUnm === void 0 ? true : _configs$destroyOnUnm,
         _configs$reducer = configs.reducer,
         reducer = _configs$reducer === void 0 ? 'rootReducer' : _configs$reducer,
+        _configs$mapPackagesT = configs.mapPackagesToProps,
+        mapPackagesToProps = _configs$mapPackagesT === void 0 ? null : _configs$mapPackagesT,
         _configs$withConnect = configs.withConnect,
         withConnect = _configs$withConnect === void 0 ? null : _configs$withConnect;
     var availablePackageNames = Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getAvailablePackageNames"])(packages);
@@ -1383,10 +1385,11 @@ var asyncImport = function asyncImport(packages) {
         key: "render",
         value: function render() {
           var packagesLoaded = this.packagesLoaded();
-          var Component = withConnect && packagesLoaded ? withConnect(this.state)(WrappedComponent) : WrappedComponent;
+          var mapedPackagesToProps = mapPackagesToProps && packagesLoaded ? mapPackagesToProps(this.state) : this.state;
+          var Component = withConnect && packagesLoaded ? withConnect(mapedPackagesToProps)(WrappedComponent) : WrappedComponent;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, packagesLoaded ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, _extends({
             loading: !packagesLoaded
-          }, this.state, this.props)) : null);
+          }, mapedPackagesToProps, this.props)) : null);
         }
       }]);
 
@@ -1416,7 +1419,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PACKAGE_NAMES", function() { return PACKAGE_NAMES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PACKAGE_STATUSES", function() { return PACKAGE_STATUSES; });
 var STATIC_SERVERS = {
-  DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/cf97d409fa1bf975428de496854c9fdfa851db2d/dist/'
+  DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/a2c5cd53fc69b38de878c8dd1cbf92482ba78d07/dist/'
 };
 var STATIC_SERVER = STATIC_SERVERS.DT;
 var ASYNC_REDUCERS = 'asyncReducers';

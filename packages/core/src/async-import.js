@@ -18,7 +18,7 @@ import {
 const head = document.getElementsByTagName('head')[0];
 
 export const asyncImport = (packages, configs = {}) => WrappedComponent => {
-    const { server = STATIC_SERVER, destroyOnUnmount = true, reducer = 'rootReducer', withConnect = null } = configs;
+    const { server = STATIC_SERVER, destroyOnUnmount = true, reducer = 'rootReducer', mapPackagesToProps = null, withConnect = null } = configs;
     const availablePackageNames = getAvailablePackageNames(packages);
 
     if (!availablePackageNames) {
@@ -97,13 +97,14 @@ export const asyncImport = (packages, configs = {}) => WrappedComponent => {
 
         render() {
             const packagesLoaded = this.packagesLoaded();
+            const mapedPackagesToProps = mapPackagesToProps && packagesLoaded ? mapPackagesToProps(this.state) : this.state;
             const Component = withConnect && packagesLoaded
-                ? withConnect(this.state)(WrappedComponent)
+                ? withConnect(mapedPackagesToProps)(WrappedComponent)
                 : WrappedComponent;
 
             return (
                 <Fragment>
-                    {packagesLoaded ? <Component loading={!packagesLoaded} {...this.state} {...this.props} /> : null}
+                    {packagesLoaded ? <Component loading={!packagesLoaded} {...mapedPackagesToProps} {...this.props} /> : null}
                 </Fragment>
             );
         }
