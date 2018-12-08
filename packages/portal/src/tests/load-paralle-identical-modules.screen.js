@@ -10,7 +10,7 @@ const Button4 = asyncImportComponent(PACKAGE_NAMES.components, { component: 'But
 const Button5 = asyncImportComponent(PACKAGE_NAMES.components, { component: 'Button'});
 const Button6 = asyncImportComponent(PACKAGE_NAMES.components, { component: 'Button'});
 
-export default class LoadModuleScreen extends PureComponent {
+export default class loadParalleIdenticalModules extends PureComponent {
     render() {
         return (
             <Fragment>

@@ -111,11 +111,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core */ "core");
 /* harmony import */ var core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _screens__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./screens */ "./src/screens/index.js");
-/* harmony import */ var _tests__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tests */ "./src/tests/index.js");
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_5__);
-
+/* harmony import */ var _tests__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tests */ "./src/tests/index.js");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
@@ -124,43 +122,43 @@ __webpack_require__.r(__webpack_exports__);
 
 var App = function App(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: _app_scss__WEBPACK_IMPORTED_MODULE_5___default.a.root
+    className: _app_scss__WEBPACK_IMPORTED_MODULE_4___default.a.root
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/"
-  }, "Clear")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/async-import"
+  }, "asyncImport")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/load-module"
+  }, "Load Paralle Identical Modules")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/desktop-summary"
   }, "Desktop Summary")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/load-3-module"
+    to: "/load-2-modules-with-dependency"
   }, "Load 3 Modules")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/load-module"
-  }, "Load Modules")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/load-module-hoc"
-  }, "Load Modules HOC")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/toggle-modules"
   }, "Toggle Modules")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/parallel-toggle-modules"
   }, "Parallel Toggle Modules")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/",
     exact: true,
-    component: _tests__WEBPACK_IMPORTED_MODULE_4__["ClearScreen"]
+    component: _tests__WEBPACK_IMPORTED_MODULE_3__["HomeScreen"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/desktop-summary",
-    component: _screens__WEBPACK_IMPORTED_MODULE_3__["DesktopSummaryScreen"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/load-3-module",
-    component: _tests__WEBPACK_IMPORTED_MODULE_4__["Load3ModuleScreen"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/load-module-hoc",
-    component: _tests__WEBPACK_IMPORTED_MODULE_4__["LoadModuleHOCScreen"]
+    path: "/async-import",
+    component: _tests__WEBPACK_IMPORTED_MODULE_3__["AsyncImportScreen"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/load-module",
-    component: _tests__WEBPACK_IMPORTED_MODULE_4__["LoadModuleScreen"]
+    component: _tests__WEBPACK_IMPORTED_MODULE_3__["loadParalleIdenticalModules"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/desktop-summary",
+    component: _tests__WEBPACK_IMPORTED_MODULE_3__["DesktopSummaryScreen"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/load-2-modules-with-dependency",
+    component: _tests__WEBPACK_IMPORTED_MODULE_3__["Load2ModulesWithDependency"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/toggle-modules",
-    component: _tests__WEBPACK_IMPORTED_MODULE_4__["ToggleModulesScreen"]
+    component: _tests__WEBPACK_IMPORTED_MODULE_3__["ToggleModulesScreen"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/parallel-toggle-modules",
-    component: _tests__WEBPACK_IMPORTED_MODULE_4__["ParallelToggleComponentsMountingScreen"]
+    component: _tests__WEBPACK_IMPORTED_MODULE_3__["ParallelToggleComponentsMountingScreen"]
   })));
 };
 
@@ -211,10 +209,120 @@ react_dom__WEBPACK_IMPORTED_MODULE_0___default.a.render(React.createElement(reac
 
 /***/ }),
 
-/***/ "./src/screens/desktop-summary-screen.js":
-/*!***********************************************!*\
-  !*** ./src/screens/desktop-summary-screen.js ***!
-  \***********************************************/
+/***/ "./src/tests/async-import.screen.js":
+/*!******************************************!*\
+  !*** ./src/tests/async-import.screen.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core */ "core");
+/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _test_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./test.scss */ "./src/tests/test.scss");
+/* harmony import */ var _test_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_test_scss__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+
+var AsyncImportScreen = function AsyncImportScreen(_ref) {
+  var _ref$components = _ref.components,
+      Button = _ref$components.Button,
+      Counter = _ref$components.Counter,
+      decrement = _ref.decrement,
+      increment = _ref.increment;
+  return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "AsyncImport"), React.createElement("div", {
+    className: _test_scss__WEBPACK_IMPORTED_MODULE_3___default.a.root
+  }, React.createElement("h3", null, "Component with dynamic store from \"components\" package"), React.createElement(Counter, null)), React.createElement("div", {
+    className: _test_scss__WEBPACK_IMPORTED_MODULE_3___default.a.root
+  }, React.createElement("h3", null, "Actions from \"components\" package"), React.createElement(Button, {
+    onClick: increment
+  }, "+1"), React.createElement(Button, {
+    onClick: decrement
+  }, "-1")));
+};
+
+var withConnect = function withConnect(_ref2) {
+  var _ref2$components = _ref2.components,
+      decrement = _ref2$components.decrement,
+      increment = _ref2$components.increment;
+  return Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, {
+    decrement: decrement,
+    increment: increment
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(core__WEBPACK_IMPORTED_MODULE_2__["asyncImport"])([core__WEBPACK_IMPORTED_MODULE_2__["PACKAGE_NAMES"].components], {
+  withConnect: withConnect
+})(AsyncImportScreen));
+/*
+
+****** STEP 1
+
+const AsyncImportScreen = () => {
+    return (
+        <Fragment>
+            <h2>AsyncImport</h2>
+        </Fragment>
+    );
+};
+
+
+export default AsyncImportScreen;
+
+
+
+
+
+
+****** STEP 2
+
+import { PACKAGE_NAMES, asyncImport } from 'core';
+
+const AsyncImportScreen = ({ components: { Button } }) => {
+    return (
+        <Fragment>
+            <h2>AsyncImport</h2>
+            <Button>Button</Button>
+        </Fragment>
+    );
+};
+
+export default asyncImport([PACKAGE_NAMES.components])(AsyncImportScreen);
+
+
+****** STEP 3
+
+import { PACKAGE_NAMES, asyncImport } from 'core';
+
+const AsyncImportScreen = ({ components: { Button }, increment }) => {
+    return (
+        <Fragment>
+            <h2>AsyncImport</h2>
+            <Counter />
+            <Button onClick={increment}>Button</Button>
+        </Fragment>
+    );
+};
+
+const withConnect = ({ components: { increment } }) => connect(null, { increment });
+
+export default asyncImport([PACKAGE_NAMES.components], { withConnect })(AsyncImportScreen);
+
+*/
+
+/***/ }),
+
+/***/ "./src/tests/desktop-summary.screen.js":
+/*!*********************************************!*\
+  !*** ./src/tests/desktop-summary.screen.js ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -233,32 +341,16 @@ var DesktopSummaryScreen = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImport
 
 /***/ }),
 
-/***/ "./src/screens/index.js":
-/*!******************************!*\
-  !*** ./src/screens/index.js ***!
-  \******************************/
-/*! exports provided: DesktopSummaryScreen */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _desktop_summary_screen__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./desktop-summary-screen */ "./src/screens/desktop-summary-screen.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DesktopSummaryScreen", function() { return _desktop_summary_screen__WEBPACK_IMPORTED_MODULE_0__["default"]; });
-
-
-
-/***/ }),
-
-/***/ "./src/tests/clear.js":
-/*!****************************!*\
-  !*** ./src/tests/clear.js ***!
-  \****************************/
+/***/ "./src/tests/home.screen.js":
+/*!**********************************!*\
+  !*** ./src/tests/home.screen.js ***!
+  \**********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ClearScreen; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return HomeScreen; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -281,25 +373,25 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var ClearScreen =
+var HomeScreen =
 /*#__PURE__*/
 function (_PureComponent) {
-  _inherits(ClearScreen, _PureComponent);
+  _inherits(HomeScreen, _PureComponent);
 
-  function ClearScreen() {
-    _classCallCheck(this, ClearScreen);
+  function HomeScreen() {
+    _classCallCheck(this, HomeScreen);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ClearScreen).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(HomeScreen).apply(this, arguments));
   }
 
-  _createClass(ClearScreen, [{
+  _createClass(HomeScreen, [{
     key: "render",
     value: function render() {
-      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Clear"));
+      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Home"), React.createElement("p", null, "some text"));
     }
   }]);
 
-  return ClearScreen;
+  return HomeScreen;
 }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 
 
@@ -311,28 +403,32 @@ function (_PureComponent) {
 /*!****************************!*\
   !*** ./src/tests/index.js ***!
   \****************************/
-/*! exports provided: LoadModuleScreen, LoadModuleHOCScreen, Load3ModuleScreen, ToggleModulesScreen, ParallelToggleComponentsMountingScreen, ClearScreen */
+/*! exports provided: HomeScreen, AsyncImportScreen, DesktopSummaryScreen, loadParalleIdenticalModules, Load2ModulesWithDependency, ToggleModulesScreen, ParallelToggleComponentsMountingScreen */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _load_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./load-module */ "./src/tests/load-module.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LoadModuleScreen", function() { return _load_module__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+/* harmony import */ var _home_screen__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home.screen */ "./src/tests/home.screen.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HomeScreen", function() { return _home_screen__WEBPACK_IMPORTED_MODULE_0__["default"]; });
 
-/* harmony import */ var _load_module_hoc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./load-module-hoc */ "./src/tests/load-module-hoc.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LoadModuleHOCScreen", function() { return _load_module_hoc__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+/* harmony import */ var _async_import_screen__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./async-import.screen */ "./src/tests/async-import.screen.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AsyncImportScreen", function() { return _async_import_screen__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
-/* harmony import */ var _load_3_modules__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./load-3-modules */ "./src/tests/load-3-modules.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Load3ModuleScreen", function() { return _load_3_modules__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+/* harmony import */ var _desktop_summary_screen__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./desktop-summary.screen */ "./src/tests/desktop-summary.screen.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DesktopSummaryScreen", function() { return _desktop_summary_screen__WEBPACK_IMPORTED_MODULE_2__["default"]; });
 
-/* harmony import */ var _toggle_modules__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./toggle-modules */ "./src/tests/toggle-modules.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ToggleModulesScreen", function() { return _toggle_modules__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+/* harmony import */ var _load_paralle_identical_modules_screen_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./load-paralle-identical-modules.screen.js */ "./src/tests/load-paralle-identical-modules.screen.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "loadParalleIdenticalModules", function() { return _load_paralle_identical_modules_screen_js__WEBPACK_IMPORTED_MODULE_3__["default"]; });
 
-/* harmony import */ var _parallel_toggle_modules__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./parallel-toggle-modules */ "./src/tests/parallel-toggle-modules.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ParallelToggleComponentsMountingScreen", function() { return _parallel_toggle_modules__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+/* harmony import */ var _load_2_modules_with_dependency_screen__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./load-2-modules-with-dependency.screen */ "./src/tests/load-2-modules-with-dependency.screen.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Load2ModulesWithDependency", function() { return _load_2_modules_with_dependency_screen__WEBPACK_IMPORTED_MODULE_4__["default"]; });
 
-/* harmony import */ var _clear__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./clear */ "./src/tests/clear.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ClearScreen", function() { return _clear__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+/* harmony import */ var _toggle_modules__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./toggle-modules */ "./src/tests/toggle-modules.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ToggleModulesScreen", function() { return _toggle_modules__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _parallel_toggle_modules__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./parallel-toggle-modules */ "./src/tests/parallel-toggle-modules.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ParallelToggleComponentsMountingScreen", function() { return _parallel_toggle_modules__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
 
 
 
@@ -343,10 +439,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/tests/load-3-modules.js":
-/*!*************************************!*\
-  !*** ./src/tests/load-3-modules.js ***!
-  \*************************************/
+/***/ "./src/tests/load-2-modules-with-dependency.screen.js":
+/*!************************************************************!*\
+  !*** ./src/tests/load-2-modules-with-dependency.screen.js ***!
+  \************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -377,10 +473,10 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Sc1 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].scripting, {
+var Module1 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].scripting, {
   component: 'Scripting'
 });
-var Sc2 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].scripting, {
+var Module2 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].scripting, {
   component: 'Scripting'
 });
 
@@ -398,7 +494,7 @@ function (_PureComponent) {
   _createClass(Load3ModuleScreen, [{
     key: "render",
     value: function render() {
-      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Load 3 Module"), React.createElement(Sc1, null), React.createElement(Sc2, null));
+      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Load 3 Module"), React.createElement(Module1, null), React.createElement(Module2, null));
     }
   }]);
 
@@ -410,61 +506,16 @@ function (_PureComponent) {
 
 /***/ }),
 
-/***/ "./src/tests/load-module-hoc.js":
-/*!**************************************!*\
-  !*** ./src/tests/load-module-hoc.js ***!
-  \**************************************/
+/***/ "./src/tests/load-paralle-identical-modules.screen.js":
+/*!************************************************************!*\
+  !*** ./src/tests/load-paralle-identical-modules.screen.js ***!
+  \************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ "core");
-/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);
-var _modules;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-var LoadModuleHOCScreen = function LoadModuleHOCScreen(_ref) {
-  var _ref$components = _ref.components,
-      Button = _ref$components.Button,
-      Counter = _ref$components.Counter,
-      increment = _ref.increment;
-  return React.createElement("div", null, React.createElement("h2", null, "Load Module"), React.createElement(Counter, null), React.createElement("button", {
-    onClick: increment
-  }, "+1"));
-};
-
-var modules = (_modules = {}, _defineProperty(_modules, core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, ['Button']), _defineProperty(_modules, core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].scripting, ['Scripting']), _modules);
-
-var withConnect = function withConnect(_ref2) {
-  var increment = _ref2.components.increment;
-  return Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(null, {
-    increment: increment
-  });
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImport"])(modules, {
-  withConnect: withConnect
-})(LoadModuleHOCScreen));
-
-/***/ }),
-
-/***/ "./src/tests/load-module.js":
-/*!**********************************!*\
-  !*** ./src/tests/load-module.js ***!
-  \**********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LoadModuleScreen; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return loadParalleIdenticalModules; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ "core");
@@ -515,25 +566,25 @@ var Button6 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(
   component: 'Button'
 });
 
-var LoadModuleScreen =
+var loadParalleIdenticalModules =
 /*#__PURE__*/
 function (_PureComponent) {
-  _inherits(LoadModuleScreen, _PureComponent);
+  _inherits(loadParalleIdenticalModules, _PureComponent);
 
-  function LoadModuleScreen() {
-    _classCallCheck(this, LoadModuleScreen);
+  function loadParalleIdenticalModules() {
+    _classCallCheck(this, loadParalleIdenticalModules);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(LoadModuleScreen).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(loadParalleIdenticalModules).apply(this, arguments));
   }
 
-  _createClass(LoadModuleScreen, [{
+  _createClass(loadParalleIdenticalModules, [{
     key: "render",
     value: function render() {
       return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Load Module"), React.createElement(Counter, null), React.createElement(Button, null, "Button"), React.createElement(Button1, null, "Button1"), React.createElement(Button2, null, "Button2"), React.createElement(Button3, null, "Button3"), React.createElement(Button4, null, "Button4"), React.createElement(Button5, null, "Button5"), React.createElement(Button6, null, "Button6"));
     }
   }]);
 
-  return LoadModuleScreen;
+  return loadParalleIdenticalModules;
 }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 
 
@@ -667,6 +718,18 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
+
+/***/ }),
+
+/***/ "./src/tests/test.scss":
+/*!*****************************!*\
+  !*** ./src/tests/test.scss ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+module.exports = {"root":"src-tests--tests-root"};
 
 /***/ }),
 
