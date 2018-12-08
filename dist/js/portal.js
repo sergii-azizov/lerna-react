@@ -232,9 +232,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AsyncImportScreen = function AsyncImportScreen(_ref) {
-  var _ref$components = _ref.components,
-      Button = _ref$components.Button,
-      Counter = _ref$components.Counter,
+  var Button = _ref.Button,
+      Counter = _ref.Counter,
       decrement = _ref.decrement,
       increment = _ref.increment;
   return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "AsyncImport"), React.createElement("div", {
@@ -249,16 +248,30 @@ var AsyncImportScreen = function AsyncImportScreen(_ref) {
 };
 
 var withConnect = function withConnect(_ref2) {
-  var _ref2$components = _ref2.components,
-      decrement = _ref2$components.decrement,
-      increment = _ref2$components.increment;
+  var decrement = _ref2.decrement,
+      increment = _ref2.increment;
   return Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, {
     decrement: decrement,
     increment: increment
   });
 };
 
+var mapPackagesToProps = function mapPackagesToProps(_ref3) {
+  var _ref3$components = _ref3.components,
+      Button = _ref3$components.Button,
+      Counter = _ref3$components.Counter,
+      decrement = _ref3$components.decrement,
+      increment = _ref3$components.increment;
+  return {
+    Button: Button,
+    Counter: Counter,
+    decrement: decrement,
+    increment: increment
+  };
+};
+
 /* harmony default export */ __webpack_exports__["default"] = (Object(core__WEBPACK_IMPORTED_MODULE_2__["asyncImport"])([core__WEBPACK_IMPORTED_MODULE_2__["PACKAGE_NAMES"].components], {
+  mapPackagesToProps: mapPackagesToProps,
   withConnect: withConnect
 })(AsyncImportScreen));
 /*
@@ -348,6 +361,40 @@ const AsyncImportScreen = ({ components: { Button, Counter }, decrement, increme
 const withConnect = ({ components: { decrement, increment } }) => connect(null, { decrement, increment });
 
 export default asyncImport([PACKAGE_NAMES.components], { withConnect })(AsyncImportScreen);
+
+
+
+
+****** STEP 5
+
+
+import { Fragment } from 'react';
+import { connect } from 'react-redux';
+import { PACKAGE_NAMES, asyncImport } from 'core';
+
+import styles from './test.scss'
+
+const AsyncImportScreen = ({ Button, Counter, decrement, increment }) => {
+    return (
+        <Fragment>
+            <h2>AsyncImport</h2>
+            <div className={styles.root}>
+                <h3>Component with dynamic store from "components" package</h3>
+                <Counter />
+            </div>
+            <div className={styles.root}>
+                <h3>Imported Actions from "components" package</h3>
+                <Button onClick={increment}>+1</Button>
+                <Button onClick={decrement}>-1</Button>
+            </div>
+        </Fragment>
+    );
+};
+
+const withConnect = ({ decrement, increment }) => connect(null, { decrement, increment });
+const mapPackagesToProps = ({ components: { Button, Counter, decrement, increment }}) => ({ Button, Counter, decrement, increment });
+
+export default asyncImport([PACKAGE_NAMES.components], { mapPackagesToProps, withConnect })(AsyncImportScreen);
 */
 
 /***/ }),
@@ -689,6 +736,57 @@ function (_Component) {
       },
       Button3: function Button3() {
         return React.createElement("div", null, "loading Button-3");
+      },
+      Button4: function Button4() {
+        return React.createElement("div", null, "loading Button-5");
+      },
+      Button5: function Button5() {
+        return React.createElement("div", null, "loading Button-5");
+      },
+      Button11: function Button11() {
+        return React.createElement("div", null, "loading Button-1");
+      },
+      Button22: function Button22() {
+        return React.createElement("div", null, "loading Button-2");
+      },
+      Button33: function Button33() {
+        return React.createElement("div", null, "loading Button-3");
+      },
+      Button44: function Button44() {
+        return React.createElement("div", null, "loading Button-5");
+      },
+      Button55: function Button55() {
+        return React.createElement("div", null, "loading Button-5");
+      },
+      Button111: function Button111() {
+        return React.createElement("div", null, "loading Button-1");
+      },
+      Button222: function Button222() {
+        return React.createElement("div", null, "loading Button-2");
+      },
+      Button333: function Button333() {
+        return React.createElement("div", null, "loading Button-3");
+      },
+      Button444: function Button444() {
+        return React.createElement("div", null, "loading Button-5");
+      },
+      Button555: function Button555() {
+        return React.createElement("div", null, "loading Button-5");
+      },
+      Button1111: function Button1111() {
+        return React.createElement("div", null, "loading Button-1");
+      },
+      Button2222: function Button2222() {
+        return React.createElement("div", null, "loading Button-2");
+      },
+      Button3333: function Button3333() {
+        return React.createElement("div", null, "loading Button-3");
+      },
+      Button4444: function Button4444() {
+        return React.createElement("div", null, "loading Button-5");
+      },
+      Button5555: function Button5555() {
+        return React.createElement("div", null, "loading Button-5");
       }
     });
 
@@ -702,6 +800,57 @@ function (_Component) {
         }),
         Button3: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
           component: 'Button'
+        }),
+        Button4: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
+        }),
+        Button5: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
+        }),
+        Button11: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
+        }),
+        Button22: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
+        }),
+        Button33: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
+        }),
+        Button44: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
+        }),
+        Button55: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
+        }),
+        Button111: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
+        }),
+        Button222: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
+        }),
+        Button333: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
+        }),
+        Button444: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
+        }),
+        Button555: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
+        }),
+        Button1111: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
+        }),
+        Button2222: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
+        }),
+        Button3333: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
+        }),
+        Button4444: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
+        }),
+        Button5555: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
+          component: 'Button'
         })
       });
 
@@ -711,19 +860,64 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "remove", function () {
       _this.setState({
         Button1: function Button1() {
-          return React.createElement("div", null, "removed Button-1");
-        }
-      });
-
-      _this.setState({
+          return React.createElement("div", null, "removed Button");
+        },
         Button2: function Button2() {
-          return React.createElement("div", null, "removed Button-2");
-        }
-      });
-
-      _this.setState({
+          return React.createElement("div", null, "removed Button");
+        },
         Button3: function Button3() {
-          return React.createElement("div", null, "removed Button-3");
+          return React.createElement("div", null, "removed Button");
+        },
+        Button4: function Button4() {
+          return React.createElement("div", null, "removed Button");
+        },
+        Button5: function Button5() {
+          return React.createElement("div", null, "removed Button");
+        },
+        Button11: function Button11() {
+          return React.createElement("div", null, "removed Button");
+        },
+        Button22: function Button22() {
+          return React.createElement("div", null, "removed Button");
+        },
+        Button33: function Button33() {
+          return React.createElement("div", null, "removed Button");
+        },
+        Button44: function Button44() {
+          return React.createElement("div", null, "removed Button");
+        },
+        Button55: function Button55() {
+          return React.createElement("div", null, "removed Button");
+        },
+        Button111: function Button111() {
+          return React.createElement("div", null, "removed Button");
+        },
+        Button222: function Button222() {
+          return React.createElement("div", null, "removed Button");
+        },
+        Button333: function Button333() {
+          return React.createElement("div", null, "removed Button");
+        },
+        Button444: function Button444() {
+          return React.createElement("div", null, "removed Button");
+        },
+        Button555: function Button555() {
+          return React.createElement("div", null, "removed Button");
+        },
+        Button1111: function Button1111() {
+          return React.createElement("div", null, "removed Button");
+        },
+        Button2222: function Button2222() {
+          return React.createElement("div", null, "removed Button");
+        },
+        Button3333: function Button3333() {
+          return React.createElement("div", null, "removed Button");
+        },
+        Button4444: function Button4444() {
+          return React.createElement("div", null, "removed Button");
+        },
+        Button5555: function Button5555() {
+          return React.createElement("div", null, "removed Button");
         }
       });
     });
@@ -742,8 +936,25 @@ function (_Component) {
       var _this$state = this.state,
           Button1 = _this$state.Button1,
           Button2 = _this$state.Button2,
-          Button3 = _this$state.Button3;
-      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Toggle Components Mounting"), React.createElement("div", null, React.createElement(Button1, null, "Button1")), React.createElement("div", null, React.createElement(Button2, null, "Button2")), React.createElement("div", null, React.createElement(Button3, null, "Button")));
+          Button3 = _this$state.Button3,
+          Button4 = _this$state.Button4,
+          Button5 = _this$state.Button5,
+          Button11 = _this$state.Button11,
+          Button22 = _this$state.Button22,
+          Button33 = _this$state.Button33,
+          Button44 = _this$state.Button44,
+          Button55 = _this$state.Button55,
+          Button111 = _this$state.Button111,
+          Button222 = _this$state.Button222,
+          Button333 = _this$state.Button333,
+          Button444 = _this$state.Button444,
+          Button555 = _this$state.Button555,
+          Button1111 = _this$state.Button1111,
+          Button2222 = _this$state.Button2222,
+          Button3333 = _this$state.Button3333,
+          Button4444 = _this$state.Button4444,
+          Button5555 = _this$state.Button5555;
+      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Toggle Components Mounting"), React.createElement(Button1, null, "Button"), React.createElement(Button2, null, "Button"), React.createElement(Button3, null, "Button"), React.createElement(Button4, null, "Button"), React.createElement(Button5, null, "Button"), React.createElement(Button11, null, "Button"), React.createElement(Button22, null, "Button"), React.createElement(Button33, null, "Button"), React.createElement(Button44, null, "Button"), React.createElement(Button55, null, "Button"), React.createElement(Button111, null, "Button"), React.createElement(Button222, null, "Button"), React.createElement(Button333, null, "Button"), React.createElement(Button444, null, "Button"), React.createElement(Button555, null, "Button"), React.createElement(Button1111, null, "Button"), React.createElement(Button2222, null, "Button"), React.createElement(Button3333, null, "Button"), React.createElement(Button4444, null, "Button"), React.createElement(Button5555, null, "Button"));
     }
   }]);
 
