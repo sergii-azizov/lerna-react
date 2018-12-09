@@ -1,5 +1,5 @@
-## asyncImport
-`asyncImport` is a function component which lets you dynamically load any modules before rendering it into your app.
+## asyncImportComponent
+`asyncImportComponent` is a function component which lets you dynamically load any modules before rendering it into your app.
 
 #### Usage
 ```JSX
@@ -30,13 +30,7 @@ package     | `string`           | Y        | -           | The package which sh
 configs     | `object`           | -        | undefined   | Configuration objects
 
 
-        component = 'default',
-        destroyOnUnmount = true,
-        loadingComponent = null,
-        reducer = 'rootReducer'
-
-
-#### component
+#### `component`
 The property helps to get the particular component from loaded package. The property by default is `default`.
 
 #### `server`
@@ -47,10 +41,10 @@ execute hoc with properties `asyncImport(['components'])(SomeComponent)` then th
 #### `loadingComponent`
 The component which will be displayed before the package will be loaded. 
 
-#### destroyOnUnmount
+#### `destroyOnUnmount`
 If the property is `true` after unmount a component all dependency will be remove from DOM, Redux store and window.__APP__ etc. The property dy default is `false`.
 
-#### reducer
+#### `reducer`
 if a package which you loaded have `rootReducer` module it will be automatically added to centralized Redux store. The property dy default is `rootReducer`.   
 
 

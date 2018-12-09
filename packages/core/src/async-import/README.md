@@ -22,7 +22,7 @@ export default asyncImport([PACKAGE_NAMES.components])(AsyncImportScreen);
 
 
 #### Advanced Usage
-```
+```JSX
 import { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { PACKAGE_NAMES, asyncImport } from 'core';
@@ -59,21 +59,22 @@ packages    | `array`            | Y        | -           | The list of packages
 configs     | `object`           | -        | undefined   | Configuration objects
 
 
+
 #### `server`
 The property which helps set up a link to the static server where is located packages. If you have established the `server` to `https://rawcdn.githack.com/sergii-azizov/lerna-react/dist/` and  
 execute hoc with properties `asyncImport(['components'])(SomeComponent)` then the request will be by URL `https://rawcdn.githack.com/sergii-azizov/lerna-react/dist/components.js`,
 `https://rawcdn.githack.com/sergii-azizov/lerna-react/dist/components.css`. The property dy default getting from `STATIC_SERVER` constant.
 
-#### destroyOnUnmount
+#### `destroyOnUnmount`
 If the property is `true` after unmount a component all dependency will be remove from DOM, Redux store and window.__APP__ etc. The property dy default is `false`.
 
-#### reducer
+#### `reducer`
 if a package which you loaded have `rootReducer` module it will be automatically added to centralized Redux store. The property dy default is `rootReducer`.   
 
-#### mapPackagesToProps
+#### `mapPackagesToProps`
 It's a function helps us to reassign passed props to WrappedComponent. The property dy default is `undefined`. 
 
-#### withConnect
+#### `withConnect`
 It's a function helps us to wrapped `WrappedComponent` to connect higher order component from Redux and use `action creator` wrapped by `thunk` and 
 passed as props to `WrappedComponent`. The property dy default is `undefined`. 
 
