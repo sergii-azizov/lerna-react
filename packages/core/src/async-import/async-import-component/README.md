@@ -35,8 +35,8 @@ The property helps to get the particular component from loaded package. The prop
 
 #### `server`
 The property which helps set up a link to the static server where is located packages. If you have established the `server` to `https://rawcdn.githack.com/sergii-azizov/lerna-react/dist/` and  
-execute hoc with properties `asyncImport(['components'])(SomeComponent)` then the request will be by URL `https://rawcdn.githack.com/sergii-azizov/lerna-react/dist/components.js`,
-`https://rawcdn.githack.com/sergii-azizov/lerna-react/dist/components.css`. The property dy default getting from `STATIC_SERVER` constant.
+execute hoc with properties `asyncImport(['components'])(SomeComponent)` then the request will be by URL `https://rawcdn.githack.com/sergii-azizov/lerna-react/dist/js/components.js`,
+`https://rawcdn.githack.com/sergii-azizov/lerna-react/dist/css/components.css`. The property dy default getting from `STATIC_SERVER` constant.
 
 #### `loadingComponent`
 The component which will be displayed before the package will be loaded. 
