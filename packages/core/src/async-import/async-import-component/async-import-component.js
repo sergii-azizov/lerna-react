@@ -2,8 +2,8 @@ import React, { PureComponent, Fragment } from "react";
 import { bool, string, node } from 'prop-types';
 import { reduce, forEach, get, set, isEqual } from 'lodash';
 
-import { APP } from '../../../configs/namespace.config';
-import { STATIC_SERVER, PACKAGE_STATUSES } from "./constants.js";
+import { APP } from '../../../../../configs/namespace.config';
+import { STATIC_SERVER, PACKAGE_STATUSES } from "../../constants.js";
 
 import {
     notify,
@@ -12,7 +12,7 @@ import {
     getLoadPackage,
     injectAsyncReducer,
     increasedLoadedComponents
-} from './helpers';
+} from '../helpers';
 
 const head = document.getElementsByTagName('head')[0];
 

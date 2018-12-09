@@ -2,8 +2,8 @@ import React, { PureComponent, Fragment } from "react";
 import { bool, string, node } from 'prop-types';
 import { reduce, forEach, get, set, isEqual } from 'lodash';
 
-import { APP } from '../../../configs/namespace.config';
-import { STATIC_SERVER, PACKAGE_STATUSES } from "./constants.js";
+import { APP } from '../../../../configs/namespace.config';
+import { STATIC_SERVER, PACKAGE_STATUSES } from "../constants.js";
 
 import {
     notify,
@@ -18,7 +18,7 @@ import {
 const head = document.getElementsByTagName('head')[0];
 
 export const asyncImport = (packages, configs = {}) => WrappedComponent => {
-    const { server = STATIC_SERVER, destroyOnUnmount = true, reducer = 'rootReducer', mapPackagesToProps = null, withConnect = null } = configs;
+    const { server = STATIC_SERVER, destroyOnUnmount = true, reducer = 'rootReducer', mapPackagesToProps = undefined, withConnect = undefined } = configs;
     const availablePackageNames = getAvailablePackageNames(packages);
 
     if (!availablePackageNames) {

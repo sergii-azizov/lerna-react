@@ -1,8 +1,8 @@
 import { get, set } from "lodash";
 
-import { APP } from "../../../configs/namespace.config";
-import { ASYNC_REDUCERS, COMPONENTS_COUNT, ASYNC_IMPORT, PACKAGE_NAMES, TOTAL_IMPORT } from "./constants";
-import { createReducer, store } from "./index";
+import { APP } from "../../../../configs/namespace.config";
+import { ASYNC_REDUCERS, COMPONENTS_COUNT, ASYNC_IMPORT, PACKAGE_NAMES, TOTAL_IMPORT } from "../constants";
+import { createReducer, store } from "../index";
 
 export const getAvailablePackageNames = packages => packages.filter(packageName => PACKAGE_NAMES[packageName]);
 
