@@ -62,8 +62,8 @@ configs     | `object`           | -        | undefined   | Configuration object
 
 #### `server`
 The property which helps set up a link to the static server where is located packages. If you have established the `server` to `https://rawcdn.githack.com/sergii-azizov/lerna-react/dist/` and  
-execute hoc with properties `asyncImport(['components'])(SomeComponent)` then the request will be by URL `https://rawcdn.githack.com/sergii-azizov/lerna-react/dist/components.js`,
-`https://rawcdn.githack.com/sergii-azizov/lerna-react/dist/components.css`. The property dy default getting from `STATIC_SERVER` constant.
+execute hoc with properties `asyncImport(['components'])(SomeComponent)` then the request will be by URL `https://rawcdn.githack.com/sergii-azizov/lerna-react/dist/js/components.js`,
+`https://rawcdn.githack.com/sergii-azizov/lerna-react/dist/css/components.css`. The property dy default getting from `STATIC_SERVER` constant.
 
 #### `destroyOnUnmount`
 If the property is `true` after unmount a component all dependency will be remove from DOM, Redux store and window.__APP__ etc. The property dy default is `false`.
