@@ -1551,7 +1551,7 @@ var notify = function notify(_ref6) {
       console.groupCollapsed("[Package][%s][%s]".concat(moduleMsg), packageName, state);
       console.log('[The total count imports of the components from the chunk %d on the screen]', getImportCount({
         packageName: packageName,
-        name: module
+        name: module || _constants__WEBPACK_IMPORTED_MODULE_2__["TOTAL_IMPORT"]
       }));
       console.groupEnd();
     }

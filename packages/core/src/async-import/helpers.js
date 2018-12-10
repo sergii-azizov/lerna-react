@@ -69,7 +69,7 @@ export const notify = ({ packageName, module, state }) => {
             const moduleMsg = module ? `[Component][${module}]` : '';
 
             console.groupCollapsed(`[Package][%s][%s]${moduleMsg}`, packageName, state);
-            console.log('[The total count imports of the components from the chunk %d on the screen]', getImportCount({ packageName, name: module }));
+            console.log('[The total count imports of the components from the chunk %d on the screen]', getImportCount({ packageName, name: module || TOTAL_IMPORT }));
             console.groupEnd();
         }
     } catch (e) {

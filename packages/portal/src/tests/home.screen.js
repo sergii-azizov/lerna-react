@@ -5,7 +5,7 @@ export default class HomeScreen extends PureComponent {
         return (
             <Fragment>
                 <h2>Home</h2>
-                <p>some text</p>
+                <p>some content</p>
             </Fragment>
         );
     }
