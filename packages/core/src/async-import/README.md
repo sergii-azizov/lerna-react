@@ -78,9 +78,9 @@ It's a function helps us to reassign passed props to WrappedComponent. The prope
 It's a function helps us to wrapped `WrappedComponent` to connect higher order component from Redux and use `action creator` wrapped by `thunk` and 
 passed as props to `WrappedComponent`. The property dy default is `undefined`. 
 
-#### AsyncImport Simple Flow Diagram
+### AsyncImport Simple Flow Diagram
 https://www.lucidchart.com/invitations/accept/f5406125-0f75-4148-a6fd-41004d4ca3df
 
-#### Glossary
+### Glossary
 - Package - chunk which consist of *.js and *.css files
 - Module - exported things which can be reusable
