@@ -13,7 +13,7 @@
 - [ ] Unit tests 
 
 
-#### Tech Notes
+### Tech Notes
 ##### Redux code-splitting
 https://stackoverflow.com/questions/32968016/how-to-dynamically-load-reducers-for-code-splitting-in-a-redux-application
 
@@ -24,5 +24,5 @@ https://stackoverflow.com/questions/49111086/webpack-4-universal-library-target
 https://stackoverflow.com/questions/35411423/how-to-dispatch-a-redux-action-with-a-timeout/35415559#35415559
 
 
-#### AsyncImport Simple Flow Diagram
+### AsyncImport Simple Flow Diagram
 https://www.lucidchart.com/invitations/accept/f5406125-0f75-4148-a6fd-41004d4ca3df
