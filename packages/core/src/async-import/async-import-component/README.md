@@ -48,6 +48,6 @@ If the property is `true` after unmount a component all dependency will be remov
 if a package which you loaded have `rootReducer` module it will be automatically added to centralized Redux store. The property dy default is `rootReducer`.   
 
 
-#### Glossary
+### Glossary
 - Package - chunk which consist of *.js and *.css files
 - Module - exported things which can be reusable
