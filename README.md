@@ -9,7 +9,7 @@
 - [X] Implement ability to destroy Packages
 - [X] Add Web-Server
 - [ ] Implement CI/CD process
-- [ ] Design activity diagrams
+- [X] Design activity diagrams
 - [ ] Unit tests 
 
 
@@ -22,3 +22,7 @@ https://stackoverflow.com/questions/49111086/webpack-4-universal-library-target
 
 ##### Read this for an in-depth introduction to thunks in Redux.
 https://stackoverflow.com/questions/35411423/how-to-dispatch-a-redux-action-with-a-timeout/35415559#35415559
+
+
+#### AsyncImport Simple Flow Diagram
+https://www.lucidchart.com/invitations/accept/f5406125-0f75-4148-a6fd-41004d4ca3df
