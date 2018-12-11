@@ -1,5 +1,5 @@
 const STATIC_SERVERS = {
-    DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/a2c5cd53fc69b38de878c8dd1cbf92482ba78d07/dist/'
+    DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/b2390270ecef13dc8484334a9889d52487f80c11/dist/'
 };
 
 export const STATIC_SERVER = STATIC_SERVERS.DT;
