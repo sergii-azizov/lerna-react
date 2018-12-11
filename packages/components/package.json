@@ -1,12 +1,12 @@
 {
   "name": "components",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "build": "webpack --config ./configs/webpack.config.lib.js",
     "build:dev": "cross-env NODE_ENV=development npm run build",
     "build:prod": "cross-env NODE_ENV=production npm run build",
-    "build:watch": "cross-env WATCH=true npm run build:dev"
+    "build:watch": "cross-env WATCH=true npm run build:dev",
+    "prerelease": "npm version prerelease"
   },
   "devDependencies": {
     "cross-env": "^5.2.0"

@@ -9,7 +9,7 @@
 - [X] Implement ability to destroy Packages
 - [X] Add Web-Server
 - [ ] Implement CI/CD process
-- [X] Design activity diagrams
+- [X] Design flowchart diagram
 - [ ] Unit tests 
 
 

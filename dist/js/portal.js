@@ -220,82 +220,14 @@ react_dom__WEBPACK_IMPORTED_MODULE_0___default.a.render(React.createElement(reac
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core */ "core");
-/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _test_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./test.scss */ "./src/tests/test.scss");
-/* harmony import */ var _test_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_test_scss__WEBPACK_IMPORTED_MODULE_3__);
 
 
-
-
-
-var AsyncImportScreen = function AsyncImportScreen(_ref) {
-  var Button = _ref.Button,
-      Counter = _ref.Counter,
-      decrement = _ref.decrement,
-      increment = _ref.increment;
-  return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "AsyncImport"), React.createElement("div", {
-    className: _test_scss__WEBPACK_IMPORTED_MODULE_3___default.a.root
-  }, React.createElement("h3", null, "Component with dynamic store from \"components\" package"), React.createElement(Counter, null)), React.createElement("div", {
-    className: _test_scss__WEBPACK_IMPORTED_MODULE_3___default.a.root
-  }, React.createElement("h3", null, "Imported Actions from \"components\" package"), React.createElement(Button, {
-    onClick: increment
-  }, "+1"), React.createElement(Button, {
-    onClick: decrement
-  }, "-1")));
+var AsyncImportScreen = function AsyncImportScreen() {
+  return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "AsyncImport"));
 };
 
-var withConnect = function withConnect(_ref2) {
-  var decrement = _ref2.decrement,
-      increment = _ref2.increment;
-  return Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, {
-    decrement: decrement,
-    increment: increment
-  });
-};
-
-var mapPackagesToProps = function mapPackagesToProps(_ref3) {
-  var _ref3$components = _ref3.components,
-      Button = _ref3$components.Button,
-      Counter = _ref3$components.Counter,
-      decrement = _ref3$components.decrement,
-      increment = _ref3$components.increment;
-  return {
-    Button: Button,
-    Counter: Counter,
-    decrement: decrement,
-    increment: increment
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(core__WEBPACK_IMPORTED_MODULE_2__["asyncImport"])([core__WEBPACK_IMPORTED_MODULE_2__["PACKAGE_NAMES"].components], {
-  mapPackagesToProps: mapPackagesToProps,
-  withConnect: withConnect
-})(AsyncImportScreen));
-/*
-
-****** STEP 1
-
-import { Fragment } from 'react';
-const AsyncImportScreen = () => {
-    return (
-        <Fragment>
-            <h2>AsyncImport</h2>
-        </Fragment>
-    );
-};
-
-
-export default AsyncImportScreen;
-
-
-
-
-
-
-****** STEP 2
+/* harmony default export */ __webpack_exports__["default"] = (AsyncImportScreen);
+/* ****** EXAMPLE 1 -> apply asyncImport HOC and import Button from components package
 
 import { Fragment } from 'react';
 import { PACKAGE_NAMES, asyncImport } from 'core';
@@ -312,7 +244,7 @@ const AsyncImportScreen = ({ components: { Button } }) => {
 export default asyncImport([PACKAGE_NAMES.components])(AsyncImportScreen);
 
 
-****** STEP 3
+****** EXAMPLE 2 -> import constants and functions
 
 
 import { Fragment } from 'react';
@@ -332,7 +264,7 @@ const AsyncImportScreen = ({ components: { Button, FRUITS, sum } }) => {
 export default asyncImport([PACKAGE_NAMES.components])(AsyncImportScreen);
 
 
-****** STEP 4
+****** EXAMPLE 3 -> import Redux actions creator
 
 
 import { Fragment } from 'react';
@@ -365,7 +297,7 @@ export default asyncImport([PACKAGE_NAMES.components], { withConnect })(AsyncImp
 
 
 
-****** STEP 5
+****** EXAMPLE 4 -> mapPackagesToProps is a function which can help with renaming or reorganization modules which will be puted to component
 
 
 import { Fragment } from 'react';
@@ -386,6 +318,44 @@ const AsyncImportScreen = ({ Button, Counter, decrement, increment }) => {
                 <h3>Imported Actions from "components" package</h3>
                 <Button onClick={increment}>+1</Button>
                 <Button onClick={decrement}>-1</Button>
+            </div>
+        </Fragment>
+    );
+};
+
+const withConnect = ({ decrement, increment }) => connect(null, { decrement, increment });
+const mapPackagesToProps = ({ components: { Button, Counter, decrement, increment }}) => ({ Button, Counter, decrement, increment });
+
+export default asyncImport([PACKAGE_NAMES.components], { mapPackagesToProps, withConnect })(AsyncImportScreen);
+
+
+
+
+****** EXAMPLE 5 -> asyncImport HOC includes another asyncImport HOC
+
+
+import { Fragment } from 'react';
+import { connect } from 'react-redux';
+import { PACKAGE_NAMES, asyncImport } from 'core';
+
+import AsyncImportScreen2 from './async-import-2.screen';
+import styles from './test.scss'
+
+const AsyncImportScreen = ({ Button, Counter, decrement, increment }) => {
+    return (
+        <Fragment>
+            <h1>AsyncImport 1</h1>
+            <div className={styles.root}>
+                <h3>Component with dynamic store from "components" package</h3>
+                <Counter />
+            </div>
+            <div className={styles.root}>
+                <h3>Imported Actions from "components" package</h3>
+                <Button onClick={increment}>+1</Button>
+                <Button onClick={decrement}>-1</Button>
+            </div>
+            <div className={styles.root}>
+                <AsyncImportScreen2 />
             </div>
         </Fragment>
     );
@@ -467,7 +437,7 @@ function (_PureComponent) {
   _createClass(HomeScreen, [{
     key: "render",
     value: function render() {
-      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Home"), React.createElement("p", null, "some text"));
+      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Home"), React.createElement("p", null, "some content"));
     }
   }]);
 
@@ -962,18 +932,6 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
-
-/***/ }),
-
-/***/ "./src/tests/test.scss":
-/*!*****************************!*\
-  !*** ./src/tests/test.scss ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-module.exports = {"root":"src-tests--tests-root"};
 
 /***/ }),
 
