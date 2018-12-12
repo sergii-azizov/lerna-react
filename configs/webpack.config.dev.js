@@ -7,7 +7,7 @@ const externals = require("./vendors.config");
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 const STATIC_SERVERS = {
-    DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/b2390270ecef13dc8484334a9889d52487f80c11/dist/'
+    DT: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/30f0a84c9a6ea024326a46951f83f8e456109e86/dist/'
 };
 
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
         path: path.resolve(__dirname, '../dist'),
         umdNamedDefine: true,
         globalObject: `window.${APP}`,
-        publicPath: isDevelopment ? '/' : STATIC_SERVERS.DT
+        publicPath: false ? '/' : STATIC_SERVERS.DT
     },
     mode: process.env.NODE_ENV,
     resolve: {

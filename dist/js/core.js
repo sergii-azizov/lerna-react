@@ -87,7 +87,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
+/******/ 	__webpack_require__.p = "https://rawcdn.githack.com/sergii-azizov/lerna-react/30f0a84c9a6ea024326a46951f83f8e456109e86/dist/";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
