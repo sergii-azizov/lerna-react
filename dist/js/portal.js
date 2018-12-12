@@ -1,16 +1,65 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("connectedReactRouter"), require("core"), require("React"), require("ReactDOM"), require("reactRedux"), require("reactRouterDom"));
+		module.exports = factory(require("connectedReactRouter"), require("core"), require("propTypes"), require("React"), require("ReactDOM"), require("reactRedux"), require("reactRouterDom"), require("redux"));
 	else if(typeof define === 'function' && define.amd)
-		define("portal", ["connectedReactRouter", "core", "React", "ReactDOM", "reactRedux", "reactRouterDom"], factory);
+		define("portal", ["connectedReactRouter", "core", "propTypes", "React", "ReactDOM", "reactRedux", "reactRouterDom", "redux"], factory);
 	else if(typeof exports === 'object')
-		exports["portal"] = factory(require("connectedReactRouter"), require("core"), require("React"), require("ReactDOM"), require("reactRedux"), require("reactRouterDom"));
+		exports["portal"] = factory(require("connectedReactRouter"), require("core"), require("propTypes"), require("React"), require("ReactDOM"), require("reactRedux"), require("reactRouterDom"), require("redux"));
 	else
-		root["portal"] = factory(root["connectedReactRouter"], root["core"], root["React"], root["ReactDOM"], root["reactRedux"], root["reactRouterDom"]);
-})(window.__APP__, function(__WEBPACK_EXTERNAL_MODULE_connected_react_router__, __WEBPACK_EXTERNAL_MODULE_core__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_react_dom__, __WEBPACK_EXTERNAL_MODULE_react_redux__, __WEBPACK_EXTERNAL_MODULE_react_router_dom__) {
+		root["portal"] = factory(root["connectedReactRouter"], root["core"], root["propTypes"], root["React"], root["ReactDOM"], root["reactRedux"], root["reactRouterDom"], root["redux"]);
+})(window.__APP__, function(__WEBPACK_EXTERNAL_MODULE_connected_react_router__, __WEBPACK_EXTERNAL_MODULE_core__, __WEBPACK_EXTERNAL_MODULE_prop_types__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_react_dom__, __WEBPACK_EXTERNAL_MODULE_react_redux__, __WEBPACK_EXTERNAL_MODULE_react_router_dom__, __WEBPACK_EXTERNAL_MODULE_redux__) {
 return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 	};
+/******/
+/******/
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded CSS chunks
+/******/ 	var installedCssChunks = {
+/******/ 		"portal": 0
+/******/ 	}
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 	// Promise = chunk loading, 0 = chunk loaded
+/******/ 	var installedChunks = {
+/******/ 		"portal": 0
+/******/ 	};
+/******/
+/******/
+/******/
+/******/ 	// script path function
+/******/ 	function jsonpScriptSrc(chunkId) {
+/******/ 		return __webpack_require__.p + "js/" + ({"components":"components"}[chunkId]||chunkId) + ".js"
+/******/ 	}
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -36,6 +85,104 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		return module.exports;
 /******/ 	}
 /******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+/******/ 		var promises = [];
+/******/
+/******/
+/******/ 		// mini-css-extract-plugin CSS loading
+/******/ 		var cssChunks = {"components":1};
+/******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
+/******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
+/******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
+/******/ 				var href = "css/" + ({"components":"components"}[chunkId]||chunkId) + ".css";
+/******/ 				var fullhref = __webpack_require__.p + href;
+/******/ 				var existingLinkTags = document.getElementsByTagName("link");
+/******/ 				for(var i = 0; i < existingLinkTags.length; i++) {
+/******/ 					var tag = existingLinkTags[i];
+/******/ 					var dataHref = tag.getAttribute("data-href") || tag.getAttribute("href");
+/******/ 					if(tag.rel === "stylesheet" && (dataHref === href || dataHref === fullhref)) return resolve();
+/******/ 				}
+/******/ 				var existingStyleTags = document.getElementsByTagName("style");
+/******/ 				for(var i = 0; i < existingStyleTags.length; i++) {
+/******/ 					var tag = existingStyleTags[i];
+/******/ 					var dataHref = tag.getAttribute("data-href");
+/******/ 					if(dataHref === href || dataHref === fullhref) return resolve();
+/******/ 				}
+/******/ 				var linkTag = document.createElement("link");
+/******/ 				linkTag.rel = "stylesheet";
+/******/ 				linkTag.type = "text/css";
+/******/ 				linkTag.onload = resolve;
+/******/ 				linkTag.onerror = function(event) {
+/******/ 					var request = event && event.target && event.target.src || fullhref;
+/******/ 					var err = new Error("Loading CSS chunk " + chunkId + " failed.\n(" + request + ")");
+/******/ 					err.request = request;
+/******/ 					delete installedCssChunks[chunkId]
+/******/ 					linkTag.parentNode.removeChild(linkTag)
+/******/ 					reject(err);
+/******/ 				};
+/******/ 				linkTag.href = fullhref;
+/******/ 				var head = document.getElementsByTagName("head")[0];
+/******/ 				head.appendChild(linkTag);
+/******/ 			}).then(function() {
+/******/ 				installedCssChunks[chunkId] = 0;
+/******/ 			}));
+/******/ 		}
+/******/
+/******/ 		// JSONP chunk loading for javascript
+/******/
+/******/ 		var installedChunkData = installedChunks[chunkId];
+/******/ 		if(installedChunkData !== 0) { // 0 means "already installed".
+/******/
+/******/ 			// a Promise means "currently loading".
+/******/ 			if(installedChunkData) {
+/******/ 				promises.push(installedChunkData[2]);
+/******/ 			} else {
+/******/ 				// setup Promise in chunk cache
+/******/ 				var promise = new Promise(function(resolve, reject) {
+/******/ 					installedChunkData = installedChunks[chunkId] = [resolve, reject];
+/******/ 				});
+/******/ 				promises.push(installedChunkData[2] = promise);
+/******/
+/******/ 				// start chunk loading
+/******/ 				var head = document.getElementsByTagName('head')[0];
+/******/ 				var script = document.createElement('script');
+/******/ 				var onScriptComplete;
+/******/
+/******/ 				script.charset = 'utf-8';
+/******/ 				script.timeout = 120;
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 				script.src = jsonpScriptSrc(chunkId);
+/******/
+/******/ 				onScriptComplete = function (event) {
+/******/ 					// avoid mem leaks in IE.
+/******/ 					script.onerror = script.onload = null;
+/******/ 					clearTimeout(timeout);
+/******/ 					var chunk = installedChunks[chunkId];
+/******/ 					if(chunk !== 0) {
+/******/ 						if(chunk) {
+/******/ 							var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 							var realSrc = event && event.target && event.target.src;
+/******/ 							var error = new Error('Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')');
+/******/ 							error.type = errorType;
+/******/ 							error.request = realSrc;
+/******/ 							chunk[1](error);
+/******/ 						}
+/******/ 						installedChunks[chunkId] = undefined;
+/******/ 					}
+/******/ 				};
+/******/ 				var timeout = setTimeout(function(){
+/******/ 					onScriptComplete({ type: 'timeout', target: script });
+/******/ 				}, 120000);
+/******/ 				script.onerror = script.onload = onScriptComplete;
+/******/ 				head.appendChild(script);
+/******/ 			}
+/******/ 		}
+/******/ 		return Promise.all(promises);
+/******/ 	};
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -87,7 +234,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/ 	// on error function for async loading
+/******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
+/******/
+/******/ 	var jsonpArray = window.__APP__["webpackJsonp_name_"] = window.__APP__["webpackJsonp_name_"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -109,12 +266,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "react-router-dom");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core */ "core");
-/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _tests__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tests */ "./src/tests/index.js");
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_4__);
-
+/* harmony import */ var _tests__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tests */ "./src/tests/index.js");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
@@ -122,43 +276,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var App = function App(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: _app_scss__WEBPACK_IMPORTED_MODULE_4___default.a.root
+    className: _app_scss__WEBPACK_IMPORTED_MODULE_3___default.a.root
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/"
-  }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/async-import"
-  }, "asyncImport")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/load-module"
-  }, "Load Paralle Identical Modules")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/desktop-summary"
-  }, "Desktop Summary")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/load-2-modules-with-dependency"
-  }, "Load 3 Modules")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/toggle-modules"
-  }, "Toggle Modules")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/parallel-toggle-modules"
-  }, "Parallel Toggle Modules")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }, "Home")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/",
     exact: true,
-    component: _tests__WEBPACK_IMPORTED_MODULE_3__["HomeScreen"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/async-import",
-    component: _tests__WEBPACK_IMPORTED_MODULE_3__["AsyncImportScreen"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/load-module",
-    component: _tests__WEBPACK_IMPORTED_MODULE_3__["loadParalleIdenticalModules"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/desktop-summary",
-    component: _tests__WEBPACK_IMPORTED_MODULE_3__["DesktopSummaryScreen"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/load-2-modules-with-dependency",
-    component: _tests__WEBPACK_IMPORTED_MODULE_3__["Load2ModulesWithDependency"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/toggle-modules",
-    component: _tests__WEBPACK_IMPORTED_MODULE_3__["ToggleModulesScreen"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/parallel-toggle-modules",
-    component: _tests__WEBPACK_IMPORTED_MODULE_3__["ParallelToggleComponentsMountingScreen"]
+    component: _tests__WEBPACK_IMPORTED_MODULE_2__["HomeScreen"]
   })));
 };
 
@@ -209,188 +333,6 @@ react_dom__WEBPACK_IMPORTED_MODULE_0___default.a.render(React.createElement(reac
 
 /***/ }),
 
-/***/ "./src/tests/async-import.screen.js":
-/*!******************************************!*\
-  !*** ./src/tests/async-import.screen.js ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var AsyncImportScreen = function AsyncImportScreen() {
-  return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "AsyncImport"));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (AsyncImportScreen);
-/* ****** EXAMPLE 1 -> apply asyncImport HOC and import Button from components package
-
-import { Fragment } from 'react';
-import { PACKAGE_NAMES, asyncImport } from 'core';
-
-const AsyncImportScreen = ({ components: { Button } }) => {
-    return (
-        <Fragment>
-            <h2>AsyncImport</h2>
-            <Button>Button</Button>
-        </Fragment>
-    );
-};
-
-export default asyncImport([PACKAGE_NAMES.components])(AsyncImportScreen);
-
-
-****** EXAMPLE 2 -> import constants and functions
-
-
-import { Fragment } from 'react';
-import { PACKAGE_NAMES, asyncImport } from 'core';
-
-const AsyncImportScreen = ({ components: { Button, FRUITS, sum } }) => {
-    return (
-        <Fragment>
-            <h2>AsyncImport</h2>
-            <h3>Imported constant: {FRUITS.APPLE}</h3>
-            <h3>Imported function sum, result: {sum(5, 7)}</h3>
-            <Button>Imported component</Button>
-        </Fragment>
-    );
-};
-
-export default asyncImport([PACKAGE_NAMES.components])(AsyncImportScreen);
-
-
-****** EXAMPLE 3 -> import Redux actions creator
-
-
-import { Fragment } from 'react';
-import { connect } from 'react-redux';
-import { PACKAGE_NAMES, asyncImport } from 'core';
-
-import styles from './test.scss'
-
-const AsyncImportScreen = ({ components: { Button, Counter }, decrement, increment }) => {
-    return (
-        <Fragment>
-            <h2>AsyncImport</h2>
-            <div className={styles.root}>
-                <h3>Component with dynamic store from "components" package</h3>
-                <Counter />
-            </div>
-            <div className={styles.root}>
-                <h3>Imported Actions from "components" package</h3>
-                <Button onClick={increment}>+1</Button>
-                <Button onClick={decrement}>-1</Button>
-            </div>
-        </Fragment>
-    );
-};
-
-const withConnect = ({ components: { decrement, increment } }) => connect(null, { decrement, increment });
-
-export default asyncImport([PACKAGE_NAMES.components], { withConnect })(AsyncImportScreen);
-
-
-
-
-****** EXAMPLE 4 -> mapPackagesToProps is a function which can help with renaming or reorganization modules which will be puted to component
-
-
-import { Fragment } from 'react';
-import { connect } from 'react-redux';
-import { PACKAGE_NAMES, asyncImport } from 'core';
-
-import styles from './test.scss'
-
-const AsyncImportScreen = ({ Button, Counter, decrement, increment }) => {
-    return (
-        <Fragment>
-            <h2>AsyncImport</h2>
-            <div className={styles.root}>
-                <h3>Component with dynamic store from "components" package</h3>
-                <Counter />
-            </div>
-            <div className={styles.root}>
-                <h3>Imported Actions from "components" package</h3>
-                <Button onClick={increment}>+1</Button>
-                <Button onClick={decrement}>-1</Button>
-            </div>
-        </Fragment>
-    );
-};
-
-const withConnect = ({ decrement, increment }) => connect(null, { decrement, increment });
-const mapPackagesToProps = ({ components: { Button, Counter, decrement, increment }}) => ({ Button, Counter, decrement, increment });
-
-export default asyncImport([PACKAGE_NAMES.components], { mapPackagesToProps, withConnect })(AsyncImportScreen);
-
-
-
-
-****** EXAMPLE 5 -> asyncImport HOC includes another asyncImport HOC
-
-
-import { Fragment } from 'react';
-import { connect } from 'react-redux';
-import { PACKAGE_NAMES, asyncImport } from 'core';
-
-import AsyncImportScreen2 from './async-import-2.screen';
-import styles from './test.scss'
-
-const AsyncImportScreen = ({ Button, Counter, decrement, increment }) => {
-    return (
-        <Fragment>
-            <h1>AsyncImport 1</h1>
-            <div className={styles.root}>
-                <h3>Component with dynamic store from "components" package</h3>
-                <Counter />
-            </div>
-            <div className={styles.root}>
-                <h3>Imported Actions from "components" package</h3>
-                <Button onClick={increment}>+1</Button>
-                <Button onClick={decrement}>-1</Button>
-            </div>
-            <div className={styles.root}>
-                <AsyncImportScreen2 />
-            </div>
-        </Fragment>
-    );
-};
-
-const withConnect = ({ decrement, increment }) => connect(null, { decrement, increment });
-const mapPackagesToProps = ({ components: { Button, Counter, decrement, increment }}) => ({ Button, Counter, decrement, increment });
-
-export default asyncImport([PACKAGE_NAMES.components], { mapPackagesToProps, withConnect })(AsyncImportScreen);
-*/
-
-/***/ }),
-
-/***/ "./src/tests/desktop-summary.screen.js":
-/*!*********************************************!*\
-  !*** ./src/tests/desktop-summary.screen.js ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ "core");
-/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);
-
-
-var DesktopSummaryScreen = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].desktopSummaryScreen);
-/* harmony default export */ __webpack_exports__["default"] = (function (props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DesktopSummaryScreen, props);
-});
-
-/***/ }),
-
 /***/ "./src/tests/home.screen.js":
 /*!**********************************!*\
   !*** ./src/tests/home.screen.js ***!
@@ -403,6 +345,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return HomeScreen; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ "core");
+/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -413,13 +357,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -429,15 +376,43 @@ function (_PureComponent) {
   _inherits(HomeScreen, _PureComponent);
 
   function HomeScreen() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, HomeScreen);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(HomeScreen).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(HomeScreen)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {});
+
+    return _this;
   }
 
   _createClass(HomeScreen, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      __webpack_require__.e(/*! import() | components */ "components").then(__webpack_require__.bind(null, /*! ../../../components/src/index.js */ "../components/src/index.js")).then(function (components) {
+        Object(core__WEBPACK_IMPORTED_MODULE_1__["injectAsyncReducer"])('components', components.rootReducer);
+
+        _this2.setState({
+          components: components
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Home"), React.createElement("p", null, "some content"));
+      var _this$state$component = this.state.components;
+      _this$state$component = _this$state$component === void 0 ? {} : _this$state$component;
+      var Counter = _this$state$component.Counter;
+      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Home"), Counter && React.createElement(Counter, null));
     }
   }]);
 
@@ -453,7 +428,7 @@ function (_PureComponent) {
 /*!****************************!*\
   !*** ./src/tests/index.js ***!
   \****************************/
-/*! exports provided: HomeScreen, AsyncImportScreen, DesktopSummaryScreen, loadParalleIdenticalModules, Load2ModulesWithDependency, ToggleModulesScreen, ParallelToggleComponentsMountingScreen */
+/*! exports provided: HomeScreen */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -461,618 +436,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_screen__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home.screen */ "./src/tests/home.screen.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HomeScreen", function() { return _home_screen__WEBPACK_IMPORTED_MODULE_0__["default"]; });
 
-/* harmony import */ var _async_import_screen__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./async-import.screen */ "./src/tests/async-import.screen.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AsyncImportScreen", function() { return _async_import_screen__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
-/* harmony import */ var _desktop_summary_screen__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./desktop-summary.screen */ "./src/tests/desktop-summary.screen.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DesktopSummaryScreen", function() { return _desktop_summary_screen__WEBPACK_IMPORTED_MODULE_2__["default"]; });
-
-/* harmony import */ var _load_paralle_identical_modules_screen_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./load-paralle-identical-modules.screen.js */ "./src/tests/load-paralle-identical-modules.screen.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "loadParalleIdenticalModules", function() { return _load_paralle_identical_modules_screen_js__WEBPACK_IMPORTED_MODULE_3__["default"]; });
-
-/* harmony import */ var _load_2_modules_with_dependency_screen__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./load-2-modules-with-dependency.screen */ "./src/tests/load-2-modules-with-dependency.screen.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Load2ModulesWithDependency", function() { return _load_2_modules_with_dependency_screen__WEBPACK_IMPORTED_MODULE_4__["default"]; });
-
-/* harmony import */ var _toggle_modules__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./toggle-modules */ "./src/tests/toggle-modules.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ToggleModulesScreen", function() { return _toggle_modules__WEBPACK_IMPORTED_MODULE_5__["default"]; });
-
-/* harmony import */ var _parallel_toggle_modules__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./parallel-toggle-modules */ "./src/tests/parallel-toggle-modules.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ParallelToggleComponentsMountingScreen", function() { return _parallel_toggle_modules__WEBPACK_IMPORTED_MODULE_6__["default"]; });
-
-
-
-
-
-
-
-
-
-/***/ }),
-
-/***/ "./src/tests/load-2-modules-with-dependency.screen.js":
-/*!************************************************************!*\
-  !*** ./src/tests/load-2-modules-with-dependency.screen.js ***!
-  \************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Load3ModuleScreen; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ "core");
-/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-var Module1 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].scripting, {
-  component: 'Scripting'
-});
-var Module2 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].scripting, {
-  component: 'Scripting'
-});
-
-var Load3ModuleScreen =
-/*#__PURE__*/
-function (_PureComponent) {
-  _inherits(Load3ModuleScreen, _PureComponent);
-
-  function Load3ModuleScreen() {
-    _classCallCheck(this, Load3ModuleScreen);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Load3ModuleScreen).apply(this, arguments));
-  }
-
-  _createClass(Load3ModuleScreen, [{
-    key: "render",
-    value: function render() {
-      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Load 3 Module"), React.createElement(Module1, null), React.createElement(Module2, null));
-    }
-  }]);
-
-  return Load3ModuleScreen;
-}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
-
-
-;
-
-/***/ }),
-
-/***/ "./src/tests/load-paralle-identical-modules.screen.js":
-/*!************************************************************!*\
-  !*** ./src/tests/load-paralle-identical-modules.screen.js ***!
-  \************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return loadParalleIdenticalModules; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ "core");
-/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-var Counter = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-  component: 'Counter',
-  loadingComponent: React.createElement("div", null, "12312313123")
-});
-var Button = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-  component: 'Button'
-});
-var Button1 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-  component: 'Button'
-});
-var Button2 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-  component: 'Button'
-});
-var Button3 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-  component: 'Button'
-});
-var Button4 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-  component: 'Button'
-});
-var Button5 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-  component: 'Button'
-});
-var Button6 = Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-  component: 'Button'
-});
-
-var loadParalleIdenticalModules =
-/*#__PURE__*/
-function (_PureComponent) {
-  _inherits(loadParalleIdenticalModules, _PureComponent);
-
-  function loadParalleIdenticalModules() {
-    _classCallCheck(this, loadParalleIdenticalModules);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(loadParalleIdenticalModules).apply(this, arguments));
-  }
-
-  _createClass(loadParalleIdenticalModules, [{
-    key: "render",
-    value: function render() {
-      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Load Module"), React.createElement(Counter, null), React.createElement(Button, null, "Button"), React.createElement(Button1, null, "Button1"), React.createElement(Button2, null, "Button2"), React.createElement(Button3, null, "Button3"), React.createElement(Button4, null, "Button4"), React.createElement(Button5, null, "Button5"), React.createElement(Button6, null, "Button6"));
-    }
-  }]);
-
-  return loadParalleIdenticalModules;
-}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
-
-
-;
-
-/***/ }),
-
-/***/ "./src/tests/parallel-toggle-modules.js":
-/*!**********************************************!*\
-  !*** ./src/tests/parallel-toggle-modules.js ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ParallelToggleComponentsMountingScreen; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ "core");
-/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-var ParallelToggleComponentsMountingScreen =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(ParallelToggleComponentsMountingScreen, _Component);
-
-  function ParallelToggleComponentsMountingScreen() {
-    var _getPrototypeOf2;
-
-    var _this;
-
-    _classCallCheck(this, ParallelToggleComponentsMountingScreen);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ParallelToggleComponentsMountingScreen)).call.apply(_getPrototypeOf2, [this].concat(args)));
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      Button1: function Button1() {
-        return React.createElement("div", null, "loading Button-1");
-      },
-      Button2: function Button2() {
-        return React.createElement("div", null, "loading Button-2");
-      },
-      Button3: function Button3() {
-        return React.createElement("div", null, "loading Button-3");
-      },
-      Button4: function Button4() {
-        return React.createElement("div", null, "loading Button-5");
-      },
-      Button5: function Button5() {
-        return React.createElement("div", null, "loading Button-5");
-      },
-      Button11: function Button11() {
-        return React.createElement("div", null, "loading Button-1");
-      },
-      Button22: function Button22() {
-        return React.createElement("div", null, "loading Button-2");
-      },
-      Button33: function Button33() {
-        return React.createElement("div", null, "loading Button-3");
-      },
-      Button44: function Button44() {
-        return React.createElement("div", null, "loading Button-5");
-      },
-      Button55: function Button55() {
-        return React.createElement("div", null, "loading Button-5");
-      },
-      Button111: function Button111() {
-        return React.createElement("div", null, "loading Button-1");
-      },
-      Button222: function Button222() {
-        return React.createElement("div", null, "loading Button-2");
-      },
-      Button333: function Button333() {
-        return React.createElement("div", null, "loading Button-3");
-      },
-      Button444: function Button444() {
-        return React.createElement("div", null, "loading Button-5");
-      },
-      Button555: function Button555() {
-        return React.createElement("div", null, "loading Button-5");
-      },
-      Button1111: function Button1111() {
-        return React.createElement("div", null, "loading Button-1");
-      },
-      Button2222: function Button2222() {
-        return React.createElement("div", null, "loading Button-2");
-      },
-      Button3333: function Button3333() {
-        return React.createElement("div", null, "loading Button-3");
-      },
-      Button4444: function Button4444() {
-        return React.createElement("div", null, "loading Button-5");
-      },
-      Button5555: function Button5555() {
-        return React.createElement("div", null, "loading Button-5");
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "add", function () {
-      _this.setState({
-        Button1: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button2: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button3: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button4: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button5: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button11: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button22: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button33: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button44: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button55: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button111: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button222: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button333: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button444: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button555: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button1111: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button2222: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button3333: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button4444: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        }),
-        Button5555: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-          component: 'Button'
-        })
-      });
-
-      setTimeout(_this.remove, 2000);
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "remove", function () {
-      _this.setState({
-        Button1: function Button1() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button2: function Button2() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button3: function Button3() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button4: function Button4() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button5: function Button5() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button11: function Button11() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button22: function Button22() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button33: function Button33() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button44: function Button44() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button55: function Button55() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button111: function Button111() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button222: function Button222() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button333: function Button333() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button444: function Button444() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button555: function Button555() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button1111: function Button1111() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button2222: function Button2222() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button3333: function Button3333() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button4444: function Button4444() {
-          return React.createElement("div", null, "removed Button");
-        },
-        Button5555: function Button5555() {
-          return React.createElement("div", null, "removed Button");
-        }
-      });
-    });
-
-    return _this;
-  }
-
-  _createClass(ParallelToggleComponentsMountingScreen, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      setInterval(this.add, 3000);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$state = this.state,
-          Button1 = _this$state.Button1,
-          Button2 = _this$state.Button2,
-          Button3 = _this$state.Button3,
-          Button4 = _this$state.Button4,
-          Button5 = _this$state.Button5,
-          Button11 = _this$state.Button11,
-          Button22 = _this$state.Button22,
-          Button33 = _this$state.Button33,
-          Button44 = _this$state.Button44,
-          Button55 = _this$state.Button55,
-          Button111 = _this$state.Button111,
-          Button222 = _this$state.Button222,
-          Button333 = _this$state.Button333,
-          Button444 = _this$state.Button444,
-          Button555 = _this$state.Button555,
-          Button1111 = _this$state.Button1111,
-          Button2222 = _this$state.Button2222,
-          Button3333 = _this$state.Button3333,
-          Button4444 = _this$state.Button4444,
-          Button5555 = _this$state.Button5555;
-      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Toggle Components Mounting"), React.createElement(Button1, null, "Button"), React.createElement(Button2, null, "Button"), React.createElement(Button3, null, "Button"), React.createElement(Button4, null, "Button"), React.createElement(Button5, null, "Button"), React.createElement(Button11, null, "Button"), React.createElement(Button22, null, "Button"), React.createElement(Button33, null, "Button"), React.createElement(Button44, null, "Button"), React.createElement(Button55, null, "Button"), React.createElement(Button111, null, "Button"), React.createElement(Button222, null, "Button"), React.createElement(Button333, null, "Button"), React.createElement(Button444, null, "Button"), React.createElement(Button555, null, "Button"), React.createElement(Button1111, null, "Button"), React.createElement(Button2222, null, "Button"), React.createElement(Button3333, null, "Button"), React.createElement(Button4444, null, "Button"), React.createElement(Button5555, null, "Button"));
-    }
-  }]);
-
-  return ParallelToggleComponentsMountingScreen;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-
-
-/***/ }),
-
-/***/ "./src/tests/toggle-modules.js":
-/*!*************************************!*\
-  !*** ./src/tests/toggle-modules.js ***!
-  \*************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ToggleModulesScreen; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ "core");
-/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core__WEBPACK_IMPORTED_MODULE_1__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-var ToggleModulesScreen =
-/*#__PURE__*/
-function (_PureComponent) {
-  _inherits(ToggleModulesScreen, _PureComponent);
-
-  function ToggleModulesScreen() {
-    var _getPrototypeOf2;
-
-    var _this;
-
-    _classCallCheck(this, ToggleModulesScreen);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ToggleModulesScreen)).call.apply(_getPrototypeOf2, [this].concat(args)));
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      TaskSelector: function TaskSelector() {
-        return React.createElement("div", null, "TaskSelector");
-      },
-      Button: function Button() {
-        return React.createElement("div", null, "Button");
-      }
-    });
-
-    return _this;
-  }
-
-  _createClass(ToggleModulesScreen, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      setTimeout(function () {
-        _this2.setState({
-          TaskSelector: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].taskSelector)
-        });
-      }, 1000);
-      setTimeout(function () {
-        _this2.setState({
-          TaskSelector: function TaskSelector() {
-            return React.createElement("div", null, "TaskSelector");
-          }
-        });
-      }, 2000);
-      setTimeout(function () {
-        _this2.setState({
-          TaskSelector: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].taskSelector)
-        });
-      }, 3000);
-      setTimeout(function () {
-        _this2.setState({
-          TaskSelector: function TaskSelector() {
-            return React.createElement("div", null, "TaskSelector");
-          }
-        });
-      }, 4000);
-      setTimeout(function () {
-        _this2.setState({
-          TaskSelector: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].taskSelector)
-        });
-      }, 5000);
-      setTimeout(function () {
-        _this2.setState({
-          Button: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-            component: 'Button'
-          })
-        });
-      }, 1000);
-      setTimeout(function () {
-        _this2.setState({
-          Button: function Button() {
-            return React.createElement("div", null, "Button");
-          }
-        });
-      }, 2000);
-      setTimeout(function () {
-        _this2.setState({
-          Button: Object(core__WEBPACK_IMPORTED_MODULE_1__["asyncImportComponent"])(core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_NAMES"].components, {
-            component: 'Button'
-          })
-        });
-      }, 3000);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$state = this.state,
-          TaskSelector = _this$state.TaskSelector,
-          Button = _this$state.Button;
-      return React.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, React.createElement("h2", null, "Toggle Components"), React.createElement(TaskSelector, null), React.createElement(Button, null, "lazy loaded from static server"));
-    }
-  }]);
-
-  return ToggleModulesScreen;
-}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
-
-
-;
+/*
+export { default as AsyncImportScreen } from './async-import.screen';
+export { default as DesktopSummaryScreen } from './desktop-summary.screen';
+
+export { default as loadParalleIdenticalModules } from './load-paralle-identical-modules.screen.js';
+export { default as Load2ModulesWithDependency } from './load-2-modules-with-dependency.screen';
+export { default as ToggleModulesScreen } from './toggle-modules';
+export { default as ParallelToggleComponentsMountingScreen } from './parallel-toggle-modules';
+*/
 
 /***/ }),
 
@@ -1095,6 +468,17 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_connected_react_router__;
 /***/ (function(module, exports) {
 
 module.exports = __WEBPACK_EXTERNAL_MODULE_core__;
+
+/***/ }),
+
+/***/ "prop-types":
+/*!****************************!*\
+  !*** external "propTypes" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_prop_types__;
 
 /***/ }),
 
@@ -1139,6 +523,17 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_react_redux__;
 /***/ (function(module, exports) {
 
 module.exports = __WEBPACK_EXTERNAL_MODULE_react_router_dom__;
+
+/***/ }),
+
+/***/ "redux":
+/*!************************!*\
+  !*** external "redux" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_redux__;
 
 /***/ })
 

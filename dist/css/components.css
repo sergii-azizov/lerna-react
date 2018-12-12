@@ -1,4 +1,4 @@
-.src-button--button-root {
+._-components-src-button--button-root {
   background-color: #0078e7;
   color: white;
   vertical-align: middle;
@@ -8,7 +8,7 @@
   padding: .5em 2em;
   border-radius: 2px;
   border: none; }
-  .src-button--button-root:hover {
+  ._-components-src-button--button-root:hover {
     background-color: #0062c3; }
 
 
