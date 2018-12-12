@@ -55,10 +55,8 @@ export const decreasedLoadedComponents = ({ packageName, module }) => {
 };
 
 export const injectAsyncReducer = ({ packageName, reducer }) => {
-    const asyncReducers = get(window[APP], [packageName, reducer]);
-
-    if (asyncReducers && !get(store, [ASYNC_REDUCERS, packageName])) {
-        set(store, [ASYNC_REDUCERS, packageName], asyncReducers);
+    if (reducer && !get(store, [ASYNC_REDUCERS, packageName])) {
+        set(store, [ASYNC_REDUCERS, packageName], reducer);
         store.replaceReducer(createReducer(store[ASYNC_REDUCERS]));
     }
 };

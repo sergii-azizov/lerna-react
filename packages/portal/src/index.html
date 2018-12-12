@@ -4,12 +4,14 @@
     <meta charset="utf-8">
     <title>React App</title>
     <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.publicPath %>css/portal.css">
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.publicPath %>css/components.css">
 </head>
 <body>
     <div id="root"></div>
     <script>window.__APP__ = {};</script>
     <script src="<%= htmlWebpackPlugin.options.publicPath %>js/vendor.js" type="text/javascript"></script>
     <script src="<%= htmlWebpackPlugin.options.publicPath %>js/core.js" type="text/javascript"></script>
+    <script src="<%= htmlWebpackPlugin.options.publicPath %>js/components.js" type="text/javascript"></script>
     <script src="<%= htmlWebpackPlugin.options.publicPath %>js/portal.js" type="text/javascript"></script>
 </body>
 </html>
