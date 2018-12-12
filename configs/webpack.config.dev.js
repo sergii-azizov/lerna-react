@@ -15,7 +15,7 @@ module.exports = {
         umdNamedDefine: true,
         globalObject: `window.${APP}`,
         chunkFilename: `js/[name].js`,
-        publicPath: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/b2390270ecef13dc8484334a9889d52487f80c11/dist/'
+        publicPath: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/737c051736b0a1c1670414f0b72ef5bdbcb20bb3/dist/'
     },
     mode: process.env.NODE_ENV,
     resolve: {
@@ -23,9 +23,20 @@ module.exports = {
             core: path.resolve(__dirname, '../dist/js/core.js')
         }
     },
-    externals,
     devtool: isDevelopment ? 'source-map' : undefined,
     watch: process.env.WATCH === 'true',
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    chunks: 'initial',
+                    name: 'vendor',
+                    test: 'vendor',
+                    enforce: true
+                },
+            }
+        }
+    },
     module: {
         rules: [
             {
