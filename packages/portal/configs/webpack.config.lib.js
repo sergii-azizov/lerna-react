@@ -5,13 +5,12 @@ const name = require('../package.json').name;
 const baseWebpackConfig = require('../../../configs/webpack.config.dev.js');
 
 module.exports = webpackMerge(baseWebpackConfig, {
-    entry: {
-        core: path.resolve(__dirname, '../../core/src/index.js'),
-        portal: path.resolve(__dirname, '../src/index.js')
-    },
+    entry: { [name]: path.resolve(__dirname, '../src/index.js') },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./src/index.html"
+            inject: false,
+            template: "./src/index.html",
+            publicPath: baseWebpackConfig.output.publicPath
         })
     ]
 });

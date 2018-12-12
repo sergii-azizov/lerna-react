@@ -1,4 +1,3 @@
-import '../../vendor/src/index.js';
 import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
 import { ConnectedRouter } from 'connected-react-router';

@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const APP = require("./namespace.config").APP;
-const externals = require("./vendors.config");
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
