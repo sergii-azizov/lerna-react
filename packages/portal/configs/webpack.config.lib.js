@@ -9,7 +9,8 @@ module.exports = webpackMerge(baseWebpackConfig, {
     plugins: [
         new HtmlWebpackPlugin({
             inject: false,
-            template: "./src/index.html"
+            template: "./src/index.html",
+            publicPath: baseWebpackConfig.output.publicPath
         })
     ]
 });

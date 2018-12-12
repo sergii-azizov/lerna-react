@@ -54,11 +54,9 @@ export const decreasedLoadedComponents = ({ packageName, module }) => {
     set(window[APP], [COMPONENTS_COUNT, packageName, TOTAL_IMPORT], getImportCount({ packageName, name: TOTAL_IMPORT }) - 1);
 };
 
-export const injectAsyncReducer = ({ packageName, reducer }) => {
-    const asyncReducers = get(window[APP], [packageName, reducer]);
-
-    if (asyncReducers && !get(store, [ASYNC_REDUCERS, packageName])) {
-        set(store, [ASYNC_REDUCERS, packageName], asyncReducers);
+export const injectAsyncReducer = (packageName, reducer) => {
+    if (reducer && !get(store, [ASYNC_REDUCERS, packageName])) {
+        set(store, [ASYNC_REDUCERS, packageName], reducer);
         store.replaceReducer(createReducer(store[ASYNC_REDUCERS]));
     }
 };
