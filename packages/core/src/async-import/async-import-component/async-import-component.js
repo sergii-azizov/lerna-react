@@ -8,16 +8,13 @@ import { STATIC_SERVER, PACKAGE_STATUSES } from "../../constants.js";
 import {
     notify,
     destroy,
-    loadFile,
     getLoadPackage,
     injectAsyncReducer,
     increasedLoadedComponents
 } from '../helpers';
 
-const head = document.getElementsByTagName('head')[0];
-
-export const asyncImportComponent = (packageName, configs = {}) => {
-    if (!packageName) return () => null;
+export const asyncImportComponent = (packageName, configs = {}, promise) => {
+    if (!packageName) return () => Promise.resolve(null);
 
     const {
         server = STATIC_SERVER,
@@ -71,11 +68,10 @@ export const asyncImportComponent = (packageName, configs = {}) => {
             const isModuleLoaded = get(window.APP, [packageName]);
 
             if (!isModuleLoaded) {
-                set(window[APP], [packageName], new Promise((resolve, reject) => { this.resolve = resolve; }));
-                loadFile({ inject: head, type: 'link', url: `${server}/css/${packageName}.css`, packageName });
-                loadFile({ inject: head, type: 'script', url: `${server}/js/${packageName}.js`, packageName }).then(() => {
+                set(window[APP], [packageName], promise().then((pkg) => {
+                    window[APP][packageName] = pkg;
                     this.mountLoadedComponent(packageName)
-                });
+                }));
             }
         }
 

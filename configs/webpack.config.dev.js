@@ -13,7 +13,9 @@ module.exports = {
         library: '[name]',
         path: path.resolve(__dirname, '../dist'),
         umdNamedDefine: true,
-        globalObject: `window.${APP}`
+        globalObject: `window.${APP}`,
+        chunkFilename: `js/[name].js`,
+        publicPath: 'https://rawcdn.githack.com/sergii-azizov/lerna-react/b2390270ecef13dc8484334a9889d52487f80c11/dist/'
     },
     mode: process.env.NODE_ENV,
     resolve: {
