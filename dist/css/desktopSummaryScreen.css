@@ -1,5 +1,7 @@
 .src-desktop-summary-screen--desktop-summary-screen-root {
   border: 2px solid black; }
+  .src-desktop-summary-screen--desktop-summary-screen-root div {
+    margin: 20px; }
 
 
 /*# sourceMappingURL=desktopSummaryScreen.css.map*/
